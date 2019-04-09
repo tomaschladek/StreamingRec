@@ -30,37 +30,37 @@ import tudo.streamingrec.data.Item;
 /**
  * Read from Plista data set, February 2016 data log, CLEF2017.
  * Creates two temporary files, that need to be run through {@link JoinPlistaTransactionsWithMetaInfo}.
- * 
+ *
  * @author Mozhgan
  */
-@Command(name = "ReadPlista", 
-	footer = "Copyright(c) 2017 Mozhgan Karimi, Michael Jugovac, Dietmar Jannach",
-	description = "Reads the plista data from a set of targz files and converts them to a temporary format. "
-			+ "These files then need to be processed with JoinPlistaTransactionsWithMetaInfo. Usage:", 
-	showDefaultValues = true,
-	sortOptions = false)
+@Command(name = "ReadPlista",
+		footer = "Copyright(c) 2017 Mozhgan Karimi, Michael Jugovac, Dietmar Jannach",
+		description = "Reads the plista data from a set of targz files and converts them to a temporary format. "
+				+ "These files then need to be processed with JoinPlistaTransactionsWithMetaInfo. Usage:",
+		showDefaultValues = true,
+		sortOptions = false)
 public class ReadPlista {
 
 	//the folder with the plista dataset
-	@Option(names = {"-f", "--input-folder"}, paramLabel="<FOLDER>", description = "Path to the input folder with all input files") 
-	private static String inputFolder = "plista/";
+	@Option(names = {"-f", "--input-folder"}, paramLabel="<FOLDER>", description = "Path to the input folder with all input files")
+	private static String inputFolder = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all";
 	//the name of the output file containing the article metadata
-	@Option(names = {"-i", "--items"}, paramLabel="<FILE>", description = "Path to the item output file") 
-	private static String outputFileNameItems = "data/Items_plista.csv";
+	@Option(names = {"-i", "--items"}, paramLabel="<FILE>", description = "Path to the item output file")
+	private static String outputFileNameItems = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/Items_plista_fullEX.csv";
 	//the name of the output file containing the transactions (clicks)
-	@Option(names = {"-c", "--clicks"}, paramLabel="<FILE>", description = "Path to the item output file") 
-	private static String outputFileNameClicks = "data/Clicks_plista.csv";
+	@Option(names = {"-c", "--clicks"}, paramLabel="<FILE>", description = "Path to the item output file")
+	private static String outputFileNameClicks = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/Clicks_plista_fullEX.csv";
 	//should the category be extracted from the article URL? (probably more precise)
-	@Option(names = {"-e", "--extract-category"}, description = "Should the category be extracted from the article URL? (probably more precise)") 
+	@Option(names = {"-e", "--extract-category"}, description = "Should the category be extracted from the article URL? (probably more precise)")
 	private static boolean extractCATfromURL = false;
 	//should the article texts be extracted?
-	@Option(names = {"-t", "--extract-text"}, description = "Should the article texts be extracted?") 
+	@Option(names = {"-t", "--extract-text"}, description = "Should the article texts be extracted?")
 	private static boolean extractText = false;
-	
+
 	//for command line help
 	@Option(names = {"-h", "--help"}, hidden=true, usageHelp = true)
 	private static boolean helpRequested;
-	
+
 	//internal map for translating plain-text categories to integer ids
 	private static Map<String, Integer> cat2ID = new HashMap<String, Integer>();
 	//a counter for the category id
@@ -73,21 +73,21 @@ public class ReadPlista {
 		//command line parsing
 		CommandLine.populateCommand(new ReadPlista(), args);
 		if (helpRequested) {
-		   CommandLine.usage(new ReadPlista(), System.out);
-		   return;
+			CommandLine.usage(new ReadPlista(), System.out);
+			return;
 		}
 		// create a file to write Recommendation Request and also event
 		// notification
 		File foutRR = new File(outputFileNameClicks);
 		FileOutputStream fosRR = new FileOutputStream(foutRR);
 		BufferedWriter bwRR = new BufferedWriter(new OutputStreamWriter(fosRR));
-		bwRR.write("Publisher,Category,ItemID,Cookie,Timestamp,keywords");
+		bwRR.write("Publisher,Category,ItemID,Cookie,Timestamp,limit,income,geoUser,geoUserZip,deviceType,browser,age,os,gender,language,keywords");
 		bwRR.newLine();
 		// create a file to write Item Update
 		File foutIU = new File(outputFileNameItems);
 		FileOutputStream fosIU = new FileOutputStream(foutIU);
 		BufferedWriter bwIU = new BufferedWriter(new OutputStreamWriter(fosIU));
-		bwIU.write("Domain,CreatedAt,ItemID,URL,Title,category,text,keywords");
+		bwIU.write("Domain,CreatedAt,ItemID,URL,Title,version,flag,video,kicker,UpdatedAt,category,text,keywords");
 		bwIU.newLine();
 		bwIU.flush();
 
@@ -159,7 +159,7 @@ public class ReadPlista {
 	/**
 	 * This method extracts the information about a user click from a json
 	 * string
-	 * 
+	 *
 	 * @param jsonstr -
 	 * @param eventNotification -
 	 * @return a csv line
@@ -173,7 +173,7 @@ public class ReadPlista {
 		JSONObject simpleRR = contextRR.getJSONObject("simple");
 		JSONObject listRR = contextRR.getJSONObject("lists");
 
-		//create a tmp transaction project (click info + some item metadata 
+		//create a tmp transaction project (click info + some item metadata
 		//that needs to be merged to item objects later)
 		TmpPlistaTransaction transaction = new TmpPlistaTransaction();
 		// each list object contains a list of tuples
@@ -187,6 +187,11 @@ public class ReadPlista {
 			}
 		}
 
+		if (linejson.has("limit"))
+		{
+			transaction.limit = linejson.getInt("limit");
+		}
+
 		// each simple objects contains a list of tuples
 		// code_27 is publisher ID
 		if (simpleRR.has("27")) {
@@ -194,10 +199,55 @@ public class ReadPlista {
 		}
 
 		// code_57 is user cookie
+		if (simpleRR.has("1")) {
+			transaction.gender = simpleRR.getLong("1");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("2")) {
+			transaction.age = simpleRR.getLong("2");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("3")) {
+			transaction.income = simpleRR.getLong("3");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("4")) {
+			transaction.browser = simpleRR.getLong("4");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("6")) {
+			transaction.os = simpleRR.getLong("6");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("7")) {
+			transaction.geoUser = simpleRR.getLong("7");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("17")) {
+			transaction.language = simpleRR.getLong("17");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("47")) {
+			transaction.deviceType = simpleRR.getLong("47");
+		}
+
+		// code_57 is user cookie
+		if (simpleRR.has("22")) {
+			transaction.geoUserZip = simpleRR.getLong("22");
+		}
+
+		// code_57 is user cookie
 		if (simpleRR.has("57")) {
 			transaction.cookie = simpleRR.getLong("57");
 		}
-		
+
 		// code_25 is item ID
 		if (simpleRR.has("25")) {
 			transaction.item = new Item();
@@ -215,7 +265,7 @@ public class ReadPlista {
 			// recommendation request right now.
 			// But maybe in the future. We can do it here.
 		}
-		
+
 		JSONObject clustersRR = contextRR.getJSONObject("clusters");
 		//keywords
 		if (extractText && clustersRR.has("33")) {
@@ -227,7 +277,7 @@ public class ReadPlista {
 				for (String key : keywordObj.keySet()) {
 					transaction.keywords.addTo(key.replaceAll(",", " ").replaceAll(Character.toString((char) 0xAD), ""), keywordObj.getInt(key));
 				}
-			}			
+			}
 		}
 
 		// create CSV line
@@ -237,12 +287,12 @@ public class ReadPlista {
 	//these pattern are used to extract categories from URLs
 	private static Pattern pattern1677 = Pattern.compile("^\\Qhttp://www.tagesspiegel.de/\\E(.+?)/.+/\\d+\\Q.html\\E$");
 	private static Pattern pattern418 = Pattern.compile("^\\Qhttp://www.ksta.de/\\E(.+?)/.+\\Q.html\\E$");
-	private static Pattern pattern35774 = Pattern.compile("^\\Qhttp://m.sport1.de/\\E(.+?)/20\\d\\d/\\d\\d/");	
+	private static Pattern pattern35774 = Pattern.compile("^\\Qhttp://m.sport1.de/\\E(.+?)/20\\d\\d/\\d\\d/");
 
 	/**
 	 * This method extracts an item's meta information (called 'item update' in
 	 * Plista dataset) from a json string
-	 * 
+	 *
 	 * @param jsonstr -
 	 * @return a csv line
 	 * @throws ParseException -
@@ -264,9 +314,44 @@ public class ReadPlista {
 			item.createdAt = Constants.DATE_FORMAT.parse(linejson.getString("created_at"));
 		}
 
+		// created_at is the creation time of news article
+		if (linejson.has("updated_at")) {
+			item.updatedAt = Constants.DATE_FORMAT.parse(linejson.getString("updated_at"));
+		}
+
 		// item ID
 		if (linejson.has("id")) {
 			item.id = linejson.getLong("id");
+		}
+
+		// item ID
+		if (linejson.has("flag")) {
+			item.flag = linejson.getLong("flag");
+		}
+
+		// item ID
+		if (linejson.has("version")) {
+			item.version = linejson.getLong("version");
+		}
+
+		// item ID
+		if (linejson.has("video")) {
+			try{
+				item.video = linejson.getLong("video");
+			} catch (Exception e)
+			{
+			}
+
+		}
+
+		// item ID
+		if (linejson.has("kicker")) {
+			try{
+				item.kicker = linejson.getString("kicker").replaceAll(",", " ");
+			} catch (Exception e)
+			{
+			}
+
 		}
 
 		// use the URL of the article to extract a category
@@ -290,7 +375,7 @@ public class ReadPlista {
 						if (!cat2ID.containsKey(extractedCAT)) {
 							cat2ID.put(extractedCAT, lastCATID);
 							lastCATID++;
-							System.out.println("Publisher: "+ item.publisher + ". Category id: " 
+							System.out.println("Publisher: "+ item.publisher + ". Category id: "
 									+ (lastCATID-1) + " -> " + extractedCAT);
 						}
 						//assign the extracted category id to the item
@@ -306,13 +391,13 @@ public class ReadPlista {
 			//replace special line-breaking character 0xAD
 			item.title = linejson.getString("title").replaceAll(",", " ").replaceAll(Character.toString((char) 0xAD), "");
 		}
-		
+
 		// Title of news article
 		if (extractText && linejson.has("text")) {
 			//replace special line-breaking character 0xAD
 			item.text = linejson.getString("text").replaceAll(",", " ").replaceAll(Character.toString((char) 0xAD), "");
 		}
-		
+
 		// create CSV line
 		return item.toString();
 	}

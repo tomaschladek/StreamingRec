@@ -1,34 +1,15 @@
 package tudo.streamingrec;
 
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
-import org.joda.time.Period;
-import org.joda.time.format.ISOPeriodFormat;
-
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import org.joda.time.Period;
+import org.joda.time.format.ISOPeriodFormat;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -36,12 +17,7 @@ import tudo.streamingrec.AlgorithmWrapper.WorkPackage;
 import tudo.streamingrec.AlgorithmWrapper.WorkPackageArticle;
 import tudo.streamingrec.AlgorithmWrapper.WorkPackageClick;
 import tudo.streamingrec.algorithms.Algorithm;
-import tudo.streamingrec.data.ClickData;
-import tudo.streamingrec.data.Event;
-import tudo.streamingrec.data.Item;
-import tudo.streamingrec.data.RawData;
-import tudo.streamingrec.data.SplitData;
-import tudo.streamingrec.data.Transaction;
+import tudo.streamingrec.data.*;
 import tudo.streamingrec.data.loading.FilteredDataReader;
 import tudo.streamingrec.data.session.SessionExtractor;
 import tudo.streamingrec.data.splitting.DataSplitter;
@@ -49,36 +25,47 @@ import tudo.streamingrec.evaluation.metrics.HypothesisTestableMetric;
 import tudo.streamingrec.evaluation.metrics.Metric;
 import tudo.streamingrec.util.Util;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Main entry point for the framework
- * 
+ *
  * @author MK, MJ
  *
  */
-@Command(name = "StreamingRec", 
-	footer = "Copyright(c) 2017 Mozhgan Karimi, Michael Jugovac, Dietmar Jannach",
-	description = "A java framework for news recommendation algorithm evaluation. Usage:", 
-	showDefaultValues = true,
-	sortOptions = false)
+@Command(name = "StreamingRec",
+		footer = "Copyright(c) 2017 Mozhgan Karimi, Michael Jugovac, Dietmar Jannach",
+		description = "A java framework for news recommendation algorithm evaluation. Usage:",
+		showDefaultValues = true,
+		sortOptions = false)
 public class StreamingRec {
 	//the item input file
-	@Option(names = {"-i", "--items"}, paramLabel="<FILE>", description = "Path to the item input file in CSV format") 
-	private static String INPUT_FILENAME_ITEMS = "Items.csv";
+	@Option(names = {"-i", "--items"}, paramLabel="<FILE>", description = "Path to the item input file in CSV format")
+	private static String INPUT_FILENAME_ITEMS = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/Small/items.csv";
 	//the click input file
-	@Option(names = {"-c", "--clicks"}, paramLabel="<FILE>", description = "Path to the clicks input file in CSV format") 
-	private static String INPUT_FILENAME_CLICKS =  "Clicks.csv";
-	//are we using the "old" format, i.e., the inefficient format optimized only for plista?	
-	@Option(names = {"-f", "--old-format"}, description = "Uses the old click file format") 
-	private static boolean OLD_FILE_FORMAT = false; 
+	@Option(names = {"-c", "--clicks"}, paramLabel="<FILE>", description = "Path to the clicks input file in CSV format")
+	private static String INPUT_FILENAME_CLICKS =  "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/Small/clicks.csv";
+	//are we using the "old" format, i.e., the inefficient format optimized only for plista?
+	@Option(names = {"-f", "--old-format"}, description = "Uses the old click file format")
+	private static boolean OLD_FILE_FORMAT = false;
 	//should we deduplicate the input files?
 	@Option(names = {"-d", "--deduplicate"}, description = "Deduplicates the data")
 	private static boolean DEDUPLICATE = false;
 	//the path to the metric json config file
 	@Option(names = {"-m", "--metrics-config"}, paramLabel="<FILE>", description = "Path to the metrics json config file")
-	private static String METRICS_FILE_NAME = "config/metrics-config.json";
+	private static String METRICS_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/metrics-config.json";
 	//the path to the algorithm json config file
 	@Option(names = {"-a", "--algorithm-config"}, paramLabel="<FILE>", description = "Path to the algorithm json config file")
-	private static String ALGORITHM_FILE_NAME = "config/algorithm-config-simple.json";
+	private static String ALGORITHM_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/algorithm-config-simple.json";
 	//the time for the sessions inactivity threshold
 	@Option(names = {"-t", "--session-time-threshold"}, paramLabel="<VALUE>", description = "The idle time threshold for separating two user sessions in milliseconds.")
 	private static long SESSION_TIME_THRESHOLD = 1000 * 60 * 20;
@@ -95,9 +82,9 @@ public class StreamingRec {
 	//the number of threads to use
 	@Option(names = {"-n", "--thread-count"}, paramLabel="<VALUE>", description = "Number of threads to use. Less threads result in less CPU usage but also less RAM usage.")
 	private static int THREAD_COUNT = Runtime.getRuntime().availableProcessors()-1;
-	
+
 	//the global start time used for output writing to the same folder
-	public static String startTime;	
+	public static String startTime;
 	//for command line help
 	@Option(names = {"-h", "--help"}, hidden=true, usageHelp = true)
 	private static boolean helpRequested;
@@ -109,8 +96,8 @@ public class StreamingRec {
 		//command line parsing
 		CommandLine.populateCommand(new StreamingRec(), args);
 		if (helpRequested) {
-		   CommandLine.usage(new StreamingRec(), System.out);
-		   return;
+			CommandLine.usage(new StreamingRec(), System.out);
+			return;
 		}
 		//if deduplication is deactivated -> write a warning in red
 		if (!DEDUPLICATE) {
@@ -120,7 +107,7 @@ public class StreamingRec {
 		Calendar instance = Calendar.getInstance();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
 		dateFormat.setTimeZone(instance.getTimeZone());
-		startTime = dateFormat.format(instance.getTime());	
+		startTime = dateFormat.format(instance.getTime());
 		//redirect the console output to a file
 		Util.redirectConsole();
 		//set the sessions extractor's session split thresholds
@@ -128,147 +115,19 @@ public class StreamingRec {
 
 		//create a human readable session threshold for the output
 		String timeThreshold = ISOPeriodFormat.standard().print(new Period(SESSION_TIME_THRESHOLD)).replace("PT", "");
-		// output the parameters 
-		System.out.println(
-				"Input files: \"" + INPUT_FILENAME_ITEMS + "\" & \"" + INPUT_FILENAME_CLICKS + "\"");
-		System.out.println("Config files: \"" + ALGORITHM_FILE_NAME + "\" & \"" + METRICS_FILE_NAME + "\"");
-		System.out.println("session Time Thresholds: \"" + timeThreshold + "\"");
-		System.out.println("Session length filter: " + SESSION_LENGTH_FILTER);
-		System.out.println("Split threshold: " + SPLIT_THRESHOLD);
-		System.out.println();
+		// output the parameters
+		printFileInfo(timeThreshold);
 
-		// load algorithms so that configuration errors appear before input file loading
-		List<Algorithm> tmpAlgorithms = Config.loadAlgorithms(ALGORITHM_FILE_NAME);
-
-		// output names of algorithms and check redundant names
-		Set<String> names = new ObjectOpenHashSet<>();
-		System.out.println("Tested algorithms:");
-		for (Algorithm algorithm : tmpAlgorithms) {
-			if (!names.add(algorithm.getName())) {
-				System.err.println(
-						"Duplicate name for algorithm: \"" + algorithm.getName() + "\". Please check config file.");
-				System.err.println("Terminating");
-				return;
-			}
-			System.out.println(algorithm.getName());
-		}
-		System.out.println();
+		Map<String, Algorithm> algorithmsWithName = getAlgorithms();
 
 		// read the data
-		FilteredDataReader reader = new FilteredDataReader();
-		RawData data = reader.readFilteredData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
-				DEDUPLICATE, OLD_FILE_FORMAT);
+		SplitData splitData = getSplitData();
 
-		//if a minimum session length is set, filter short sessions
-		if (SESSION_LENGTH_FILTER > 0) {
-			System.out.println();
-			System.out.println("Filtering sessions shorter than or equal to " + SESSION_LENGTH_FILTER + " ...");
-			// filter data based on too short sessions
-			Set<Transaction> transactionsToRemove = new ObjectOpenHashSet<>();
-			// create a session storage to filter too short sessions
-			SessionExtractor filterExtractor = new SessionExtractor();
-			for (Transaction t : data.transactions) {
-				filterExtractor.addClick(t);
-			}
-			//check the length of sessions and remember the transactions that belong to short sessions
-			for (List<List<Transaction>> list : filterExtractor.getSessionMap().values()) {
-				for (List<Transaction> list2 : list) {
-					if (list2.size() <= SESSION_LENGTH_FILTER) {
-						for (Transaction transaction : list2) {
-							transactionsToRemove.add(transaction);
-						}
-					}
-				}
-			}
-			//keep all transactions except the ones that belong to short sessions in a new transaction list
-			List<Transaction> filteredTransactions = new ObjectArrayList<>();
-			for (Transaction t : data.transactions) {
-				if (!transactionsToRemove.contains(t)) {
-					filteredTransactions.add(t);
-				}
-			}
-			//print some removal stats
-			System.out.println("Removed "
-					+ (((data.transactions.size() - filteredTransactions.size()) * 100) / data.transactions.size())
-					+ "%");
-			data.transactions = filteredTransactions;
-			System.out.println("Number of transactions: " + data.transactions.size());
-		}
-
-		//in case stats are wanted, print extensive stats
-		if (OUTPUT_STATS) {
-			// overall stats
-			Long2IntOpenHashMap clicksPerUser = new Long2IntOpenHashMap();
-			Long2IntOpenHashMap clicksPerItem = new Long2IntOpenHashMap();
-			// session stats			
-			SessionExtractor sessionExtractorForStats = new SessionExtractor();
-			for (Transaction t : data.transactions) {
-				clicksPerItem.addTo(t.item.id, 1);
-				clicksPerUser.addTo(t.userId, 1);
-				sessionExtractorForStats.addClick(t);
-			}
-			
-			//clicks per items and user
-			DescriptiveStatistics clicksPerUserStats = new DescriptiveStatistics();
-			DescriptiveStatistics clicksPerItemStats = new DescriptiveStatistics();
-			for (Integer val : clicksPerUser.values()) {
-				clicksPerUserStats.addValue(val);
-			}
-			System.out.println("Clicks per user: " + clicksPerUserStats);
-			for (Integer val : clicksPerItem.values()) {
-				clicksPerItemStats.addValue(val);
-			}
-			System.out.println("Clicks per item: " + clicksPerItemStats);
-
-			// some statistics about session length
-			DescriptiveStatistics stats = new DescriptiveStatistics();
-			DescriptiveStatistics statsPerUser = new DescriptiveStatistics();
-			DescriptiveStatistics lengthStats = new DescriptiveStatistics();
-			Collection<List<List<Transaction>>> allSessions = sessionExtractorForStats.getSessionMap().values();
-			for (List<List<Transaction>> list : allSessions) {
-				for (List<Transaction> list2 : list) {
-					stats.addValue(list2.size());
-					if (list2.size() > 1) {
-						long duration = list2.get(list2.size() - 1).timestamp.getTime()
-								- list2.get(0).timestamp.getTime();
-						lengthStats.addValue(duration);
-					}
-				}
-				statsPerUser.addValue(list.size());
-
-			}
-			System.out.println("Clicks per session: " + stats);
-			System.out.println("Sessions per user: " + statsPerUser);
-			System.out.println("Length of session in MS: " + lengthStats);
-		}
-
-		// split the data
-		DataSplitter splitter = new DataSplitter();
-		splitter.setSplitMethodNumberOfEvents(); // split based on the number of
-													// events, not the time
-		splitter.setSplitThreshold(SPLIT_THRESHOLD); 
-		// split after N% of the events.
-		// Everything after that goes into the test set
-		SplitData splitData = splitter.splitData(data);
-		data = null;
-
-		// re-extract the events based on type (item or transaction) for later convenience
-		List<Item> trainingItems = new ObjectArrayList<Item>();
-		List<Transaction> trainingTransactions = new ObjectArrayList<Transaction>();
-		Util.extractEventTypes(splitData.trainingData, trainingItems, trainingTransactions);
-		
-		long realTrainTime = trainingTransactions.get(trainingTransactions.size()-1).timestamp.getTime() - trainingTransactions.get(0).timestamp.getTime();
-		
-		// create algorithms
-		Map<String, Algorithm> algorithmsWithName = new Object2ObjectLinkedOpenHashMap<String, Algorithm>();
-		for (Algorithm alg : tmpAlgorithms) {
-			algorithmsWithName.put(alg.getName(), alg);
-		}
 
 		// create list of metrics
-		Map<String, List<Metric>> metrics = new Object2ObjectLinkedOpenHashMap<String, List<Metric>>();
-		Map<Metric, String> metricsByAlgorithm = new Object2ObjectLinkedOpenHashMap<Metric, String>();
-		Map<String, List<Metric>> metricsByName = new Object2ObjectLinkedOpenHashMap<String, List<Metric>>();
+		Map<String, List<Metric>> metrics = new Object2ObjectLinkedOpenHashMap<>();
+		Map<Metric, String> metricsByAlgorithm = new Object2ObjectLinkedOpenHashMap<>();
+		Map<String, List<Metric>> metricsByName = new Object2ObjectLinkedOpenHashMap<>();
 		// for each algorithm, create a list of metrics
 		for (String algorithmName : algorithmsWithName.keySet()) {
 			List<Metric> metricsList = Config.loadMetrics(METRICS_FILE_NAME);
@@ -278,6 +137,23 @@ public class StreamingRec {
 				addMetricToMaps(m, algorithmName, m.getName(), metrics, metricsByAlgorithm, metricsByName);
 			}
 		}
+
+		executeAlgorithms(algorithmsWithName, splitData, metrics);
+
+
+		printResult(timeThreshold, metricsByAlgorithm, metricsByName);
+
+
+	}
+
+	private static void executeAlgorithms(Map<String, Algorithm> algorithmsWithName, SplitData splitData, Map<String, List<Metric>> metrics) throws InterruptedException {
+		// re-extract the events based on type (item or transaction) for later convenience
+		List<Item> trainingItems = new ObjectArrayList<>();
+		List<Transaction> trainingTransactions = new ObjectArrayList<>();
+		Util.extractEventTypes(splitData.trainingData, trainingItems, trainingTransactions);
+
+		long realTrainTime = trainingTransactions.get(trainingTransactions.size()-1).timestamp.getTime() - trainingTransactions.get(0).timestamp.getTime();
+
 
 		// create main session extractor and user history helper
 		SessionExtractor sessionExtractor = new SessionExtractor();
@@ -305,10 +181,10 @@ public class StreamingRec {
 		long realTestTime = testTransactions.get(testTransactions.size()-1).timestamp.getTime() - testTransactions.get(0).timestamp.getTime();
 		//save some RAM
 		testTransactions = null;
-		
+
 		//Log the time window of the eval
-		System.out.println("The training time window is: " + Util.printETA(realTrainTime)); 
-		System.out.println("The test time window is: " + Util.printETA(realTestTime)); 
+		System.out.println("The training time window is: " + Util.printETA(realTrainTime));
+		System.out.println("The test time window is: " + Util.printETA(realTestTime));
 
 
 		// test phase
@@ -348,16 +224,12 @@ public class StreamingRec {
 		while (!executor.awaitTermination(10, TimeUnit.SECONDS)) {
 			// wait for threads to finish
 		}
+	}
 
+	private static void printResult(String timeThreshold, Map<Metric, String> metricsByAlgorithm, Map<String, List<Metric>> metricsByName) {
 		// output parameters again for convenience
 		System.out.println();
-		System.out.println(
-				"Input files: \"" + INPUT_FILENAME_ITEMS + "\" & \"" + INPUT_FILENAME_CLICKS + "\"");
-		System.out.println("Config files: \"" + ALGORITHM_FILE_NAME + "\" & \"" + METRICS_FILE_NAME + "\"");
-		System.out.println("session Time Thresholds: \"" + timeThreshold + "\"");
-		System.out.println("Session length filter: " + SESSION_LENGTH_FILTER);
-		System.out.println("Split threshold: " + SPLIT_THRESHOLD);
-		System.out.println();
+		printFileInfo(timeThreshold);
 
 		// print evaluation results extracted from metric classes
 		DecimalFormat df = new DecimalFormat("0.0000000");
@@ -371,14 +243,14 @@ public class StreamingRec {
 						StringUtils.rightPad(metricsByAlgorithm.get(m), 70, ' ') + "\t" + df.format(m.getResults()));
 			}
 		}
-		
+
 		//create and print statistical significance tests
 		List<HypothesisTestableMetric> statMetrics = new ArrayList<>();
 		for (Entry<String, List<Metric>> ml : metricsByName.entrySet()) {
 			if(ml.getValue().iterator().next() instanceof HypothesisTestableMetric){
 				for (Metric metric : ml.getValue()) {
 					statMetrics.add((HypothesisTestableMetric) metric);
-				}				
+				}
 			}
 		}
 		if(OUTPUT_STATS){
@@ -386,7 +258,153 @@ public class StreamingRec {
 			System.out.println("---- STATISTICAL RESULTS ----");
 			System.out.println();
 			System.out.println(Util.executeStatisticalTests(statMetrics, true));
-		}		
+		}
+	}
+
+	private static SplitData getSplitData() throws IOException, ParseException {
+		RawData data = new FilteredDataReader().readFilteredData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
+				DEDUPLICATE, OLD_FILE_FORMAT);
+
+		//if a minimum session length is set, filter short sessions
+		if (SESSION_LENGTH_FILTER > 0) {
+			removeShortSessions(data);
+		}
+
+		//in case stats are wanted, print extensive stats
+		if (OUTPUT_STATS) {
+			printStatistics(data);
+		}
+		return getSplitData(data);
+	}
+
+	private static SplitData getSplitData(RawData data) {
+		// split the data
+		DataSplitter splitter = new DataSplitter();
+		splitter.setSplitMethodNumberOfEvents(); // split based on the number of
+		// events, not the time
+		splitter.setSplitThreshold(SPLIT_THRESHOLD);
+		// split after N% of the events.
+		// Everything after that goes into the test set
+		return splitter.splitData(data);
+	}
+
+	private static Map<String, Algorithm> getAlgorithms() throws IOException {
+		// load algorithms so that configuration errors appear before input file loading
+		List<Algorithm> tmpAlgorithms = Config.loadAlgorithms(ALGORITHM_FILE_NAME);
+		printAlgorithms(tmpAlgorithms);
+		// create algorithms
+		Map<String, Algorithm> algorithmsWithName = new Object2ObjectLinkedOpenHashMap<String, Algorithm>();
+		for (Algorithm alg : tmpAlgorithms) {
+			algorithmsWithName.put(alg.getName(), alg);
+		}
+		return algorithmsWithName;
+	}
+
+	private static void printStatistics(RawData data) {
+		// overall stats
+		Long2IntOpenHashMap clicksPerUser = new Long2IntOpenHashMap();
+		Long2IntOpenHashMap clicksPerItem = new Long2IntOpenHashMap();
+		// session stats
+		SessionExtractor sessionExtractorForStats = new SessionExtractor();
+		for (Transaction t : data.transactions) {
+			clicksPerItem.addTo(t.item.id, 1);
+			clicksPerUser.addTo(t.userId, 1);
+			sessionExtractorForStats.addClick(t);
+		}
+
+		//clicks per items and user
+		DescriptiveStatistics clicksPerUserStats = new DescriptiveStatistics();
+		DescriptiveStatistics clicksPerItemStats = new DescriptiveStatistics();
+		for (Integer val : clicksPerUser.values()) {
+			clicksPerUserStats.addValue(val);
+		}
+		System.out.println("Clicks per user: " + clicksPerUserStats);
+		for (Integer val : clicksPerItem.values()) {
+			clicksPerItemStats.addValue(val);
+		}
+		System.out.println("Clicks per item: " + clicksPerItemStats);
+
+		// some statistics about session length
+		DescriptiveStatistics stats = new DescriptiveStatistics();
+		DescriptiveStatistics statsPerUser = new DescriptiveStatistics();
+		DescriptiveStatistics lengthStats = new DescriptiveStatistics();
+		Collection<List<List<Transaction>>> allSessions = sessionExtractorForStats.getSessionMap().values();
+		for (List<List<Transaction>> list : allSessions) {
+			for (List<Transaction> list2 : list) {
+				stats.addValue(list2.size());
+				if (list2.size() > 1) {
+					long duration = list2.get(list2.size() - 1).timestamp.getTime()
+							- list2.get(0).timestamp.getTime();
+					lengthStats.addValue(duration);
+				}
+			}
+			statsPerUser.addValue(list.size());
+
+		}
+		System.out.println("Clicks per session: " + stats);
+		System.out.println("Sessions per user: " + statsPerUser);
+		System.out.println("Length of session in MS: " + lengthStats);
+	}
+
+	private static void removeShortSessions(RawData data) {
+		System.out.println();
+		System.out.println("Filtering sessions shorter than or equal to " + SESSION_LENGTH_FILTER + " ...");
+		// filter data based on too short sessions
+		Set<Transaction> transactionsToRemove = new ObjectOpenHashSet<>();
+		// create a session storage to filter too short sessions
+		SessionExtractor filterExtractor = new SessionExtractor();
+		for (Transaction t : data.transactions) {
+			filterExtractor.addClick(t);
+		}
+		//check the length of sessions and remember the transactions that belong to short sessions
+		for (List<List<Transaction>> list : filterExtractor.getSessionMap().values()) {
+			for (List<Transaction> list2 : list) {
+				if (list2.size() <= SESSION_LENGTH_FILTER) {
+					for (Transaction transaction : list2) {
+						transactionsToRemove.add(transaction);
+					}
+				}
+			}
+		}
+		//keep all transactions except the ones that belong to short sessions in a new transaction list
+		List<Transaction> filteredTransactions = new ObjectArrayList<>();
+		for (Transaction t : data.transactions) {
+			if (!transactionsToRemove.contains(t)) {
+				filteredTransactions.add(t);
+			}
+		}
+		//print some removal stats
+		System.out.println("Removed "
+				+ (((data.transactions.size() - filteredTransactions.size()) * 100) / data.transactions.size())
+				+ "%");
+		data.transactions = filteredTransactions;
+		System.out.println("Number of transactions: " + data.transactions.size());
+	}
+
+	private static void printAlgorithms(List<Algorithm> tmpAlgorithms) {
+		// output names of algorithms and check redundant names
+		Set<String> names = new ObjectOpenHashSet<>();
+		System.out.println("Tested algorithms:");
+		for (Algorithm algorithm : tmpAlgorithms) {
+			if (!names.add(algorithm.getName())) {
+				System.err.println(
+						"Duplicate name for algorithm: \"" + algorithm.getName() + "\". Please check config file.");
+				System.err.println("Terminating");
+				throw new IllegalArgumentException("Duplicate name for algorithm");
+			}
+			System.out.println(algorithm.getName());
+		}
+		System.out.println();
+	}
+
+	private static void printFileInfo(String timeThreshold) {
+		System.out.println(
+				"Input files: \"" + INPUT_FILENAME_ITEMS + "\" & \"" + INPUT_FILENAME_CLICKS + "\"");
+		System.out.println("Config files: \"" + ALGORITHM_FILE_NAME + "\" & \"" + METRICS_FILE_NAME + "\"");
+		System.out.println("session Time Thresholds: \"" + timeThreshold + "\"");
+		System.out.println("Session length filter: " + SESSION_LENGTH_FILTER);
+		System.out.println("Split threshold: " + SPLIT_THRESHOLD);
+		System.out.println();
 	}
 
 	/**
@@ -398,7 +416,7 @@ public class StreamingRec {
 	 * @return the work package
 	 */
 	private static WorkPackage getWorkPackage(Event event, SessionExtractor sessionExtractor,
-			SessionExtractor sessionExtractorforEvaluation, Map<Long, List<Transaction>> userHistory) {
+											  SessionExtractor sessionExtractorforEvaluation, Map<Long, List<Transaction>> userHistory) {
 		if (event instanceof Item) {
 			//in case of an item, just wrap it
 			WorkPackageArticle wpA = new WorkPackageArticle();
@@ -452,7 +470,7 @@ public class StreamingRec {
 
 	/**
 	 * Add each metrics to some maps so that they can be found later and printed nicely.
-	 * 
+	 *
 	 * @param metric -
 	 * @param algorithmName -
 	 * @param metricName -
@@ -461,8 +479,8 @@ public class StreamingRec {
 	 * @param metricsByName -
 	 */
 	private static void addMetricToMaps(Metric metric, String algorithmName, String metricName,
-			Map<String, List<Metric>> metricsByAlgorithm, Map<Metric, String> metricsToAlgorithm,
-			Map<String, List<Metric>> metricsByName) {
+										Map<String, List<Metric>> metricsByAlgorithm, Map<Metric, String> metricsToAlgorithm,
+										Map<String, List<Metric>> metricsByName) {
 		metricsToAlgorithm.put(metric, algorithmName);
 		List<Metric> list = metricsByName.get(metricName);
 		if (list == null) {
@@ -477,7 +495,7 @@ public class StreamingRec {
 		}
 		list.add(metric);
 	}
-	
+
 	/**
 	 * the item input file
 	 * @return the item input file
