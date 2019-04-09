@@ -1,10 +1,10 @@
 package tudo.streamingrec.algorithms;
 
-import java.util.List;
-
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
+
+import java.util.List;
 
 /**
  * An algorithm that recommends the articles in the order of their publication/updating (newest to oldest)
@@ -26,11 +26,19 @@ public class MostRecent extends Algorithm {
 			}
 			mostRecentItems.add(0, item.id);
 		}
+		for(ClickData data : clickData) {
+			if (mostRecentItems.contains(data.click.item.id)) {
+				mostRecentItems.rem(data.click.item.id);
+			}
+			mostRecentItems.add(0, data.click.item.id);
+		}
 	}
 
 	public LongArrayList recommendInternal(ClickData clickData) {
 		//just return the already ordered list of articles
-		return mostRecentItems;
+		LongArrayList list = new LongArrayList();
+		list.add(mostRecentItems.getLong(0));
+		return list;
 	}
 
 }
