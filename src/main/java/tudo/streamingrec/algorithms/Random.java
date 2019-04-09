@@ -24,6 +24,13 @@ public class Random extends Algorithm{
 		for (Item item : items) {
 			this.items.add(item.id);
 		}
+		for (ClickData data : clickData)
+		{
+			if (!this.items.contains(data.click.item.id))
+			{
+				this.items.add(data.click.item.id);
+			}
+		}
 	}
 
 	@Override

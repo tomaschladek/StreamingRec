@@ -29,7 +29,13 @@ public class Transaction implements Event {
 	 */
 	public Transaction(String csvLine, Map<Long, Item> items, boolean oldFileFormat) {
 		String[] splitT = csvLine.split(",");
-		item = items.get(Long.parseLong(splitT[oldFileFormat?2:0]));
+		long itemId = Long.parseLong(splitT[oldFileFormat?2:0]);
+		if (items.containsKey(itemId)) {
+			item = items.get(itemId);
+		} else{
+			item = new Item();
+			item.id = itemId;
+		}
 		userId = Long.parseLong(splitT[oldFileFormat?3:1]);
 		timestamp = new Date(Long.parseLong(splitT[oldFileFormat?4:2]));
 	}

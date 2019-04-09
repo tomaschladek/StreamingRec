@@ -1,11 +1,12 @@
 package tudo.streamingrec.data.session;
 
-import java.util.List;
-import java.util.Map;
-
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import tudo.streamingrec.data.Transaction;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Creates sessions from time-ordered transactions based on the user id and the
@@ -44,7 +45,7 @@ public class SessionExtractor {
 		// the last session from it.
 		List<List<Transaction>> sessionList = sessions.get(t.userId);
 		List<Transaction> lastSession = sessionList.get(sessionList.size() - 1);
-		if (t.timestamp.getTime()
+		if (t.userId != 0 && t.timestamp.getTime()
 				- lastSession.get(lastSession.size() - 1).timestamp.getTime() <= getThresholdInMS()) {
 			// if the difference between the last click event of the last
 			// session
@@ -89,7 +90,9 @@ public class SessionExtractor {
 	 * @return all sessions so far mapped by user ID
 	 */
 	public Map<Long, List<List<Transaction>>> getSessionMap() {
-		return sessions;
+		Map<Long, List<List<Transaction>>>  users =new HashMap<>(sessions);
+		users.remove(0l);
+		return users;
 	}
 
 	/**

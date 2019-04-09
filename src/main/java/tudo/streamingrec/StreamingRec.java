@@ -449,24 +449,30 @@ public class StreamingRec {
 			//make it an unmodifiable list
 			wpC.clickData.wholeUserHistory = Collections.unmodifiableList(new ObjectArrayList<>(history));
 			if (sessionExtractorforEvaluation != null) {
-				// from the session, extract the list of unique item ids
-				LongOpenHashSet uniqueItemIDSoFar = new LongOpenHashSet();
-				for (Transaction t : currenctUserSession) {
-					uniqueItemIDSoFar.add(t.item.id);
+				if (currentTransaction.userId != 0) {
+					// from the session, extract the list of unique item ids
+					LongOpenHashSet uniqueItemIDSoFar = new LongOpenHashSet();
+					for (Transaction t : currenctUserSession) {
+						uniqueItemIDSoFar.add(t.item.id);
+					}
+					//check with the user history to remove unwanted "reminders"
+					List<Transaction> wholeCurrentUserSession = sessionExtractorforEvaluation
+							.getSession(currentTransaction);
+					//extact the ground truth
+					LongOpenHashSet groundTruth = new LongOpenHashSet();
+					for (Transaction t : wholeCurrentUserSession) {
+						groundTruth.add(t.item.id);
+					}
+					// all transactions from the list that have already happened +
+					// transactions for items that have already been clicked (no
+					// reminders)
+					groundTruth.removeAll(uniqueItemIDSoFar);
+					wpC.groundTruth = groundTruth;
 				}
-				//check with the user history to remove unwanted "reminders"
-				List<Transaction> wholeCurrentUserSession = sessionExtractorforEvaluation
-						.getSession(currentTransaction);
-				//extact the ground truth
-				LongOpenHashSet groundTruth = new LongOpenHashSet();
-				for (Transaction t : wholeCurrentUserSession) {
-					groundTruth.add(t.item.id);
+				else{
+					wpC.groundTruth = new LongOpenHashSet();
+					wpC.groundTruth.add(currentTransaction.item.id);
 				}
-				// all transactions from the list that have already happened +
-				// transactions for items that have already been clicked (no
-				// reminders)
-				groundTruth.removeAll(uniqueItemIDSoFar);
-				wpC.groundTruth = groundTruth;
 			}
 			return wpC;
 		}

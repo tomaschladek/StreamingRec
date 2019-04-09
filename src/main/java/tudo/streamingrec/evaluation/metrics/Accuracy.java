@@ -34,7 +34,7 @@ public class Accuracy extends HypothesisTestableMetric {
         }
 
         long recommendedValue = recommendations.getLong(0);
-        if (uniques.containsKey(transaction.userId) && uniques.get(transaction.userId).contains(recommendedValue))
+        if (transaction.userId != 0 && uniques.containsKey(transaction.userId) && uniques.get(transaction.userId).contains(recommendedValue))
         {
             results.add(0);
             return;
