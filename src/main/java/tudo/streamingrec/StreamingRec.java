@@ -50,10 +50,10 @@ import java.util.concurrent.TimeUnit;
 public class StreamingRec {
 	//the item input file
 	@Option(names = {"-i", "--items"}, paramLabel="<FILE>", description = "Path to the item input file in CSV format")
-	private static String INPUT_FILENAME_ITEMS = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/Small/items.csv";
+	private static String INPUT_FILENAME_ITEMS = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/small/items.csv";
 	//the click input file
 	@Option(names = {"-c", "--clicks"}, paramLabel="<FILE>", description = "Path to the clicks input file in CSV format")
-	private static String INPUT_FILENAME_CLICKS =  "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/Small/clicks.csv";
+	private static String INPUT_FILENAME_CLICKS =  "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/small/clicks.csv";
 	//are we using the "old" format, i.e., the inefficient format optimized only for plista?
 	@Option(names = {"-f", "--old-format"}, description = "Uses the old click file format")
 	private static boolean OLD_FILE_FORMAT = false;
@@ -62,10 +62,10 @@ public class StreamingRec {
 	private static boolean DEDUPLICATE = false;
 	//the path to the metric json config file
 	@Option(names = {"-m", "--metrics-config"}, paramLabel="<FILE>", description = "Path to the metrics json config file")
-	private static String METRICS_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/metrics-config.json";
+	private static String METRICS_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/streamingRecMine/config/metrics-config.json";
 	//the path to the algorithm json config file
 	@Option(names = {"-a", "--algorithm-config"}, paramLabel="<FILE>", description = "Path to the algorithm json config file")
-	private static String ALGORITHM_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/StreamingRec/algorithm-config-simple.json";
+	private static String ALGORITHM_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/streamingRecMine/config/algorithm-config-simple.json";
 	//the time for the sessions inactivity threshold
 	@Option(names = {"-t", "--session-time-threshold"}, paramLabel="<VALUE>", description = "The idle time threshold for separating two user sessions in milliseconds.")
 	private static long SESSION_TIME_THRESHOLD = 1000 * 60 * 20;
@@ -78,7 +78,7 @@ public class StreamingRec {
 	private static boolean OUTPUT_STATS = false;
 	//where to split the data into training and test
 	@Option(names = {"-p", "--split-threshold"}, paramLabel="<VALUE>", description = "Split threshold for splitting the dataset into training and test set")
-	private static double SPLIT_THRESHOLD = 0.7;
+	private static double SPLIT_THRESHOLD = 0.5;//11;
 	//the number of threads to use
 	@Option(names = {"-n", "--thread-count"}, paramLabel="<VALUE>", description = "Number of threads to use. Less threads result in less CPU usage but also less RAM usage.")
 	private static int THREAD_COUNT = Runtime.getRuntime().availableProcessors()-1;
@@ -178,7 +178,7 @@ public class StreamingRec {
 		for (Transaction t : testTransactions) {
 			sessionExtractorforEvaluation.addClick(t);
 		}
-		long realTestTime = testTransactions.get(testTransactions.size()-1).timestamp.getTime() - testTransactions.get(0).timestamp.getTime();
+        long realTestTime = testTransactions.get(testTransactions.size()-1).timestamp.getTime() - testTransactions.get(0).timestamp.getTime();
 		//save some RAM
 		testTransactions = null;
 
@@ -441,7 +441,11 @@ public class StreamingRec {
 				history = new ObjectArrayList<>();
 				userHistory.put(currentTransaction.userId, history);
 			}
-			history.add(currentTransaction);//add the current click to the user history
+			if (currentTransaction.userId != 0)
+			{
+				history.add(currentTransaction);//add the current click to the user history
+			}
+
 			//make it an unmodifiable list
 			wpC.clickData.wholeUserHistory = Collections.unmodifiableList(new ObjectArrayList<>(history));
 			if (sessionExtractorforEvaluation != null) {

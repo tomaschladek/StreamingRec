@@ -1,11 +1,11 @@
 package tudo.streamingrec.algorithms;
 
-import java.util.Collections;
-import java.util.List;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * The candidate set of this algorithm is all news in the data set 

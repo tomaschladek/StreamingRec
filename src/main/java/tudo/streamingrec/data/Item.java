@@ -123,7 +123,7 @@ public class Item implements Event {
 	 * Return the publication time of the item as a sorting criterion
 	 */
 	public Date getEventTime() {
-		return createdAt;
+		return updatedAt;
 	}
 
 	/**

@@ -1,14 +1,13 @@
 package tudo.streamingrec.evaluation.metrics;
 
-import java.io.Serializable;
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import tudo.streamingrec.data.Transaction;
+
+import java.io.Serializable;
 
 /**
  * The core metric interface
@@ -23,7 +22,7 @@ public abstract class Metric implements Serializable{
 	private String algorithm;
 
 	// evaluation parameters
-	protected int k = 10;
+	protected int k = 1;
 		/**
 	 * The method called by runner class
 	 * 

@@ -1,74 +1,12 @@
 [
 	{
-		"name": "Precision@10",
-		"metric": ".PrecisionOrRecall",
-		"type": "Precision",
-		"k": 10
+		"name": "Accuracy@1",
+		"metric": ".Accuracy"
 	},
 	{
-		"name": "Precision@20",
-		"metric": ".PrecisionOrRecall",
-		"type": "Precision",
-		"k": 20
+		"name": "Coverage@1",
+		"metric": ".Coverage"
 	},
-	{
-		"name": "Recall@10",
-		"metric": ".PrecisionOrRecall",
-		"type": "Recall",
-		"k": 10
-	},
-	{
-		"name": "Recall@20",
-		"metric": ".PrecisionOrRecall",
-		"type": "Recall",
-		"k": 20
-	},
-	{
-		"name": "M_F1@10",
-		"metric": ".MeanF1",
-		"k": 10
-	},
-	{
-		"name": "M_F1@20",
-		"metric": ".MeanF1",
-		"k": 20
-	},
-	{
-		"name": "MRR@10",
-		"metric": ".MRR",
-		"k": 10
-	},
-	{
-		"name": "MRR@20",
-		"metric": ".MRR",
-		"k": 20
-	},
-	{
-		"name": "MRR@10000",
-		"metric": ".MRR",
-		"k": 10000
-	},
-	{
-		"name": "NbRecItems@10",
-		"metric": ".NbRecItems",
-		"k": 10
-	},
-	{
-		"name": "NbRecItems@20",
-		"metric": ".NbRecItems",
-		"k": 20
-	},
-	{
-		"name": "Coverage@10",
-		"metric": ".Coverage",
-		"k": 10
-	},
-	{
-		"name": "Coverage@20",
-		"metric": ".Coverage",
-		"k": 20
-	},
-	
 	{
 		"name": "Training Time in Minutes",
 		"metric": ".Runtime",
