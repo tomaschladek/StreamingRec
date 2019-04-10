@@ -8,9 +8,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The candidate set of this algorithm is all news in the data set 
+ * The candidate set of this algorithm is all news in the data set
  * and it selects news articles randomly from this set for recommendation.
- * 
+ *
  * @author Mozhgan
  *
  */

@@ -50,10 +50,10 @@ import java.util.concurrent.TimeUnit;
 public class StreamingRec {
 	//the item input file
 	@Option(names = {"-i", "--items"}, paramLabel="<FILE>", description = "Path to the item input file in CSV format")
-	private static String INPUT_FILENAME_ITEMS = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/small/items.csv";
+	private static String INPUT_FILENAME_ITEMS = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/finished_Items.csv";
 	//the click input file
 	@Option(names = {"-c", "--clicks"}, paramLabel="<FILE>", description = "Path to the clicks input file in CSV format")
-	private static String INPUT_FILENAME_CLICKS =  "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/small/clicks.csv";
+	private static String INPUT_FILENAME_CLICKS =  "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/GDataset/all/data/finished_Clicks.csv";
 	//are we using the "old" format, i.e., the inefficient format optimized only for plista?
 	@Option(names = {"-f", "--old-format"}, description = "Uses the old click file format")
 	private static boolean OLD_FILE_FORMAT = false;
@@ -78,7 +78,7 @@ public class StreamingRec {
 	private static boolean OUTPUT_STATS = false;
 	//where to split the data into training and test
 	@Option(names = {"-p", "--split-threshold"}, paramLabel="<VALUE>", description = "Split threshold for splitting the dataset into training and test set")
-	private static double SPLIT_THRESHOLD = 0.5;//11;
+	private static double SPLIT_THRESHOLD = 0.15;//11;
 	//the number of threads to use
 	@Option(names = {"-n", "--thread-count"}, paramLabel="<VALUE>", description = "Number of threads to use. Less threads result in less CPU usage but also less RAM usage.")
 	private static int THREAD_COUNT = Runtime.getRuntime().availableProcessors()-1;
@@ -265,6 +265,8 @@ public class StreamingRec {
 		RawData data = new FilteredDataReader().readFilteredData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
 				DEDUPLICATE, OLD_FILE_FORMAT);
 
+		filterByDate(new Date(116,1,8,0,0,0),data);
+
 		//if a minimum session length is set, filter short sessions
 		if (SESSION_LENGTH_FILTER > 0) {
 			removeShortSessions(data);
@@ -275,6 +277,27 @@ public class StreamingRec {
 			printStatistics(data);
 		}
 		return getSplitData(data);
+	}
+
+	private static void filterByDate(Date dateTime, RawData data) {
+		Long2ObjectOpenHashMap<Item> filteredItems = new Long2ObjectOpenHashMap<>();
+		for (Long item : data.items.keySet())
+		{
+			if(data.items.get(item).updatedAt.before(dateTime))
+			{
+				filteredItems.put(item,data.items.get(item));
+			}
+		}
+		List<Transaction> filteredTransactions = new ObjectArrayList<>();
+		for (Transaction item : data.transactions)
+		{
+			if(item.timestamp.before(dateTime))
+			{
+				filteredTransactions.add(item);
+			}
+		}
+		data.items =  filteredItems;
+		data.transactions = filteredTransactions;
 	}
 
 	private static SplitData getSplitData(RawData data) {

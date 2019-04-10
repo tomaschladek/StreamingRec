@@ -1,27 +1,135 @@
 [
 	{
-		"name": "Random",
-		"algorithm": ".Random"
-	},
-
-	{
-		"name": "Recently Published",
-		"algorithm": ".MostRecent"
-	},
-
-	{
-		"name": "Most Popular",
-		"algorithm": ".MostPopular"
-	},
-
-	{
-		"name": "Recently Clicked",
-		"algorithm": ".RecentlyClicked"
-	},
-
-	{
-		"name": "Recently Popular",
-		"algorithm": ".RecentlyPopular",
-		"filterTime": 3600000
-	}
+		"name": "Random Sampling 15 Clicks 5",
+		"algorithm": ".RandomSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": 15
+	},{
+		"name": "Random Sampling 30 Clicks 5",
+		"algorithm": ".RandomSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": 30
+	},	{
+	"name": "Random Sampling 15 Clicks 10",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 10,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 10",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 10,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 20",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 20",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},{
+		"name": "Random Sampling 15 Clicks 30",
+		"algorithm": ".RandomSampling",
+		"reservoirSize": 30,
+		"areClicksUsed": true,
+		"timeFrame": 15
+	},{
+	"name": "Random Sampling 30 Clicks 30",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 30,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 40",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 40,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 40",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 40,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 50",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 50,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 50",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 50,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 70",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 70,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 70",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 70,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 100",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 100,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 100",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 100,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 150",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 150,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 150",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 150,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 200",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 200,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 200",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 200,
+	"areClicksUsed": true,
+	"timeFrame": 30
+},	{
+	"name": "Random Sampling 15 Clicks 250",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 250,
+	"areClicksUsed": true,
+	"timeFrame": 15
+},{
+	"name": "Random Sampling 30 Clicks 250",
+	"algorithm": ".RandomSampling",
+	"reservoirSize": 250,
+	"areClicksUsed": true,
+	"timeFrame": 30
+}
 ]

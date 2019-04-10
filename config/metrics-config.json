@@ -4,10 +4,6 @@
 		"metric": ".Accuracy"
 	},
 	{
-		"name": "Coverage@1",
-		"metric": ".Coverage"
-	},
-	{
 		"name": "Training Time in Minutes",
 		"metric": ".Runtime",
 		"type": "Training",
