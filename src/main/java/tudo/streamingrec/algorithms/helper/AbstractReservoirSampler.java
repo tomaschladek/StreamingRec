@@ -4,12 +4,11 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
-public class ReservoirSampler<T> {
+public abstract class AbstractReservoirSampler<T> {
     final Random rand = new SecureRandom();
     final int reservoirSize;
-    int offset = 0;
 
-    public ReservoirSampler(int size) {
+    public AbstractReservoirSampler(int size) {
         this.reservoirSize = size;
 
     }
@@ -19,12 +18,14 @@ public class ReservoirSampler<T> {
             collection.add(item);
         }
         else {
-            int replaceInIndex = (int) (rand.nextDouble() * (reservoirSize + (offset++) + 1));
+            int replaceInIndex = getReplaceInIndex();
             if (replaceInIndex < reservoirSize) {
                 collection.set(replaceInIndex, item);
             }
         }
     }
+
+    protected abstract int getReplaceInIndex();
 
     public T get(final List<T> collection)
     {
