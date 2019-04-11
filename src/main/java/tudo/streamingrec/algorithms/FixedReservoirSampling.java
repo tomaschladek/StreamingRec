@@ -7,7 +7,7 @@ public class FixedReservoirSampling extends AbstractSampling {
     protected Integer fixedOffset = 1;
 
     @Override
-    protected void AssignReservoir() {
+    protected void assignReservoir() {
         this.sampler = new ReservoirSamplerFixed<>(reservoirSize,fixedOffset.intValue());
     }
 
@@ -17,6 +17,6 @@ public class FixedReservoirSampling extends AbstractSampling {
      */
     public void setFixedOffset(int fixedOffset) {
         this.fixedOffset = fixedOffset;
-        AssignReservoir();
+        assignReservoir();
     }
 }

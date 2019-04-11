@@ -6,7 +6,7 @@ public class DynamicReservoirSampling extends AbstractSampling {
 
 
     @Override
-    protected void AssignReservoir() {
+    protected void assignReservoir() {
         this.sampler = new ReservoirSamplerDynamic<>(reservoirSize);
     }
 
