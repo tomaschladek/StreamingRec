@@ -27,147 +27,138 @@
 		"trainingTime": "15"
 	},
 	{
-		"name": "Fixed Sampling 0 Clicks 5 Version1 15min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "360,180,180,180,540",
-		"mode" : "overlap",
-		"trainingTime": "15"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 2x720",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "720,720",
-		"mode" : "overlap",
-		"trainingTime": "30"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 1440",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "1440",
-		"mode" : "overlap",
-		"trainingTime": "60"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 360 15min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "360,360,360,360",
-		"mode" : "overlap",
-		"trainingTime": "15"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 360 10min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "360,360,360,360",
-		"mode" : "overlap",
-		"trainingTime": "10"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 360 5min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "360,360,360,360",
-		"mode" : "overlap",
-		"trainingTime": "5"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 180x 15min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "180,180,180,180,180,180,180,180",
-		"mode" : "overlap",
-		"trainingTime": "15"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 180x 10min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "180,180,180,180,180,180,180,180",
-		"mode" : "overlap",
-		"trainingTime": "10"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 180x 5min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "180,180,180,180,180,180,180,180",
-		"mode" : "overlap",
-		"trainingTime": "5"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 90 15min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90",
-		"mode" : "overlap",
-		"trainingTime": "15"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 90 10min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90",
-		"mode" : "overlap",
-		"trainingTime": "10"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 90 5min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90",
-		"mode" : "overlap",
-		"trainingTime": "5"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 30 15min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30",
-		"mode" : "overlap",
-		"trainingTime": "15"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 30 10min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30",
-		"mode" : "overlap",
-		"trainingTime": "10"
-	},
-	{
-		"name": "Fixed Sampling 0 Clicks 5 30 5min",
-		"algorithm": ".FixedReservoirSampling",
-		"reservoirSize": 5,
-		"areClicksUsed": true,
-		"timeFrame": "30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30",
-		"mode" : "overlap",
-		"trainingTime": "5"
-	},
-	{
 		"name": "Fixed Sampling 0 Clicks 5 15 15min",
 		"algorithm": ".FixedReservoirSampling",
 		"reservoirSize": 5,
 		"areClicksUsed": true,
-		"timeFrame": "15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15",
+		"timeFrame": "15",
 		"mode" : "overlap",
 		"trainingTime": "5"
+	},
+	{
+		"name": "Fixed Sampling 0 Clicks 20 Separate Cache10",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 20,
+		"areClicksUsed": true,
+		"timeFrame": "15",
+		"mode" : "separate",
+		"trainingTime": "15",
+		"fixedOffset": 0,
+		"userCacheExponent": 10
+	},{
+	"name": "Dynamic Sampling 0 Clicks 20 Separate Cache10",
+	"algorithm": ".DynamicReservoirSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": "15",
+	"mode" : "separate",
+	"trainingTime": "15",
+	"userCacheExponent": 10
+},
+	{
+		"name": "Fixed Sampling 0 Clicks 5 Overlap Cache10",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": "30",
+		"mode" : "overlap",
+		"trainingTime": "15",
+		"userCacheExponent": 10
+	},
+	{
+		"name": "Fixed Sampling 0 Clicks 5 15 15min Cache10",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": "15",
+		"mode" : "overlap",
+		"trainingTime": "5",
+		"userCacheExponent": 10
+	}	,{
+	"name": "Fixed Sampling 0 Clicks 20 Separate Cache10 CLearing5",
+	"algorithm": ".FixedReservoirSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": "15",
+	"mode" : "separate",
+	"trainingTime": "15",
+	"fixedOffset": 0,
+	"userCacheExponent": 10,
+	"clearingTime": 5
+},{
+	"name": "Dynamic Sampling 0 Clicks 20 Separate Cache10 CLearing5",
+	"algorithm": ".DynamicReservoirSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": "15",
+	"mode" : "separate",
+	"trainingTime": "15",
+	"userCacheExponent": 10,
+	"clearingTime": 5
+},
+	{
+		"name": "Fixed Sampling 0 Clicks 5 Overlap Cache10 CLearing5",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": "30",
+		"mode" : "overlap",
+		"trainingTime": "15",
+		"userCacheExponent": 10,
+		"clearingTime": 5
+	},
+	{
+		"name": "Fixed Sampling 0 Clicks 5 15 15min Cache10 CLearing5",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": "15",
+		"mode" : "overlap",
+		"trainingTime": "5",
+		"userCacheExponent": 10,
+		"clearingTime": 5
+	}	,{
+	"name": "Fixed Sampling 0 Clicks 20 Separate Cache10 CLearing2",
+	"algorithm": ".FixedReservoirSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": "15",
+	"mode" : "separate",
+	"trainingTime": "15",
+	"fixedOffset": 0,
+	"userCacheExponent": 10,
+	"clearingTime": 2
+},{
+	"name": "Dynamic Sampling 0 Clicks 20 Separate Cache10 CLearing2",
+	"algorithm": ".DynamicReservoirSampling",
+	"reservoirSize": 20,
+	"areClicksUsed": true,
+	"timeFrame": "15",
+	"mode" : "separate",
+	"trainingTime": "15",
+	"userCacheExponent": 10,
+	"clearingTime": 2
+},
+	{
+		"name": "Fixed Sampling 0 Clicks 5 Overlap Cache10 CLearing2",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": "30",
+		"mode" : "overlap",
+		"trainingTime": "15",
+		"userCacheExponent": 10,
+		"clearingTime": 2
+	},
+	{
+		"name": "Fixed Sampling 0 Clicks 5 15 15min Cache10 CLearing2",
+		"algorithm": ".FixedReservoirSampling",
+		"reservoirSize": 5,
+		"areClicksUsed": true,
+		"timeFrame": "15",
+		"mode" : "overlap",
+		"trainingTime": "5",
+		"userCacheExponent": 10,
+		"clearingTime": 2
 	}
 ]
