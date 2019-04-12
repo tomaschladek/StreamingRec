@@ -24,7 +24,7 @@ public class Accuracy extends HypothesisTestableMetric {
     @Override
     public void evaluate(Transaction transaction, LongArrayList recommendations, LongOpenHashSet userTransactions) {
         //no future unique IDs
-        if (userTransactions == null || userTransactions.isEmpty()) {
+        if (userTransactions == null || userTransactions.isEmpty() || transaction.userId == 0) {
             return;
         }
         // if the algorithm does not return any recommendations, count it as 0

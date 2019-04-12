@@ -34,7 +34,7 @@ public class RecentlyClicked extends Algorithm{
 	public LongArrayList recommendInternal(ClickData clickData) {
 		//return an array list copy of the ordered article ids
 		LongArrayList list = new LongArrayList();
-		list.set(0,clickedItem);
+		list.add(clickedItem);
 		return list;
 	}
 

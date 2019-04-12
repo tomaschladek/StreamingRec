@@ -4,7 +4,7 @@ import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
-import java.util.Collections;
+
 import java.util.List;
 
 /**
@@ -17,6 +17,7 @@ import java.util.List;
 public class Random extends Algorithm{
 	//An unsorted set of all item ids
 	private LongOpenHashSet items = new LongOpenHashSet();
+	private java.util.Random randomGenerator = new java.util.Random();
 
 	@Override
 	protected void trainInternal(List<Item> items, List<ClickData> clickData) {
@@ -37,9 +38,10 @@ public class Random extends Algorithm{
 	public LongArrayList recommendInternal(ClickData clickData) {
 		//create a result list and copy the known item ids there
 		LongArrayList recs = new LongArrayList(items);
-		//shuffle the result list and return it
-		Collections.shuffle(recs);
-		return recs;
+
+        LongArrayList list = new LongArrayList();
+        list.add(recs.getLong(randomGenerator.nextInt(items.size())));
+		return list;
 	}
 
 }
