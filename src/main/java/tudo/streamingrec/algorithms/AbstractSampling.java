@@ -17,6 +17,7 @@ public abstract class AbstractSampling extends Algorithm {
 
     protected Integer userCacheExponent = null;
     protected int clearingTime = 10;
+    protected int cacheDepth = 1;
 
     protected EFraming mode = EFraming.SingleModel;
 
@@ -26,10 +27,13 @@ public abstract class AbstractSampling extends Algorithm {
     private int trainingTime = 30;
 
     protected DataFrameManager dataFrameManager = new DataFrameManager(timeFrame,reservoirSize, mode, trainingTime);
-    protected UserCache userCache = new UserCache(userCacheExponent, clearingTime);
+    protected UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
+
 
     protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
     public long clickedItem = 0l;
+    protected int countMax = 1000;
+    private int countCurrent = 0;
     private long index = 0;
     private long count = Long.MIN_VALUE;
 
@@ -49,6 +53,7 @@ public abstract class AbstractSampling extends Algorithm {
                 if (data.click.userId == 0) return;
                 timestamp = data.click.timestamp;
                 clickCounter.addTo(data.click.item.id, 1);
+                countCurrent++;
                 if (clickCounter.get(data.click.item.id) > count)
                 {
                     index = data.click.item.id;
@@ -65,16 +70,18 @@ public abstract class AbstractSampling extends Algorithm {
                 for (List<Long> dataset: dataFrameManager.getTrainingData(timestamp)){
                     sampler.add(dataset,item.id);
                     clickCounter.addTo(item.id, 1);
+                    countCurrent++;
                 }
             }
         }
         dataFrameManager.update(timestamp);
         userCache.update(timestamp);
-        if (count > 1000)
+        if (countCurrent > countMax)
         {
             clickCounter = new Long2IntOpenHashMap();
             clickCounter.addTo(index,1);
             count = 1;
+            countCurrent = 0;
         }
 
     }
@@ -179,7 +186,7 @@ public abstract class AbstractSampling extends Algorithm {
      */
     public void setUserCacheExponent(int userCacheExponent) {
         this.userCacheExponent = userCacheExponent;
-        userCache = new UserCache(userCacheExponent, clearingTime);
+        assignCache();
     }
 
     /**
@@ -188,7 +195,7 @@ public abstract class AbstractSampling extends Algorithm {
      */
     public void setClearingTime(int clearingTime) {
         this.clearingTime = clearingTime;
-        userCache = new UserCache(userCacheExponent, clearingTime);
+        assignCache();
     }
 
     /**
@@ -198,6 +205,27 @@ public abstract class AbstractSampling extends Algorithm {
     public void setTrainingTime(int trainingTime) {
         this.trainingTime = trainingTime;
         assignDataFrame();
+    }
+
+    /**
+     * Defines the size of the reservoir
+     * @param cacheDepth -
+     */
+    public void setCacheDepth(int cacheDepth) {
+        this.cacheDepth = cacheDepth;
+        assignCache();
+    }
+
+    /**
+     * Defines the size of the reservoir
+     * @param countMax -
+     */
+    public void setCountMax(int countMax) {
+        this.countMax = countMax;
+    }
+
+    protected void assignCache() {
+        userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
     }
 
     /**
