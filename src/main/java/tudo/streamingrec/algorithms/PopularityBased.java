@@ -2,6 +2,7 @@ package tudo.streamingrec.algorithms;
 
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.apache.commons.lang3.time.DateUtils;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.data.ClickData;
@@ -14,7 +15,7 @@ public class PopularityBased extends Algorithm {
     // In this list we keep all articles and their click counts
     protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
     private Date windowThreshold = new Date(0,0,0,0,0,0);
-    protected int[] countMax = new int[]{1000};
+    protected int[] countMax = new int[]{100};
     private int countIndex = 0;
     private boolean isTimeDriven = false;
     private int countCurrent = 0;
@@ -68,14 +69,16 @@ public class PopularityBased extends Algorithm {
                 && itemId != index)
             return index;
 
+        CircularFifoQueue<Long> used = userCache.getHistory(userId);
         //return clickedItem;
         int max = 0;
         Long maxKey = index;
         for (Long key: clickCounter.keySet()) {
             int value = clickCounter.get(key);
-            if (value>max
-                    && key.longValue() != index
-                    && itemId != index)
+            if (value > max
+                    && !used.contains(key.longValue())
+                    && key.longValue() != itemId
+                    && key.longValue() != index)
             {
                 maxKey = key;
                 max = value;

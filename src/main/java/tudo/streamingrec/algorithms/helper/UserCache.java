@@ -14,13 +14,13 @@ public class UserCache {
 
     private int modulo;
     private int clearingTime;
-    private Date clearingThreshold = new Date(0,0,0,0,0,0);
+    private Date clearingThreshold = new Date(0, 0, 0, 0, 0, 0);
     private List<CircularFifoQueue<Long>> cache;
 
-    public UserCache(Integer exponent,int clearingTime, int size) {
+    public UserCache(Integer exponent, int clearingTime, int size) {
         if (exponent == null) return;
 
-        this.modulo = (int)Math.pow(2,exponent);
+        this.modulo = (int) Math.pow(2, exponent);
         assignCache();
         this.clearingTime = clearingTime;
         this.size = size;
@@ -28,14 +28,12 @@ public class UserCache {
 
     protected void assignCache() {
         cache = new ArrayList<>(modulo);
-        for(int index = 0; index < modulo; index++)
-        {
+        for (int index = 0; index < modulo; index++) {
             cache.add(null);
         }
     }
 
-    public boolean tryUpsert(long userId, long itemId)
-    {
+    public boolean tryUpsert(long userId, long itemId) {
         if (cache == null
                 || userId == 0)
             return true;
@@ -47,7 +45,7 @@ public class UserCache {
             return false;
 
         if (!cache.contains(hash)) {
-            cache.set(hash,new CircularFifoQueue<>(size));
+            cache.set(hash, new CircularFifoQueue<>(size));
         }
 
         cache.get(hash).add(itemId);
@@ -58,16 +56,27 @@ public class UserCache {
         int hash = 7;
         for (int index = 0; index < 7; index++)
             hash = 31 * hash + (int) userId;
-        return (short) Math.floorMod(hash,modulo);
+        return (short) Math.floorMod(hash, modulo);
     }
 
     public void update(Date timestamp) {
         if (cache != null
                 && timestamp != null
-                && clearingThreshold.before(timestamp))
-        {
-            clearingThreshold = DateUtils.addMinutes(timestamp,clearingTime);
+                && clearingThreshold.before(timestamp)) {
+            clearingThreshold = DateUtils.addMinutes(timestamp, clearingTime);
             assignCache();
         }
+    }
+
+    public CircularFifoQueue<Long> getHistory(long userId) {
+        if (cache == null
+                || userId == 0)
+            return new CircularFifoQueue<>(1);
+
+        Short hash = getHash(userId);
+
+        if (cache.get(hash) != null) return cache.get(hash);
+
+        return new CircularFifoQueue<>(1);
     }
 }
