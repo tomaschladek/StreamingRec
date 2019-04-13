@@ -2,8 +2,10 @@ package tudo.streamingrec.algorithms;
 
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongIterator;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.apache.commons.lang3.time.DateUtils;
+import tudo.streamingrec.algorithms.helper.EHeuristic;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
@@ -22,8 +24,12 @@ public class PopularityBased extends Algorithm {
     private long index = 0;
     private long count = Long.MIN_VALUE;
 
-    protected Integer userCacheExponent = null;
-    protected int clearingTime = 10;
+    protected EHeuristic heuristic = EHeuristic.PopularTopDown;
+    private java.util.Random generator = new java.util.Random();
+    private CircularFifoQueue<Long> clicks = new CircularFifoQueue<>(50);
+
+    protected Integer userCacheExponent = 10;
+    protected int clearingTime = 1;
     protected int cacheDepth = 1;
 
     protected UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
@@ -36,6 +42,7 @@ public class PopularityBased extends Algorithm {
             timestamp = c.click.timestamp;
             clickCounter.addTo(c.click.item.id, 1);
             countCurrent++;
+            clicks.add(c.click.item.id);
             if (clickCounter.get(c.click.item.id) > count)
             {
                 index = c.click.item.id;
@@ -70,7 +77,53 @@ public class PopularityBased extends Algorithm {
             return index;
 
         CircularFifoQueue<Long> used = userCache.getHistory(userId);
-        //return clickedItem;
+        switch (heuristic)
+        {
+            case PopularTopDown:
+                return getTopDownBest(used, itemId);
+            case Random:
+                return getRandomFirst(used,itemId);
+            case RecentClicks:
+                return getRecentClick(used,itemId);
+        }
+        throw new IllegalArgumentException("Unknown heuristic!");
+
+    }
+
+    private long getRecentClick(CircularFifoQueue<Long> used, long itemId) {
+        for (Long value : clicks) {
+            if (!used.contains(value)
+                    && value != itemId
+                    && value != index)
+            {
+                return value;
+            }
+        }
+        return index;
+    }
+
+    private long getRandomFirst(CircularFifoQueue<Long> used, long itemId) {
+
+        for (int index = 0; index < 30; index++)
+        {
+            int randIndex = generator.nextInt(clickCounter.size());
+            LongIterator iterator = clickCounter.keySet().iterator();
+            long value = 0;
+            for (int clickIndex = 0; clickIndex < randIndex; clickIndex++)
+            {
+                value = iterator.nextLong();
+            }
+            if (!used.contains(value)
+                    && value != itemId
+                    && value != index)
+            {
+                return value;
+            }
+        }
+        return index;
+    }
+
+    private long getTopDownBest(CircularFifoQueue<Long> used, long itemId) {
         int max = 0;
         Long maxKey = index;
         for (Long key: clickCounter.keySet()) {
@@ -84,6 +137,7 @@ public class PopularityBased extends Algorithm {
                 max = value;
             }
         }
+
         return maxKey;
     }
 
@@ -137,5 +191,25 @@ public class PopularityBased extends Algorithm {
 
     protected void assignCache() {
         userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
+    }
+
+    /**
+     * Defines the size of the reservoir
+     * @param heuristic -
+     */
+    public void setHeuristic(String heuristic) {
+        switch (heuristic){
+            case "random":
+                this.heuristic = EHeuristic.Random;
+                break;
+            case "popular":
+                this.heuristic = EHeuristic.PopularTopDown;
+                break;
+            case "click":
+                this.heuristic = EHeuristic.RecentClicks;
+                break;
+            default:
+                throw new IllegalArgumentException("mode not recognized");
+        }
     }
 }

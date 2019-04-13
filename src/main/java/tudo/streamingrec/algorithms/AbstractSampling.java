@@ -176,8 +176,6 @@ public abstract class AbstractSampling extends Algorithm {
                 throw new IllegalArgumentException("mode not recognized");
         }
         assignDataFrame();
-
-
     }
 
     /**
