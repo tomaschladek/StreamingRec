@@ -16,7 +16,9 @@ import java.util.List;
 public class PopularityBased extends Algorithm {
     // In this list we keep all articles and their click counts
     protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
+    protected Long2IntOpenHashMap trainingCounter = new Long2IntOpenHashMap();
     private Date windowThreshold = new Date(0,0,0,0,0,0);
+    private Date trainThreshold = new Date(0,0,0,0,0,0);
     protected int[] countMax = new int[]{100};
     private int countIndex = 0;
     private boolean isTimeDriven = false;
@@ -32,6 +34,8 @@ public class PopularityBased extends Algorithm {
     protected int clearingTime = 1;
     protected int cacheDepth = 1;
 
+    protected int trainingSize = 50;
+
     protected UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
 
     @Override
@@ -41,6 +45,11 @@ public class PopularityBased extends Algorithm {
         for (ClickData c : clickData) {
             timestamp = c.click.timestamp;
             clickCounter.addTo(c.click.item.id, 1);
+            if ((!isTimeDriven && countCurrent > countMax[countIndex]-trainingSize)
+                    || (isTimeDriven && timestamp != null && trainThreshold.before(timestamp)))
+            {
+                trainingCounter.addTo(c.click.item.id, 1);
+            }
             countCurrent++;
             clicks.add(c.click.item.id);
             if (clickCounter.get(c.click.item.id) > count)
@@ -53,11 +62,20 @@ public class PopularityBased extends Algorithm {
         if ((!isTimeDriven && countCurrent > countMax[countIndex])
                 || (isTimeDriven && timestamp != null && windowThreshold.before(timestamp)))
         {
-            clickCounter = new Long2IntOpenHashMap();
-            clickCounter.addTo(index,1);
-            count = 1;
-            countCurrent = 0;
+            clickCounter = trainingCounter;
+            trainingCounter = new Long2IntOpenHashMap();
+            int count = 0;
+            for (Long key: clickCounter.keySet()) {
+                int value = clickCounter.get(key);
+                if (value > count)
+                {
+                    index = key;
+                    count = value;
+                }
+            }
+            countCurrent = countMax[countIndex] - trainingSize;
             windowThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex]);
+            trainThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex] - trainingSize);
             countIndex = (countIndex + 1) % countMax.length;
         }
     }
@@ -186,6 +204,14 @@ public class PopularityBased extends Algorithm {
      */
     public void setIsTimeDriven(boolean isTimeDriven) {
         this.isTimeDriven = isTimeDriven;
+    }
+
+    /**
+     * Defines the size of the reservoir
+     * @param trainingSize -
+     */
+    public void setTrainingSize(int trainingSize) {
+        this.trainingSize = trainingSize;
     }
 
 
