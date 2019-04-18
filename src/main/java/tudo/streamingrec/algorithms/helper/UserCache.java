@@ -9,10 +9,7 @@ import java.util.List;
 
 public class UserCache {
     private int size;
-
-//    private long[] cache;
-
-    private int modulo;
+    private int capacity;
     private int clearingTime;
     private Date clearingThreshold = new Date(0, 0, 0, 0, 0, 0);
     private List<CircularFifoQueue<Long>> cache;
@@ -20,15 +17,15 @@ public class UserCache {
     public UserCache(Integer exponent, int clearingTime, int size) {
         if (exponent == null) return;
 
-        this.modulo = (int) Math.pow(2, exponent);
+        this.capacity = (int) Math.pow(2, exponent);
         assignCache();
         this.clearingTime = clearingTime;
         this.size = size;
     }
 
-    protected void assignCache() {
-        cache = new ArrayList<>(modulo);
-        for (int index = 0; index < modulo; index++) {
+    private void assignCache() {
+        cache = new ArrayList<>(capacity);
+        for (int index = 0; index < capacity; index++) {
             cache.add(null);
         }
     }
@@ -44,7 +41,7 @@ public class UserCache {
                 && cache.get(hash).contains(itemId))
             return false;
 
-        if (!cache.contains(hash)) {
+        if (cache.get(hash) == null) {
             cache.set(hash, new CircularFifoQueue<>(size));
         }
 
@@ -56,7 +53,7 @@ public class UserCache {
         int hash = 7;
         for (int index = 0; index < 7; index++)
             hash = 31 * hash + (int) userId;
-        return (short) Math.floorMod(hash, modulo);
+        return (short) Math.floorMod(hash, capacity);
     }
 
     public void update(Date timestamp) {

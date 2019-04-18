@@ -78,7 +78,7 @@ public class StreamingRec {
 	private static boolean OUTPUT_STATS = false;
 	//where to split the data into training and test
 	@Option(names = {"-p", "--split-threshold"}, paramLabel="<VALUE>", description = "Split threshold for splitting the dataset into training and test set")
-	private static double SPLIT_THRESHOLD = 0.15;//11;
+	private static double SPLIT_THRESHOLD = 0.0456;//11;
 	//the number of threads to use
 	@Option(names = {"-n", "--thread-count"}, paramLabel="<VALUE>", description = "Number of threads to use. Less threads result in less CPU usage but also less RAM usage.")
 	private static int THREAD_COUNT = Runtime.getRuntime().availableProcessors()-1;
@@ -265,7 +265,7 @@ public class StreamingRec {
 		RawData data = new FilteredDataReader().readFilteredData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
 				DEDUPLICATE, OLD_FILE_FORMAT);
 
-		filterByDate(new Date(116,1,8,0,0,0),data);
+		//filterByDate(new Date(116,1,8,0,0,0),data);
 
 		//if a minimum session length is set, filter short sessions
 		if (SESSION_LENGTH_FILTER > 0) {

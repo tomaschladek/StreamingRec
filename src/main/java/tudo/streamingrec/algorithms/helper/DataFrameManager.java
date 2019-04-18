@@ -6,30 +6,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Manages frames for testing and training according to selected mode
+ */
 public class DataFrameManager {
-    private int capacity;
-    private int timeFrameIndex = 0;
-    private int[] timeFrame = new int[]{};
+    private FrameConfiguration configuration;
     private int trainingTime;
-    private List<Long> sampleTraining = new ArrayList<>();
-    private List<Long> sampleTesting = new ArrayList<>();
+    private FrameDto training;
+    private FrameDto testing;
     private EFraming mode;
-    private Date trainThreshold = new Date(0,0,0,0,0,0);
-    private Date frameThreshold = new Date(0,0,0,0,0,0);
 
     public DataFrameManager(int[] timeFrame, int capacity, EFraming mode, int trainingTime) {
-        this.timeFrame = timeFrame;
-        this.capacity = capacity;
+        this.configuration = timeFrame.length > 0
+                ? new FrameConfiguration(timeFrame)
+                : null;
         this.trainingTime = trainingTime;
         switch (mode)
         {
             case SingleModel:
-                this.sampleTraining = this.sampleTesting = new ArrayList<>(capacity);
+                this.training = this.testing = new FrameDto(capacity);
                 break;
             case OverlappingModels:
             case SeparateModels:
-                this.sampleTraining = new ArrayList<>(capacity);
-                this.sampleTesting = new ArrayList<>(capacity);
+                this.training = new FrameDto(capacity);
+                this.testing = new FrameDto(capacity);
                 break;
         }
         this.mode = mode;
@@ -41,17 +41,17 @@ public class DataFrameManager {
         switch (mode)
         {
             case SingleModel:
-                list.add(sampleTesting);
+                list.add(testing.collection);
                 break;
             case OverlappingModels:
-                list.add(sampleTesting);
-                if (trainThreshold.before(time))
+                list.add(testing.collection);
+                if (training.timestampThreshold.before(time))
                 {
-                    list.add(sampleTraining);
+                    list.add(training.collection);
                 }
                 break;
             case SeparateModels:
-                list.add(sampleTraining);
+                list.add(training.collection);
                 break;
         }
         return list;
@@ -59,7 +59,7 @@ public class DataFrameManager {
 
     public List<Long> getTestingData()
     {
-        return sampleTesting;
+        return testing.collection;
     }
 
     public boolean update(Date timestamp) {
@@ -69,15 +69,15 @@ public class DataFrameManager {
                 break;
             case OverlappingModels:
             case SeparateModels:
-                if (timeFrame.length > 0
+                if (configuration != null
                         && timestamp != null
-                        && frameThreshold.before(timestamp))
+                        && testing.timestampThreshold.before(timestamp))
                 {
-                    frameThreshold = DateUtils.addMinutes(timestamp,timeFrame[timeFrameIndex]);
-                    trainThreshold = DateUtils.addMinutes(timestamp,timeFrame[timeFrameIndex]-trainingTime);
-                    timeFrameIndex = (timeFrameIndex + 1) % timeFrame.length;
-                    sampleTesting = sampleTraining;
-                    sampleTraining = new ArrayList<>(capacity);
+                    while(testing.timestampThreshold.before(timestamp)) {
+                        testing.timestampThreshold = DateUtils.addMinutes(testing.timestampThreshold, configuration.getNext());
+                        training.timestampThreshold = DateUtils.addMinutes(testing.timestampThreshold, -trainingTime);
+                    }
+                    testing.assignAndClear(training);
                     return true;
                 }
                 break;

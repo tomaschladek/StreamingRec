@@ -9,14 +9,15 @@ import tudo.streamingrec.algorithms.helper.EHeuristic;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
+import tudo.streamingrec.data.Transaction;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
+/** Algorithm recommends items according to their popularity */
 public class PopularityBased extends Algorithm {
-    // In this list we keep all articles and their click counts
     protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
     protected Long2IntOpenHashMap trainingCounter = new Long2IntOpenHashMap();
+    protected Map<Long,Set<Long>> coocurence = new HashMap<>();
     private Date windowThreshold = new Date(0,0,0,0,0,0);
     private Date trainThreshold = new Date(0,0,0,0,0,0);
     protected int[] countMax = new int[]{100};
@@ -40,43 +41,75 @@ public class PopularityBased extends Algorithm {
 
     @Override
     protected void trainInternal(List<Item> items, List<ClickData> clickData) {
-        Date timestamp = null;
 
-        for (ClickData c : clickData) {
-            timestamp = c.click.timestamp;
-            clickCounter.addTo(c.click.item.id, 1);
-            if ((!isTimeDriven && countCurrent > countMax[countIndex]-trainingSize)
-                    || (isTimeDriven && timestamp != null && trainThreshold.before(timestamp)))
-            {
-                trainingCounter.addTo(c.click.item.id, 1);
-            }
-            countCurrent++;
-            clicks.add(c.click.item.id);
-            if (clickCounter.get(c.click.item.id) > count)
-            {
-                index = c.click.item.id;
-                count = clickCounter.get(c.click.item.id);
-            }
-        }
+        Date timestamp = updateStatistics(clickData);
+
         userCache.update(timestamp);
+
         if ((!isTimeDriven && countCurrent > countMax[countIndex])
                 || (isTimeDriven && timestamp != null && windowThreshold.before(timestamp)))
         {
-            clickCounter = trainingCounter;
-            trainingCounter = new Long2IntOpenHashMap();
-            int count = 0;
-            for (Long key: clickCounter.keySet()) {
-                int value = clickCounter.get(key);
-                if (value > count)
-                {
-                    index = key;
-                    count = value;
-                }
+            switchWindows(timestamp);
+        }
+    }
+
+    /** Switches training and recommendation windows according to frames*/
+    private void switchWindows(Date timestamp) {
+        clickCounter = trainingCounter;
+        trainingCounter = new Long2IntOpenHashMap();
+        int count = 0;
+        for (Long key: clickCounter.keySet()) {
+            int value = clickCounter.get(key);
+            if (value > count)
+            {
+                index = key;
+                count = value;
             }
-            countCurrent = countMax[countIndex] - trainingSize;
-            windowThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex]);
-            trainThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex] - trainingSize);
-            countIndex = (countIndex + 1) % countMax.length;
+        }
+        countCurrent = countMax[countIndex] - trainingSize;
+        windowThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex]);
+        trainThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex] - trainingSize);
+        countIndex = (countIndex + 1) % countMax.length;
+    }
+
+    private Date updateStatistics(List<ClickData> clickData) {
+        Date timestamp = null;
+
+        for (ClickData click : clickData) {
+            timestamp = click.click.timestamp;
+            clickCounter.addTo(click.click.item.id, 1);
+            addCoocurence(click);
+            tryAddTraining(timestamp, click);
+            countCurrent++;
+            clicks.add(click.click.item.id);
+            tryUpdateMax(click);
+        }
+        return timestamp;
+    }
+
+    private void addCoocurence(ClickData click) {
+        for (Transaction transaction : click.session) {
+            if (!coocurence.containsKey(transaction.item.id))
+            {
+                coocurence.put(new Long(transaction.item.id),new HashSet<>());
+            }
+            coocurence.get(transaction.item.id).add(click.click.item.id);
+        }
+    }
+
+    private void tryAddTraining(Date timestamp, ClickData click) {
+        if ((!isTimeDriven && countCurrent > countMax[countIndex]-trainingSize)
+                || (isTimeDriven && timestamp != null && trainThreshold.before(timestamp)))
+        {
+            trainingCounter.addTo(click.click.item.id, 1);
+        }
+    }
+
+    private void tryUpdateMax(ClickData c) {
+        if (clickCounter.get(c.click.item.id) > count)
+        {
+            index = c.click.item.id;
+            count = clickCounter.get(c.click.item.id);
         }
     }
 
@@ -103,9 +136,31 @@ public class PopularityBased extends Algorithm {
                 return getRandomFirst(used,itemId);
             case RecentClicks:
                 return getRecentClick(used,itemId);
+            case Coocurent:
+                return getCoocurentPopular(used,itemId);
         }
         throw new IllegalArgumentException("Unknown heuristic!");
 
+    }
+
+    private long getCoocurentPopular(CircularFifoQueue<Long> used, long itemId) {
+        int max = 0;
+        Long maxKey = index;
+        for (Long key: coocurence.get(index)) {
+            if (!clickCounter.containsKey(key)) continue;
+
+            int value = clickCounter.get(key);
+            if (value > max
+                    && !used.contains(key.longValue())
+                    && key.longValue() != itemId
+                    && key.longValue() != index)
+            {
+                maxKey = key;
+                max = value;
+            }
+        }
+
+        return maxKey;
     }
 
     private long getRecentClick(CircularFifoQueue<Long> used, long itemId) {
@@ -233,6 +288,9 @@ public class PopularityBased extends Algorithm {
                 break;
             case "click":
                 this.heuristic = EHeuristic.RecentClicks;
+                break;
+            case "coocurent":
+                this.heuristic = EHeuristic.Coocurent;
                 break;
             default:
                 throw new IllegalArgumentException("mode not recognized");
