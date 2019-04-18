@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.apache.commons.lang3.time.DateUtils;
-import tudo.streamingrec.algorithms.helper.EHeuristic;
+import tudo.streamingrec.algorithms.dtos.EHeuristic;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;

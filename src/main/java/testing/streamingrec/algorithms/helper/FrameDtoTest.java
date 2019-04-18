@@ -2,7 +2,7 @@ package testing.streamingrec.algorithms.helper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tudo.streamingrec.algorithms.helper.FrameDto;
+import tudo.streamingrec.algorithms.dtos.FrameDto;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
 package tudo.streamingrec.algorithms;
 
-import tudo.streamingrec.algorithms.helper.ReservoirSamplerFixed;
+import tudo.streamingrec.algorithms.samplers.FixedReservoirSampler;
 
 public class FixedReservoirSampling extends AbstractSampling {
 
@@ -8,7 +8,7 @@ public class FixedReservoirSampling extends AbstractSampling {
 
     @Override
     protected void assignReservoir() {
-        this.sampler = new ReservoirSamplerFixed(reservoirSize,fixedOffset.intValue());
+        this.sampler = new FixedReservoirSampler(reservoirSize,fixedOffset.intValue());
     }
 
     /**

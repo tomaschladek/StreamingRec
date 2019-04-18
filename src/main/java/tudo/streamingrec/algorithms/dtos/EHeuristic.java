@@ -1,4 +1,4 @@
-package tudo.streamingrec.algorithms.helper;
+package tudo.streamingrec.algorithms.dtos;
 
 public enum EHeuristic {
     PopularTopDown,Random,RecentClicks,Coocurent

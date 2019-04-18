@@ -1,10 +1,10 @@
-package tudo.streamingrec.algorithms.helper;
+package tudo.streamingrec.algorithms.samplers;
 
-public class ReservoirSamplerFixed extends AbstractReservoirSampler {
+public class FixedReservoirSampler extends AbstractReservoirSampler {
 
     int offset;
 
-    public ReservoirSamplerFixed(int size, int offset) {
+    public FixedReservoirSampler(int size, int offset) {
         super(size);
         if (offset < 0)
         {

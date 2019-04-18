@@ -1,4 +1,4 @@
-package tudo.streamingrec.algorithms.helper;
+package tudo.streamingrec.algorithms.dtos;
 
 import java.util.ArrayList;
 import java.util.Date;

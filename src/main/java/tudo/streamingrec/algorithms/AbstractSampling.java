@@ -2,17 +2,21 @@ package tudo.streamingrec.algorithms;
 
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
-import tudo.streamingrec.algorithms.helper.*;
+import tudo.streamingrec.algorithms.dtos.EFraming;
+import tudo.streamingrec.algorithms.helper.DataFrameManager;
+import tudo.streamingrec.algorithms.helper.UserCache;
+import tudo.streamingrec.algorithms.heuristics.IHeuristic;
+import tudo.streamingrec.algorithms.heuristics.IteratorHeuristic;
+import tudo.streamingrec.algorithms.samplers.AbstractReservoirSampler;
+import tudo.streamingrec.algorithms.samplers.DynamicReservoirSampler;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public abstract class AbstractSampling extends Algorithm {
 
-    protected AbstractReservoirSampler sampler = new ReservoirSamplerDynamic(1);
+    protected AbstractReservoirSampler sampler = new DynamicReservoirSampler(1);
     protected boolean areClicksUsed = true;
 
     protected Integer userCacheExponent = null;
@@ -28,6 +32,7 @@ public abstract class AbstractSampling extends Algorithm {
 
     protected DataFrameManager dataFrameManager = new DataFrameManager(timeFrame,reservoirSize, mode, trainingTime);
     protected UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
+    protected IHeuristic heuristic = new IteratorHeuristic();
 
 
     protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
@@ -102,8 +107,11 @@ public abstract class AbstractSampling extends Algorithm {
         List<Long> testingData = dataFrameManager.getTestingData();
         if (testingData.size() == 0) return clickedItem;
 
-        long recommendedValue = sampler.get(testingData).longValue();
-        if (userCache.tryUpsert(userId,recommendedValue)
+        Set<Long> forbidden = new HashSet<>();
+        forbidden.add(itemId);
+        Long recommendedValue = heuristic.get(testingData,forbidden).longValue();
+        if (recommendedValue != null
+                && userCache.tryUpsert(userId,recommendedValue)
                 && itemId != recommendedValue)
             return recommendedValue;
 

@@ -4,7 +4,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import tudo.streamingrec.algorithms.helper.DataFrameManager;
-import tudo.streamingrec.algorithms.helper.EFraming;
+import tudo.streamingrec.algorithms.dtos.EFraming;
 
 import java.util.Date;
 import java.util.List;
@@ -44,8 +44,22 @@ class DataFrameManagerTest {
     @EnumSource(EFraming.class)
     void getTestingData(EFraming mode) {
         setUp(mode);
-        List<Long> trainingData = manager.getTestingData();
-        assertEquals(1, trainingData.size());
+        List<Long> testingData = manager.getTestingData();
+        assertEquals(0, testingData.size());
+        for (List<Long> sets : manager.getTrainingData(timestamp))
+        {
+            sets.add(1l);
+        }
+        switch (mode){
+            case SingleModel:
+            case OverlappingModels:
+                assertEquals(1, testingData.size());
+                assertEquals(1l, testingData.get(0));
+                break;
+            case SeparateModels:
+                assertEquals(0, testingData.size());
+                break;
+        }
     }
 
     @ParameterizedTest

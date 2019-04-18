@@ -1,4 +1,4 @@
-package tudo.streamingrec.algorithms.helper;
+package tudo.streamingrec.algorithms.dtos;
 
 public class FrameConfiguration {
     public int timeFrameIndex;

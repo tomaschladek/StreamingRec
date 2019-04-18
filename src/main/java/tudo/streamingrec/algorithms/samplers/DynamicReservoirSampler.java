@@ -1,9 +1,9 @@
-package tudo.streamingrec.algorithms.helper;
+package tudo.streamingrec.algorithms.samplers;
 
-public class ReservoirSamplerDynamic extends AbstractReservoirSampler {
+public class DynamicReservoirSampler extends AbstractReservoirSampler {
     int offset = 0;
 
-    public ReservoirSamplerDynamic(int size) {
+    public DynamicReservoirSampler(int size) {
         super(size);
     }
 

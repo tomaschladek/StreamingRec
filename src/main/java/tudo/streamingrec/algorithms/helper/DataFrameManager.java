@@ -1,6 +1,9 @@
 package tudo.streamingrec.algorithms.helper;
 
 import org.apache.commons.lang3.time.DateUtils;
+import tudo.streamingrec.algorithms.dtos.EFraming;
+import tudo.streamingrec.algorithms.dtos.FrameConfiguration;
+import tudo.streamingrec.algorithms.dtos.FrameDto;
 
 import java.util.ArrayList;
 import java.util.Date;

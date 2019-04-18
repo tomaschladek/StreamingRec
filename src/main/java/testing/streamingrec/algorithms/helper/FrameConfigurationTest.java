@@ -2,7 +2,7 @@ package testing.streamingrec.algorithms.helper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tudo.streamingrec.algorithms.helper.FrameConfiguration;
+import tudo.streamingrec.algorithms.dtos.FrameConfiguration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
