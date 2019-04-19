@@ -1,21 +1,21 @@
 package tudo.streamingrec.algorithms.dataFrames;
 
 import tudo.streamingrec.algorithms.dtos.FrameConfiguration;
-import tudo.streamingrec.algorithms.dtos.FrameDto;
+import tudo.streamingrec.algorithms.dtos.FrameTimeDto;
 
 import java.util.List;
 
-public abstract class AbstractTwoDataFrame implements IDataFrame {
+public abstract class AbstractTwoTimingDataFrame implements IDataFrame {
     protected FrameConfiguration configuration;
-    protected FrameDto training;
-    protected FrameDto testing;
+    protected FrameTimeDto training;
+    protected FrameTimeDto testing;
 
-    public AbstractTwoDataFrame(int[] timeFrame, int capacity) {
+    public AbstractTwoTimingDataFrame(int[] timeFrame) {
         this.configuration = timeFrame.length > 0
                 ? new FrameConfiguration(timeFrame)
                 : null;
-        this.training = new FrameDto(capacity);
-        this.testing = new FrameDto(capacity);
+        this.training = new FrameTimeDto();
+        this.testing = new FrameTimeDto();
     }
 
     public List<Long> getTestingData()

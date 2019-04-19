@@ -10,8 +10,8 @@ public class SingleDataFrame implements IDataFrame {
 
     private FrameDto testing;
 
-    public SingleDataFrame(int capacity) {
-        this.testing = new FrameDto(capacity);
+    public SingleDataFrame() {
+        this.testing = new FrameDto();
     }
 
     public List<List<Long>> getTrainingData(Date time)

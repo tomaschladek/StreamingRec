@@ -2,8 +2,11 @@ package tudo.streamingrec.algorithms;
 
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
+import tudo.streamingrec.algorithms.dataFrames.IDataFrame;
+import tudo.streamingrec.algorithms.dataFrames.OverlappingCountDataFrame;
+import tudo.streamingrec.algorithms.dataFrames.SeparateCountDataFrame;
+import tudo.streamingrec.algorithms.dataFrames.SingleDataFrame;
 import tudo.streamingrec.algorithms.dtos.EFraming;
-import tudo.streamingrec.algorithms.helper.DataFrameManager;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.algorithms.heuristics.IHeuristic;
 import tudo.streamingrec.algorithms.heuristics.IteratorHeuristic;
@@ -16,28 +19,28 @@ import java.util.*;
 
 public abstract class AbstractSampling extends Algorithm {
 
-    protected AbstractReservoirSampler sampler = new DynamicReservoirSampler(1);
-    protected boolean areClicksUsed = true;
+    AbstractReservoirSampler sampler = new DynamicReservoirSampler(1);
+    private boolean areClicksUsed = true;
 
-    protected Integer userCacheExponent = null;
-    protected int clearingTime = 10;
-    protected int cacheDepth = 1;
+    private Integer userCacheExponent = null;
+    private int clearingTime = 10;
+    private int cacheDepth = 1;
 
-    protected EFraming mode = EFraming.SingleModel;
+    private EFraming mode = EFraming.SingleModel;
 
     protected int reservoirSize = 30;
 
     private int[] timeFrame = new int[]{};
     private int trainingTime = 30;
 
-    protected DataFrameManager dataFrameManager = new DataFrameManager(timeFrame,reservoirSize, mode, trainingTime);
-    protected UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
-    protected IHeuristic heuristic = new IteratorHeuristic();
+    private IDataFrame dataFrameManager = new OverlappingCountDataFrame(timeFrame, trainingTime);
+    private UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
+    private IHeuristic heuristic = new IteratorHeuristic();
 
 
-    protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
-    public long clickedItem = 0l;
-    protected int countMax = 1000;
+    private Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
+    private long clickedItem = 0L;
+    private int countMax = 1000;
     private int countCurrent = 0;
     private long index = 0;
     private long count = Long.MIN_VALUE;
@@ -53,6 +56,7 @@ public abstract class AbstractSampling extends Algorithm {
             {
                 clickedItem = clickData.get(clickData.size()-1).click.item.id;
             }
+            if(clickData != null)
             for (ClickData data : clickData)
             {
                 if (data.click.userId == 0) return;
@@ -109,29 +113,35 @@ public abstract class AbstractSampling extends Algorithm {
 
         Set<Long> forbidden = new HashSet<>();
         forbidden.add(itemId);
-        Long recommendedValue = heuristic.get(testingData,forbidden).longValue();
+        Long recommendedValue = heuristic.get(testingData,forbidden);
         if (recommendedValue != null
                 && userCache.tryUpsert(userId,recommendedValue)
                 && itemId != recommendedValue)
             return recommendedValue;
 
-        if (index != recommendedValue
-                && itemId != index)
+        if ((recommendedValue == null
+                || index != recommendedValue)
+            && itemId != index)
             return index;
 
         //return clickedItem;
         int max = 0;
         Long maxKey = recommendedValue;
         for (Long key: clickCounter.keySet()) {
-            int value = clickCounter.get(key);
+            int value = clickCounter.get(key.longValue());
             if (value>max
-                    && key.longValue() != recommendedValue
-                    && itemId != recommendedValue)
+                && (recommendedValue == null
+                    || (key.longValue() != recommendedValue
+                        && itemId != recommendedValue)
+                    )
+                )
             {
                 maxKey = key;
                 max = value;
             }
         }
+        if (maxKey == null)
+            return itemId;
         return maxKey;
 //            LongArrayList x = (LongArrayList) Util.sortByValueAndGetKeys(clickCounter, false, new LongArrayList());
 //            for (Long item: x) {
@@ -153,8 +163,18 @@ public abstract class AbstractSampling extends Algorithm {
         assignReservoir();
     }
 
-    protected void assignDataFrame() {
-        dataFrameManager = new DataFrameManager(timeFrame,reservoirSize,mode,trainingTime);
+    private void assignDataFrame() {
+        switch (mode){
+            case SingleModel:
+                dataFrameManager = new SingleDataFrame();
+                break;
+            case OverlappingModels:
+                dataFrameManager = new OverlappingCountDataFrame(timeFrame, trainingTime);
+                break;
+            case SeparateModels:
+                dataFrameManager = new SeparateCountDataFrame(timeFrame);
+                break;
+        }
     }
 
     /**
@@ -230,7 +250,7 @@ public abstract class AbstractSampling extends Algorithm {
         this.countMax = countMax;
     }
 
-    protected void assignCache() {
+    private void assignCache() {
         userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
     }
 

@@ -2,21 +2,21 @@ package testing.streamingrec.algorithms.helper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tudo.streamingrec.algorithms.dtos.FrameDto;
+import tudo.streamingrec.algorithms.dtos.FrameTimeDto;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FrameDtoTest {
+class FrameTimeDtoTest {
 
-    private FrameDto frame;
-    private FrameDto otherFrame;
+    private FrameTimeDto frame;
+    private FrameTimeDto otherFrame;
 
     @BeforeEach
     void setUp() {
-        this.frame = new FrameDto(5);
-        this.otherFrame = new FrameDto(5);
+        this.frame = new FrameTimeDto();
+        this.otherFrame = new FrameTimeDto();
         frame.collection.add(1l);
         frame.timestampThreshold = new Date(1,0,0,0,0,0);
         otherFrame.collection.add(2l);
