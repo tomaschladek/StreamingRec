@@ -13,7 +13,7 @@ public class CoocurentFilter implements IFilter {
     }
 
     @Override
-    public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, Set<Long> allowedIds, List<Item> items) {
+    public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, List<Long> allowedIds, List<Item> items) {
         if (allowedIds == null) return;
         if (coocurence.containsKey(itemFrom)) {
             allowedIds.addAll(coocurence.get(itemFrom));

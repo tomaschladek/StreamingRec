@@ -24,7 +24,7 @@ class CacheFilterTest extends AbstractFilterTest {
     void extendFilter(int itemId, int forbiddenSize) {
         List<Item> items = createItems();
         Set<Long> forbidden = createForbidden();
-        Set<Long> allowed = createAllowed();
+        List<Long> allowed = createAllowed();
         if (itemId != -1)
             filter.train(1,itemId);
         filter.extendFilter(1,20,forbidden,allowed,items);

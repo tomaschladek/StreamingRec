@@ -265,7 +265,7 @@ public class StreamingRec {
 		RawData data = new FilteredDataReader().readFilteredData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
 				DEDUPLICATE, OLD_FILE_FORMAT);
 
-		//filterByDate(new Date(116,1,8,0,0,0),data);
+		filterByDate(new Date(116,1,8,0,0,0),data);
 
 		//if a minimum session length is set, filter short sessions
 		if (SESSION_LENGTH_FILTER > 0) {

@@ -14,9 +14,7 @@ public class UserCache {
     private Date clearingThreshold = new Date(0, 0, 0, 0, 0, 0);
     private List<CircularFifoQueue<Long>> cache;
 
-    public UserCache(Integer exponent, int clearingTime, int size) {
-        if (exponent == null) return;
-
+    public UserCache(int exponent, int clearingTime, int size) {
         this.capacity = (int) Math.pow(2, exponent);
         assignCache();
         this.clearingTime = clearingTime;

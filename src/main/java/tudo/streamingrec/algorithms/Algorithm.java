@@ -1,13 +1,12 @@
 package tudo.streamingrec.algorithms;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
+
+import java.util.List;
 
 /**
  * The core algorithm interface
@@ -150,4 +149,6 @@ public abstract class Algorithm {
 		this.wholeUserHistory = wholeUserHistory;
 	}
 
+	public void initialize() {
+	}
 }

@@ -11,11 +11,14 @@ public class FloatingWindowSampler implements ISampler {
     }
 
     @Override
-    public void add(List<Long> collection, Long item) {
-        if (collection.size() < size
-                && !collection.isEmpty()){
-            collection.add(collection.get(collection.size()-1));
-        }
+    public Long add(List<Long> collection, Long item) {
+        tryAppend(collection);
+        Long removedValue = getRemovedValue(collection);
+        shiftCollection(collection, item);
+        return removedValue;
+    }
+
+    protected void shiftCollection(List<Long> collection, Long item) {
         for (int index = collection.size()-2; index >= 0; index--) {
             collection.set(index+1,collection.get(index));
         }
@@ -26,6 +29,21 @@ public class FloatingWindowSampler implements ISampler {
         {
             collection.set(0,item);
         }
+    }
 
+    protected Long getRemovedValue(List<Long> collection) {
+        Long removedValue = null;
+        if (collection.size() == size)
+        {
+            removedValue = collection.get(size-1);
+        }
+        return removedValue;
+    }
+
+    protected void tryAppend(List<Long> collection) {
+        if (collection.size() < size
+                && !collection.isEmpty()){
+            collection.add(collection.get(collection.size()-1));
+        }
     }
 }

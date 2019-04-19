@@ -14,7 +14,7 @@ public class CacheFilter implements IFilter {
     }
 
     @Override
-    public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, Set<Long> allowedIds, List<Item> items) {
+    public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, List<Long> allowedIds, List<Item> items) {
         if (forbiddenIds == null) return;
 
         forbiddenIds.addAll(userCache.getHistory(userId));

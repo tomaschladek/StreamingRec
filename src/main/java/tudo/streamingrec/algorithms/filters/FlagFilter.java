@@ -8,7 +8,7 @@ import java.util.Set;
 public class FlagFilter implements IFilter {
 
     @Override
-    public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, Set<Long> allowedIds, List<Item> items) {
+    public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, List<Long> allowedIds, List<Item> items) {
         if (forbiddenIds == null) return;
         for (Item item : items) {
             if (item.flag != 0){

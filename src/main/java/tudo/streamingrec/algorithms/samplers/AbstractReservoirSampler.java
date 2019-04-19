@@ -12,16 +12,17 @@ public abstract class AbstractReservoirSampler implements ISampler {
         this.reservoirSize = size;
     }
 
-    public void add(final List<Long> collection, Long item) {
+    public Long add(final List<Long> collection, Long item) {
         if (collection.size() < reservoirSize) {
             collection.add(item);
         }
         else {
             int replaceInIndex = getReplaceInIndex();
             if (replaceInIndex < reservoirSize) {
-                collection.set(replaceInIndex, item);
+                return collection.set(replaceInIndex, item);
             }
         }
+        return null;
     }
 
     protected abstract int getReplaceInIndex();

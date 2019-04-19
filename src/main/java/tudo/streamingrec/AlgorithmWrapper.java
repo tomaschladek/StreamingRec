@@ -1,26 +1,11 @@
 package tudo.streamingrec;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.net.URLEncoder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.apache.commons.lang3.time.StopWatch;
-import org.joda.time.Period;
-import org.joda.time.format.ISOPeriodFormat;
-
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import org.apache.commons.lang3.time.StopWatch;
+import org.joda.time.Period;
+import org.joda.time.format.ISOPeriodFormat;
 import tudo.streamingrec.algorithms.Algorithm;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
@@ -29,6 +14,12 @@ import tudo.streamingrec.evaluation.metrics.Metric;
 import tudo.streamingrec.evaluation.metrics.Runtime;
 import tudo.streamingrec.evaluation.metrics.Runtime.Type;
 import tudo.streamingrec.util.Util;
+
+import java.io.*;
+import java.net.URLEncoder;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.*;
 
 /**
  * A wrapper around the algorithm class that executes it in a thread
@@ -75,58 +66,103 @@ public class AlgorithmWrapper extends Thread {
 		StopWatch trainTime = new StopWatch();
 		StopWatch testTime = new StopWatch();
 		StopWatch inBetweenTrainTime = new StopWatch();
+		inBetweenTrainTime.start();
+		inBetweenTrainTime.suspend();
+		executeAlgorithm(trainTime, testTime, inBetweenTrainTime);
+
+		//cleanup to save RAM
+		testee = null;
+		metrics = null;
+		eventQueue = null;
+	}
+
+	protected void executeAlgorithm(StopWatch trainTime, StopWatch testTime, StopWatch inBetweenTrainTime) {
+		testee.initialize();
+		initialTraining(trainTime);
+		testing(testTime, inBetweenTrainTime);
+		saveRunTimeMetrics(trainTime, testTime, inBetweenTrainTime);
+
+		//all work is done -> write the results to the tmp result file
+		//the Runner will retrieve the results via references to the metrics
+		writeResult(testee.getName(), metrics);
+	}
+
+	protected void testing(StopWatch testTime, StopWatch inBetweenTrainTime) {
+		testTime.start();
+
+
+		//next, we start the test phase
+		int nextPercentage = 0;
+		for (int i = 0; i < eventQueue.size(); i++) {
+			nextPercentage = tryReportProgress(nextPercentage, i);
+
+			// take one work package
+			WorkPackage wp = eventQueue.get(i);
+			if (wp instanceof WorkPackageArticle) {
+				processItem(testTime, inBetweenTrainTime, (WorkPackageArticle) wp);
+
+			} else {
+				processTransaction(testTime, inBetweenTrainTime, (WorkPackageClick) wp);
+			}
+		}
+	}
+
+	protected void initialTraining(StopWatch trainTime) {
 		trainTime.start();
 		// first, we train
 		testee.train(trainItems, trainTransactions);
 		trainItems = null;
 		trainTransactions = null;
 		trainTime.stop();
-		testTime.start();
-		inBetweenTrainTime.start();
-		inBetweenTrainTime.suspend();
+	}
 
-		//next, we start the test phase
-		int nextPercentage = 0;
-		for (int i = 0; i < eventQueue.size(); i++) {
-			// calculate the current progress regularly
-			int percentage = (int) ((1d * (i + 1) / eventQueue.size()) * 100);
-			if (percentage == nextPercentage) {
-				nextPercentage++;
-				//report the progress internally if a new percentage is reached
-				progress(percentage);
-			}
-			// take one work package
-			WorkPackage wp = eventQueue.get(i);
-			if (wp instanceof WorkPackageArticle) {
-				//in case of article -> send to train method
-				Item articleEvent = ((WorkPackageArticle) wp).articleEvent;
-				// notify the algorithm about new articles
-				testTime.suspend();
-				inBetweenTrainTime.resume();
-				testee.train(Collections.singletonList(articleEvent), Collections.EMPTY_LIST);
-				inBetweenTrainTime.suspend();
-				testTime.resume();
-			} else {
-				//in case of click, generate recommendation list and then send to train method
-				WorkPackageClick wpC = (WorkPackageClick) wp;
-				//generate recommendations here
-				LongArrayList recommendations = testee.recommend(wpC.clickData);
-				testTime.suspend();
-				inBetweenTrainTime.resume();
-				testee.train(Collections.EMPTY_LIST, Collections.singletonList(wpC.clickData));
-				inBetweenTrainTime.suspend();
-				testTime.resume();
-				//evaluate metrics
-				for (Metric m : metrics) {
-					try {
-						m.evaluate(wpC.clickData.click, recommendations, wpC.groundTruth);
-					} catch (Exception ex) {
-						throw new RuntimeException(testee.getName() + ": " + ex.getMessage());
-					}
-				}
+	protected int tryReportProgress(int nextPercentage, int i) {
+		// calculate the current progress regularly
+		int percentage = (int) ((1d * (i + 1) / eventQueue.size()) * 100);
+		if (percentage == nextPercentage) {
+			nextPercentage++;
+			//report the progress internally if a new percentage is reached
+			progress(percentage);
+		}
+		return nextPercentage;
+	}
+
+	protected void processItem(StopWatch testTime, StopWatch inBetweenTrainTime, WorkPackageArticle wp) {
+		//in case of article -> send to train method
+		Item articleEvent = wp.articleEvent;
+		// notify the algorithm about new articles
+		testTime.suspend();
+		inBetweenTrainTime.resume();
+		testee.train(Collections.singletonList(articleEvent), Collections.EMPTY_LIST);
+		inBetweenTrainTime.suspend();
+		testTime.resume();
+	}
+
+	protected void processTransaction(StopWatch testTime, StopWatch inBetweenTrainTime, WorkPackageClick wp) {
+		//in case of click, generate recommendation list and then send to train method
+		WorkPackageClick wpC = wp;
+		//generate recommendations here
+		LongArrayList recommendations = testee.recommend(wpC.clickData);
+		testTime.suspend();
+		inBetweenTrainTime.resume();
+		testee.train(Collections.EMPTY_LIST, Collections.singletonList(wpC.clickData));
+		inBetweenTrainTime.suspend();
+		testTime.resume();
+		evaluateMetrics(wpC, recommendations);
+	}
+
+	protected void evaluateMetrics(WorkPackageClick wpC, LongArrayList recommendations) {
+		//evaluate metrics
+		for (Metric m : metrics) {
+			try {
+				m.evaluate(wpC.clickData.click, recommendations, wpC.groundTruth);
+			} catch (Exception ex) {
+				throw new RuntimeException(testee.getName() + ": " + ex.getMessage());
 			}
 		}
+	}
 
+	protected void saveRunTimeMetrics(StopWatch trainTime, StopWatch testTime, StopWatch inBetweenTrainTime) {
 		//test phase is over -> save the runtime results in the special metric instances
 		for (Metric metric : metrics) {
 			if (metric instanceof Runtime) {
@@ -140,16 +176,8 @@ public class AlgorithmWrapper extends Thread {
 				}
 			}
 		}
-
-		//all work is done -> write the results to the tmp result file
-		//the Runner will retrieve the results via references to the metrics
-		writeResult(testee.getName(), metrics);
-		//cleanup to save RAM
-		testee = null;
-		metrics = null;
-		eventQueue = null;
 	}
-	
+
 	//------------------------------------------------------------
 	// Static methods for progress printing and tmp result output
 	//------------------------------------------------------------

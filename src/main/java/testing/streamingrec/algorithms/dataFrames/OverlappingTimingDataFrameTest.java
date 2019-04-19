@@ -32,8 +32,8 @@ class OverlappingTimingDataFrameTest extends AbstractDataFrameTest {
         {
             sets.add(1L);
         }
-        assertEquals(1, testingData.size());
-        assertEquals(1L, testingData.get(0));
+        assertEquals(1, dataFrame.getTestingData().size());
+        assertEquals(1L, dataFrame.getTestingData().get(0));
     }
 
     /**

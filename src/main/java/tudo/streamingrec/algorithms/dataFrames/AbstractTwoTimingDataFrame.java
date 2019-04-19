@@ -3,6 +3,7 @@ package tudo.streamingrec.algorithms.dataFrames;
 import tudo.streamingrec.algorithms.dtos.FrameConfiguration;
 import tudo.streamingrec.algorithms.dtos.FrameTimeDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractTwoTimingDataFrame implements IDataFrame {
@@ -20,6 +21,6 @@ public abstract class AbstractTwoTimingDataFrame implements IDataFrame {
 
     public List<Long> getTestingData()
     {
-        return testing.collection;
+        return new ArrayList<>(testing.collection);
     }
 }

@@ -15,12 +15,12 @@ import java.util.*;
 
 /** Algorithm recommends items according to their popularity */
 public class PopularityBased extends Algorithm {
-    protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
-    protected Long2IntOpenHashMap trainingCounter = new Long2IntOpenHashMap();
-    protected Map<Long,Set<Long>> coocurence = new HashMap<>();
+    private Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
+    private Long2IntOpenHashMap trainingCounter = new Long2IntOpenHashMap();
+    private Map<Long,Set<Long>> coocurence = new HashMap<>();
     private Date windowThreshold = new Date(0,0,0,0,0,0);
     private Date trainThreshold = new Date(0,0,0,0,0,0);
-    protected int[] countMax = new int[]{100};
+    private int[] countMax = new int[]{100};
     private int countIndex = 0;
     private boolean isTimeDriven = false;
     private int countCurrent = 0;
@@ -31,13 +31,13 @@ public class PopularityBased extends Algorithm {
     private java.util.Random generator = new java.util.Random();
     private CircularFifoQueue<Long> clicks = new CircularFifoQueue<>(50);
 
-    protected Integer userCacheExponent = 10;
-    protected int clearingTime = 1;
-    protected int cacheDepth = 1;
+    private Integer userCacheExponent = 10;
+    private int clearingTime = 1;
+    private int cacheDepth = 1;
 
-    protected int trainingSize = 50;
+    private int trainingSize = 50;
 
-    protected UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
+    private UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
 
     @Override
     protected void trainInternal(List<Item> items, List<ClickData> clickData) {
@@ -58,7 +58,7 @@ public class PopularityBased extends Algorithm {
         clickCounter = trainingCounter;
         trainingCounter = new Long2IntOpenHashMap();
         int count = 0;
-        for (Long key: clickCounter.keySet()) {
+        for (long key: clickCounter.keySet()) {
             int value = clickCounter.get(key);
             if (value > count)
             {
@@ -91,7 +91,7 @@ public class PopularityBased extends Algorithm {
         for (Transaction transaction : click.session) {
             if (!coocurence.containsKey(transaction.item.id))
             {
-                coocurence.put(new Long(transaction.item.id),new HashSet<>());
+                coocurence.put(transaction.item.id,new HashSet<>());
             }
             coocurence.get(transaction.item.id).add(click.click.item.id);
         }
@@ -146,14 +146,14 @@ public class PopularityBased extends Algorithm {
     private long getCoocurentPopular(CircularFifoQueue<Long> used, long itemId) {
         int max = 0;
         Long maxKey = index;
-        for (Long key: coocurence.get(index)) {
+        for (long key: coocurence.get(index)) {
             if (!clickCounter.containsKey(key)) continue;
 
             int value = clickCounter.get(key);
             if (value > max
-                    && !used.contains(key.longValue())
-                    && key.longValue() != itemId
-                    && key.longValue() != index)
+                    && !used.contains(key)
+                    && key != itemId
+                    && key != index)
             {
                 maxKey = key;
                 max = value;
@@ -199,12 +199,12 @@ public class PopularityBased extends Algorithm {
     private long getTopDownBest(CircularFifoQueue<Long> used, long itemId) {
         int max = 0;
         Long maxKey = index;
-        for (Long key: clickCounter.keySet()) {
+        for (long key: clickCounter.keySet()) {
             int value = clickCounter.get(key);
             if (value > max
-                    && !used.contains(key.longValue())
-                    && key.longValue() != itemId
-                    && key.longValue() != index)
+                    && !used.contains(key)
+                    && key != itemId
+                    && key != index)
             {
                 maxKey = key;
                 max = value;
@@ -270,7 +270,7 @@ public class PopularityBased extends Algorithm {
     }
 
 
-    protected void assignCache() {
+    private void assignCache() {
         userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
     }
 

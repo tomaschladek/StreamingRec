@@ -20,7 +20,7 @@ public abstract class AbstractTwoCountDataFrame implements IDataFrame{
     public List<Long> getTestingData()
     {
         if (testing.collection.size() != 0)
-            return testing.collection;
-        return training;
+            return new ArrayList<>(testing.collection);
+        return new ArrayList<>(training);
     }
 }

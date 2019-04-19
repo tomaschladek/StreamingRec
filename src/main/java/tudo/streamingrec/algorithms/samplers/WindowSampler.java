@@ -5,7 +5,8 @@ import java.util.List;
 public class WindowSampler implements ISampler {
 
     @Override
-    public void add(List<Long> collection, Long item) {
+    public Long add(List<Long> collection, Long item) {
         collection.add(item);
+        return null;
     }
 }

@@ -25,7 +25,7 @@ class FlagFilterTest extends AbstractFilterTest {
         List<Item> items = createItems();
         items.add(createItem(itemId,8));
         Set<Long> forbidden = createForbidden();
-        Set<Long> allowed = createAllowed();
+        List<Long> allowed = createAllowed();
         filter.extendFilter(1,2,forbidden,allowed,items);
 
         assertEquals(forbiddenSize,forbidden.size());

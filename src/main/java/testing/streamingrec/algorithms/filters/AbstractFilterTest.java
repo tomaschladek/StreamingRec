@@ -26,8 +26,8 @@ public abstract class AbstractFilterTest {
         return forbidden;
     }
 
-    Set<Long> createAllowed() {
-        Set<Long> allowed = new HashSet<>();
+    List<Long> createAllowed() {
+        List<Long> allowed = new ArrayList<>();
         allowed.add(60L);
         return allowed;
     }

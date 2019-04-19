@@ -23,7 +23,7 @@ class CoocurentFilterTest extends AbstractFilterTest{
     void extendFilter(int itemFrom, int allowedSize) {
         List<Item> items = createItems();
         Set<Long> forbidden = createForbidden();
-        Set<Long> allowed = createAllowed();
+        List<Long> allowed = createAllowed();
         if (itemFrom != -1)
             filter.trainFromRecommendation(1,20,30);
         filter.extendFilter(1,itemFrom,forbidden,allowed,items);
