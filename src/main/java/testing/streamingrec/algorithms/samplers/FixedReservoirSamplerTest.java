@@ -7,7 +7,6 @@ import tudo.streamingrec.algorithms.samplers.FixedReservoirSampler;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FixedReservoirSamplerTest {
     private FixedReservoirSampler sampler;
@@ -21,22 +20,22 @@ class FixedReservoirSamplerTest {
     @Test
     void testAlwaysSampling() {
         this.sampler = new FixedReservoirSampler(1,0);
-        sampler.add(collection,1l);
+        sampler.add(collection,1L);
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
-        sampler.add(collection,2l);
-        assertTrue(collection.get(0) == 2l);
+        sampler.add(collection,2L);
+        assertEquals(2L, collection.get(0));
         assertEquals(1,collection.size());
     }
 
     @Test
     void testNeverSampling() {
         this.sampler = new FixedReservoirSampler(1,Integer.MAX_VALUE-1);
-        sampler.add(collection,1l);
+        sampler.add(collection,1L);
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
-        sampler.add(collection,2l);
-        assertTrue(collection.get(0) == 1l);
+        sampler.add(collection,2L);
+        assertEquals(1L, collection.get(0));
         assertEquals(1,collection.size());
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class PopularHeuristic implements IHeuristic {
-    protected Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
+    private Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
     private ItemCounterDto first;
 
     public PopularHeuristic() {
@@ -24,13 +24,13 @@ public class PopularHeuristic implements IHeuristic {
         return getGreatestNotForbiddenItem(items,forbidden);
     }
 
-    protected Long getGreatestNotForbiddenItem(List<Long> items, Set<Long> forbidden) {
+    private Long getGreatestNotForbiddenItem(List<Long> items, Set<Long> forbidden) {
         Long maxKey = null;
         for (Long key: items) {
-            if (clickCounter.containsKey(key)
+            if (clickCounter.containsKey(key.longValue())
                 && (maxKey == null
-                    || clickCounter.get(key) > clickCounter.get(maxKey))
-                && !forbidden.contains(key.longValue()))
+                    || clickCounter.get(key.longValue()) > clickCounter.get(maxKey.longValue()))
+                && !forbidden.contains(key))
             {
                 maxKey = key;
             }
@@ -58,7 +58,7 @@ public class PopularHeuristic implements IHeuristic {
             first.itemId = getGreatestNotForbiddenItem(new ArrayList<>(clickCounter.keySet()),new HashSet<>());
             first.count = first.itemId == null
                 ? 0
-                : clickCounter.get(first.itemId);
+                : clickCounter.get(first.itemId.longValue());
         }
     }
 }

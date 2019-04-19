@@ -21,10 +21,10 @@ class FloatingWindowSamplerTest {
     @Test
     void addSize1() {
         ISampler sampler = new FloatingWindowSampler(1);
-        sampler.add(collection,1l);
+        sampler.add(collection,1L);
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
-        sampler.add(collection,2l);
+        sampler.add(collection,2L);
         assertEquals(1,collection.size());
         assertEquals(2,collection.get(0));
     }
@@ -32,14 +32,14 @@ class FloatingWindowSamplerTest {
     @Test
     void addSize2() {
         ISampler sampler = new FloatingWindowSampler(2);
-        sampler.add(collection,1l);
+        sampler.add(collection,1L);
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
-        sampler.add(collection,2l);
+        sampler.add(collection,2L);
         assertEquals(2,collection.size());
         assertEquals(2,collection.get(0));
         assertEquals(1,collection.get(1));
-        sampler.add(collection,3l);
+        sampler.add(collection,3L);
         assertEquals(2,collection.size());
         assertEquals(3,collection.get(0));
         assertEquals(2,collection.get(1));

@@ -23,12 +23,12 @@ class DynamicReservoirSamplerTest {
 
     @Test
     void testSampling() {
-        sampler.add(collection,1l);
+        sampler.add(collection,1L);
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
         for (long index = 2; index < 102; index++)
             sampler.add(collection,index);
-        assertTrue(collection.get(0) != 1l);
+        assertTrue(collection.get(0) != 1L);
         assertEquals(1,collection.size());
     }
 }

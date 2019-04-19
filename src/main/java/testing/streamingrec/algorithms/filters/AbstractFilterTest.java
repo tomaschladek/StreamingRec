@@ -12,27 +12,27 @@ public abstract class AbstractFilterTest {
 
     protected IFilter filter;
 
-    protected List<Item> createItems() {
+    List<Item> createItems() {
         List<Item> items = new ArrayList<>();
-        items.add(createItem(10l, 0));
-        items.add(createItem(11l, 8));
-        items.add(createItem(12l, 0));
+        items.add(createItem(10L, 0));
+        items.add(createItem(11L, 8));
+        items.add(createItem(12L, 0));
         return items;
     }
 
-    protected Set<Long> createForbidden() {
+    Set<Long> createForbidden() {
         Set<Long> forbidden = new HashSet<>();
-        forbidden.add(40l);
+        forbidden.add(40L);
         return forbidden;
     }
 
-    protected Set<Long> createAllowed() {
+    Set<Long> createAllowed() {
         Set<Long> allowed = new HashSet<>();
-        allowed.add(60l);
+        allowed.add(60L);
         return allowed;
     }
 
-    protected Item createItem(long id, int flag) {
+    Item createItem(long id, int flag) {
         Item item1 = new Item();
         item1.id = id;
         item1.flag = flag;

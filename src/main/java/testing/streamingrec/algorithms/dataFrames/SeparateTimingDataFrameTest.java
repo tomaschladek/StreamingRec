@@ -27,7 +27,7 @@ class SeparateTimingDataFrameTest extends AbstractDataFrameTest {
         assertEquals(0, testingData.size());
         for (List<Long> sets : dataFrame.getTrainingData(timestamp))
         {
-            sets.add(1l);
+            sets.add(1L);
         }
         assertEquals(0, dataFrame.getTestingData().size());
     }

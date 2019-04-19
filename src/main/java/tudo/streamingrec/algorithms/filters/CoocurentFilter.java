@@ -34,7 +34,7 @@ public class CoocurentFilter implements IFilter {
     private void addCoocurence(long itemFrom, long itemTo) {
         if (!coocurence.containsKey(itemFrom))
         {
-            coocurence.put(new Long(itemFrom),new HashSet<>());
+            coocurence.put(itemFrom,new HashSet<>());
         }
         coocurence.get(itemFrom).add(itemTo);
     }

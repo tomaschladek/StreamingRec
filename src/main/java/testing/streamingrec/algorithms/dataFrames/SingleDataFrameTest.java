@@ -27,10 +27,10 @@ class SingleDataFrameTest extends AbstractDataFrameTest {
         assertEquals(0, testingData.size());
         for (List<Long> sets : dataFrame.getTrainingData(timestamp))
         {
-            sets.add(1l);
+            sets.add(1L);
         }
         assertEquals(1, dataFrame.getTestingData().size());
-        assertEquals(1l, dataFrame.getTestingData().get(0));
+        assertEquals(1L, dataFrame.getTestingData().get(0));
     }
 
     @Test

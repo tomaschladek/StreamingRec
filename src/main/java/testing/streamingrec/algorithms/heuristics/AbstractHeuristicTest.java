@@ -9,20 +9,20 @@ import java.util.Set;
 
 public abstract class AbstractHeuristicTest {
 
-    protected IHeuristic heuristic;
+    IHeuristic heuristic;
     protected ArrayList<Long> items;
     protected Set<Long> forbidden;
 
     @BeforeEach
     void setUp(){
         this.items = new ArrayList<>();
-        items.add(10l);
-        items.add(11l);
-        items.add(12l);
-        items.add(13l);
-        items.add(14l);
+        items.add(10L);
+        items.add(11L);
+        items.add(12L);
+        items.add(13L);
+        items.add(14L);
         this.forbidden = new HashSet<>();
-        forbidden.add(15l);
-        forbidden.add(16l);
+        forbidden.add(15L);
+        forbidden.add(16L);
     }
 }

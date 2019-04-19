@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class RecentHeuristic implements IHeuristic {
-    Deque<Long> chain;
+    private Deque<Long> chain;
 
     public RecentHeuristic() {
         this.chain = new LinkedList<>();

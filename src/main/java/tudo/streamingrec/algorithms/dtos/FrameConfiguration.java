@@ -1,8 +1,8 @@
 package tudo.streamingrec.algorithms.dtos;
 
 public class FrameConfiguration {
-    public int timeFrameIndex;
-    public int[] timeFrame;
+    private int timeFrameIndex;
+    private int[] timeFrame;
 
     public FrameConfiguration(int[] timeFrame) {
         this.timeFrameIndex = 0;

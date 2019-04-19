@@ -1,7 +1,6 @@
 package testing.streamingrec.algorithms.filters;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import tudo.streamingrec.algorithms.filters.CoocurentFilter;

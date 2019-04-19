@@ -17,9 +17,9 @@ class FrameTimeDtoTest {
     void setUp() {
         this.frame = new FrameTimeDto();
         this.otherFrame = new FrameTimeDto();
-        frame.collection.add(1l);
+        frame.collection.add(1L);
         frame.timestampThreshold = new Date(1,0,0,0,0,0);
-        otherFrame.collection.add(2l);
+        otherFrame.collection.add(2L);
         otherFrame.timestampThreshold = new Date(2,0,0,0,0,0);
     }
 

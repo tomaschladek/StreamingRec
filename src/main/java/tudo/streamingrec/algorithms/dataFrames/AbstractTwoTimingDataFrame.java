@@ -10,7 +10,7 @@ public abstract class AbstractTwoTimingDataFrame implements IDataFrame {
     protected FrameTimeDto training;
     protected FrameTimeDto testing;
 
-    public AbstractTwoTimingDataFrame(int[] timeFrame) {
+    AbstractTwoTimingDataFrame(int[] timeFrame) {
         this.configuration = timeFrame.length > 0
                 ? new FrameConfiguration(timeFrame)
                 : null;

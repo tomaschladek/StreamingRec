@@ -19,9 +19,9 @@ class RandomHeuristicTest extends AbstractHeuristicTest {
     @Test
     void forbiddenItems() {
         this.items = new ArrayList<>();
-        items.add(15l);
+        items.add(15L);
         this.forbidden = new HashSet<>();
-        forbidden.add(15l);
+        forbidden.add(15L);
         assertNull(heuristic.get(items, forbidden), "Forbidden item");
     }
 
@@ -35,13 +35,13 @@ class RandomHeuristicTest extends AbstractHeuristicTest {
     @Test
     void get() {
         this.items = new ArrayList<>();
-        items.add(11l);
-        items.add(12l);
-        items.add(13l);
-        items.add(14l);
-        items.add(15l);
+        items.add(11L);
+        items.add(12L);
+        items.add(13L);
+        items.add(14L);
+        items.add(15L);
         this.forbidden = new HashSet<>();
-        forbidden.add(15l);
+        forbidden.add(15L);
         for (int index = 0; index < 50; index++)
             assertNotNull(heuristic.get(items,forbidden));
     }

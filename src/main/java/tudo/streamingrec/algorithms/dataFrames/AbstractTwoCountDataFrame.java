@@ -11,7 +11,7 @@ public abstract class AbstractTwoCountDataFrame implements IDataFrame{
     protected List<Long> training;
     protected FrameCountDto testing;
 
-    public AbstractTwoCountDataFrame(int[] timeFrame) {
+    AbstractTwoCountDataFrame(int[] timeFrame) {
         this.configuration = new FrameConfiguration(timeFrame);
         this.training = new ArrayList<>();
         this.testing = new FrameCountDto(configuration.getNext());

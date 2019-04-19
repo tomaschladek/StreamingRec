@@ -1,7 +1,6 @@
 package testing.streamingrec.algorithms.filters;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import tudo.streamingrec.algorithms.filters.FlagFilter;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class FlagFilterTest extends AbstractFilterTest {
 
     @BeforeEach
-    protected void setUp() {
+    void setUp() {
         this.filter = new FlagFilter();
     }
 
@@ -34,8 +33,8 @@ class FlagFilterTest extends AbstractFilterTest {
         assertEquals(1,allowed.size());
         if (forbiddenSize > 2)
             assertTrue(forbidden.contains(itemId));
-        assertTrue(forbidden.contains(11l));
-        assertTrue(forbidden.contains(40l));
+        assertTrue(forbidden.contains(11L));
+        assertTrue(forbidden.contains(40L));
     }
 
 }
