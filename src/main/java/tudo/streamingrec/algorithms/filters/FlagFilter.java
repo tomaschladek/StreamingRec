@@ -9,6 +9,7 @@ public class FlagFilter implements IFilter {
 
     @Override
     public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, Set<Long> allowedIds, List<Item> items) {
+        if (forbiddenIds == null) return;
         for (Item item : items) {
             if (item.flag != 0){
                 forbiddenIds.add(item.id);
@@ -17,7 +18,12 @@ public class FlagFilter implements IFilter {
     }
 
     @Override
-    public void train(long userId, long itemFrom, long itemTo) {
+    public void train(long userId, long itemFrom) {
+
+    }
+
+    @Override
+    public void trainFromRecommendation(long userId, long itemFrom, long itemTo) {
 
     }
 }

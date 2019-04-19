@@ -6,19 +6,27 @@ import java.util.*;
 
 public class CoocurentFilter implements IFilter {
 
-    private Map<Long,Set<Long>> coocurence = new HashMap<>();
+    private Map<Long,Set<Long>> coocurence;
 
-    public CoocurentFilter(Map<Long, Set<Long>> coocurence) {
-        this.coocurence = coocurence;
+    public CoocurentFilter() {
+        this.coocurence = new HashMap<>();
     }
 
     @Override
     public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, Set<Long> allowedIds, List<Item> items) {
-        allowedIds.addAll(coocurence.get(itemFrom));
+        if (allowedIds == null) return;
+        if (coocurence.containsKey(itemFrom)) {
+            allowedIds.addAll(coocurence.get(itemFrom));
+        }
     }
 
     @Override
-    public void train(long userId, long itemFrom, long itemTo) {
+    public void train(long userId, long itemFrom) {
+
+    }
+
+    @Override
+    public void trainFromRecommendation(long userId, long itemFrom, long itemTo) {
         addCoocurence(itemFrom, itemTo);
         addCoocurence(itemTo, itemFrom);
     }

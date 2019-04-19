@@ -10,6 +10,8 @@ public class RandomHeuristic implements IHeuristic {
 
     @Override
     public Long get(List<Long> items, Set<Long> forbidden) {
+        if (items.size() == 0) return null;
+
         int max = Math.max(items.size(),50);
         for (int index = 0; index < max; index++)
         {
@@ -20,5 +22,15 @@ public class RandomHeuristic implements IHeuristic {
             }
         }
         return null;
+    }
+
+    @Override
+    public void trainAdd(long userId, long itemId) {
+
+    }
+
+    @Override
+    public void trainRemove(long userId, long itemId) {
+
     }
 }

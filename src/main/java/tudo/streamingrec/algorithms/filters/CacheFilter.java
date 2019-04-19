@@ -15,11 +15,18 @@ public class CacheFilter implements IFilter {
 
     @Override
     public void extendFilter(long userId, long itemFrom, Set<Long> forbiddenIds, Set<Long> allowedIds, List<Item> items) {
+        if (forbiddenIds == null) return;
+
         forbiddenIds.addAll(userCache.getHistory(userId));
     }
 
     @Override
-    public void train(long userId, long itemFrom, long itemTo) {
+    public void train(long userId, long itemFrom) {
+        userCache.tryUpsert(userId,itemFrom);
+    }
+
+    @Override
+    public void trainFromRecommendation(long userId, long itemFrom, long itemTo) {
         userCache.tryUpsert(userId,itemTo);
     }
 }
