@@ -2,7 +2,6 @@ package tudo.streamingrec.evaluation.metrics;
 
 import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import tudo.streamingrec.data.Transaction;
 
@@ -12,9 +11,7 @@ public class Accuracy extends HypothesisTestableMetric {
     private static final long serialVersionUID = 5757499847554728701L;
     // result storage
     private DoubleArrayList results = new DoubleArrayList();
-    private HashMap<Long,LongOpenHashSet> uniques = new HashMap<>();
-    //the type (Precision or Recall)
-    private PrecisionOrRecall.Type type = PrecisionOrRecall.Type.Undefined;
+    private HashMap<Long,LongOpenHashSet> interactionMatrix = new HashMap<>();
 
     @Override
     public DoubleArrayList getDetailedResults() {
@@ -23,40 +20,49 @@ public class Accuracy extends HypothesisTestableMetric {
 
     @Override
     public void evaluate(Transaction transaction, LongArrayList recommendations, LongOpenHashSet userTransactions) {
-        //no future unique IDs
-        if (userTransactions == null || userTransactions.isEmpty() || transaction.userId == 0) {
-            return;
-        }
-        // if the algorithm does not return any recommendations, count it as 0
-        if (recommendations.isEmpty()) {
-            results.add(0);
+        if (!hasAllAtributes(transaction, userTransactions)) {
             return;
         }
 
-        long recommendedValue = recommendations.getLong(0);
-        if (transaction.userId != 0 && uniques.containsKey(transaction.userId) && uniques.get(transaction.userId).contains(recommendedValue))
+        Long recommendedValue = getFirstRecommendValue(transaction, recommendations, userTransactions);
+        if (recommendedValue == null)
         {
             results.add(0);
-            return;
         }
+        else{
+            updateInteractionMatrix(transaction, recommendedValue);
+            results.add(1);
+        }
+    }
 
-        if (!uniques.containsKey(transaction.userId))
+    protected void updateInteractionMatrix(Transaction transaction, Long recommendedValue) {
+        if (!interactionMatrix.containsKey(transaction.userId))
         {
-            uniques.put(transaction.userId,new LongOpenHashSet());
+            interactionMatrix.put(transaction.userId,new LongOpenHashSet());
         }
-        uniques.get(transaction.userId).add(recommendedValue);
+        interactionMatrix.get(transaction.userId).add(recommendedValue);
+    }
 
-        // calculate the precision
-        double result = 0;
-        // iterate over relevant items and recommendations to calculate the
-        // intersection
-        for (LongIterator iterator = userTransactions.iterator(); iterator.hasNext();) {
-            if (iterator.nextLong() == recommendedValue) {
-                result = 1;
+    protected boolean hasAllAtributes(Transaction transaction, LongOpenHashSet userTransactions) {
+        return userTransactions != null
+                && !userTransactions.isEmpty()
+                && transaction.userId != 0;
+    }
+
+    protected Long getFirstRecommendValue(Transaction transaction, LongArrayList recommendations, LongOpenHashSet userTransactions) {
+        LongArrayList recommendedValues = new LongArrayList();
+        if (!recommendations.isEmpty()) {
+            for (long recommendation : recommendations) {
+                if (userTransactions.contains(recommendation)
+                    && (!interactionMatrix.containsKey(transaction.userId)
+                        || (
+                            interactionMatrix.containsKey(transaction.userId)
+                            && !interactionMatrix.get(transaction.userId).contains(recommendation)))) {
+                    recommendedValues.add(recommendation);
+                }
             }
         }
-
-        results.add(result);
+        return recommendedValues.isEmpty() ? null : recommendedValues.getLong(0);
     }
 
     @Override
