@@ -2,7 +2,7 @@ package tudo.streamingrec.algorithms;
 
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import tudo.streamingrec.algorithms.streaming.StreamingBuilder;
-import tudo.streamingrec.algorithms.streaming.StreamingExecutor;
+import tudo.streamingrec.algorithms.streaming.StreamingManager;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Streaming extends Algorithm {
 
-    private StreamingExecutor executor;
+    private StreamingManager executor;
     private StreamingBuilder builder = new StreamingBuilder();
 
     @Override
@@ -42,7 +42,7 @@ public class Streaming extends Algorithm {
 
     @Override
     protected LongArrayList recommendInternal(ClickData clickData) {
-        long recommendedValue = executor.recommend(clickData.click.userId,clickData.click.item.id);
+        long recommendedValue = executor.recommend(clickData.click.userId,clickData.click.item.id, clickData.click.timestamp);
         return LongArrayList.wrap(new long[]{recommendedValue});
     }
 

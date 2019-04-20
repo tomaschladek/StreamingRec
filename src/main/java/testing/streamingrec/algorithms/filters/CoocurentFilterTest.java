@@ -15,21 +15,22 @@ class CoocurentFilterTest extends AbstractFilterTest{
 
     @BeforeEach
     void setUp() {
-        this.filter = new CoocurentFilter();
+        this.filter = new CoocurentFilter(60*24);
     }
 
     @ParameterizedTest
-    @CsvSource({ "-1,1", "20,2","21,1","30,2" })
-    void extendFilter(int itemFrom, int allowedSize) {
+    @CsvSource({ "10,-1,2","10,20,2","60,-1,2","60,60,2","30,60,2","30,50,1"})
+    void extendFilter(int itemFromFilter, int itemFrom, int expectedSize) {
         List<Item> items = createItems();
-        Set<Long> forbidden = createForbidden();
-        List<Long> allowed = createAllowed();
+        Set<Long> excluded = createForbidden();
+        List<Long> included = createAllowed();
+        included.add(30L);
         if (itemFrom != -1)
-            filter.trainFromRecommendation(1,20,30);
-        filter.extendFilter(1,itemFrom,forbidden,allowed,items);
+            filter.trainFromRecommendation(1,itemFrom,30);
+        filter.extendFilter(1,itemFromFilter,excluded,included,items);
 
-        assertEquals(1,forbidden.size());
+        assertEquals(1,excluded.size());
         assertEquals(3,items.size());
-        assertEquals(allowedSize,allowed.size());
+        assertEquals(expectedSize,included.size());
     }
 }

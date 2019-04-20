@@ -2,18 +2,23 @@ package testing.streamingrec.algorithms.dataFrames;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import tudo.streamingrec.algorithms.dataFrames.SeparateTimingDataFrame;
-
-import java.util.List;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class SeparateTimingDataFrameTest extends AbstractDataFrameTest {
 
     @BeforeEach
     public void setUp() {
-        super.setUp();
         this.dataFrame = new SeparateTimingDataFrame(new int[]{10,20,30});
+        super.setUp();
     }
 
     @Test
@@ -23,19 +28,19 @@ class SeparateTimingDataFrameTest extends AbstractDataFrameTest {
 
     @Test
     void getTestingData() {
-        List<Long> testingData = dataFrame.getTestingData();
-        assertEquals(0, testingData.size());
-        for (List<Long> sets : dataFrame.getTrainingData(timestamp))
+        IStreamingExecutor testingData = dataFrame.getTestingData();
+        assertEquals(0, testingData.getCollection().size());
+        for (IStreamingExecutor executor : dataFrame.getTrainingData(timestamp))
         {
-            sets.add(1L);
+            executor.getCollection().add(1L);
         }
-        assertEquals(0, dataFrame.getTestingData().size());
+        assertEquals(0, dataFrame.getTestingData().getCollection().size());
     }
 
     @Test
     void update() {
         generateTransactions();
-        assertEquals(10, dataFrame.getTestingData().size());
-        assertEquals(4, dataFrame.getTrainingData(timestamp).get(0).size());
+        assertEquals(9, dataFrame.getTestingData().getCollection().size());
+        assertEquals(5, dataFrame.getTrainingData(timestamp).get(0).getCollection().size());
     }
 }

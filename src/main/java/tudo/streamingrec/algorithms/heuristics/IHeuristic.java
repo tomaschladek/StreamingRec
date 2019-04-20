@@ -7,4 +7,5 @@ public interface IHeuristic {
     Long get(List<Long> items, Set<Long> forbidden);
     void trainAdd(long userId, long itemId);
     void trainRemove(long userId, long itemId);
+    IHeuristic copy();
 }

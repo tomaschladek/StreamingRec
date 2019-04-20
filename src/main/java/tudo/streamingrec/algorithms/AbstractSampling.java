@@ -12,6 +12,7 @@ import tudo.streamingrec.algorithms.heuristics.IHeuristic;
 import tudo.streamingrec.algorithms.heuristics.IteratorHeuristic;
 import tudo.streamingrec.algorithms.samplers.AbstractReservoirSampler;
 import tudo.streamingrec.algorithms.samplers.DynamicReservoirSampler;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
 
@@ -68,16 +69,16 @@ public abstract class AbstractSampling extends Algorithm {
                     index = data.click.item.id;
                     count = clickCounter.get(data.click.item.id);
                 }
-                for (List<Long> dataset: dataFrameManager.getTrainingData(timestamp)){
-                    sampler.add(dataset,data.click.item.id);
+                for (IStreamingExecutor dataset: dataFrameManager.getTrainingData(timestamp)){
+                    sampler.add(dataset.getCollection(),data.click.item.id);
                 }
             }
         }
         else{
             for (Item item : items) {
                 timestamp = item.updatedAt;
-                for (List<Long> dataset: dataFrameManager.getTrainingData(timestamp)){
-                    sampler.add(dataset,item.id);
+                for (IStreamingExecutor dataset: dataFrameManager.getTrainingData(timestamp)){
+                    sampler.add(dataset.getCollection(),item.id);
                     clickCounter.addTo(item.id, 1);
                     countCurrent++;
                 }
@@ -108,12 +109,12 @@ public abstract class AbstractSampling extends Algorithm {
 
     protected long getRecommendedValue(long userId, long itemId) {
 
-        List<Long> testingData = dataFrameManager.getTestingData();
-        if (testingData.size() == 0) return clickedItem;
+        IStreamingExecutor testingData = dataFrameManager.getTestingData();
+        if (testingData.getCollection().size() == 0) return clickedItem;
 
         Set<Long> forbidden = new HashSet<>();
         forbidden.add(itemId);
-        Long recommendedValue = heuristic.get(testingData,forbidden);
+        Long recommendedValue = heuristic.get(testingData.getCollection(),forbidden);
         if (recommendedValue != null
                 && userCache.tryUpsert(userId,recommendedValue)
                 && itemId != recommendedValue)

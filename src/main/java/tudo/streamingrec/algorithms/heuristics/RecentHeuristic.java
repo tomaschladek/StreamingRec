@@ -30,4 +30,9 @@ public class RecentHeuristic implements IHeuristic {
     public void trainRemove(long userId, long itemId) {
         chain.removeLastOccurrence(itemId);
     }
+
+    @Override
+    public IHeuristic copy() {
+        return new RecentHeuristic();
+    }
 }

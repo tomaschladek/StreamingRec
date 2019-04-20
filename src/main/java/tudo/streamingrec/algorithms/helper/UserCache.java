@@ -58,6 +58,7 @@ public class UserCache {
         if (cache != null
                 && timestamp != null
                 && clearingThreshold.before(timestamp)) {
+
             clearingThreshold = DateUtils.addMinutes(timestamp, clearingTime);
             assignCache();
         }
@@ -73,5 +74,9 @@ public class UserCache {
         if (cache.get(hash) != null) return cache.get(hash);
 
         return new CircularFifoQueue<>(1);
+    }
+
+    public UserCache copy() {
+        return new UserCache((int) (Math.log(capacity) / Math.log(2)),clearingTime,size);
     }
 }

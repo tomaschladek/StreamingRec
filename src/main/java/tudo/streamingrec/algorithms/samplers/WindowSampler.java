@@ -9,4 +9,9 @@ public class WindowSampler implements ISampler {
         collection.add(item);
         return null;
     }
+
+    @Override
+    public ISampler copy() {
+        return new WindowSampler();
+    }
 }

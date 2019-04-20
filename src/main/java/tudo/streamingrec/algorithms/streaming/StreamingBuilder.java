@@ -167,7 +167,7 @@ public class StreamingBuilder {
     {
         switch (mode){
             case FILTER_MODE_COOCURENCE:
-                filters.add(new CoocurentFilter());
+                filters.add(new CoocurentFilter(getInt(pairs,FILTER_PAR_EXPIRATION_TIME)));
                 break;
             case FILTER_MODE_FLAG:
                 filters.add(new FlagFilter());
@@ -199,9 +199,11 @@ public class StreamingBuilder {
         }
     }
 
-    public StreamingExecutor construct()
+    public StreamingManager construct()
     {
-        return new StreamingExecutor(dataFrame,sampler,filters,heuristic);
+        StreamingExecutor executor = new StreamingExecutor(sampler,heuristic);
+        dataFrame.assignExecutor(executor);
+        return new StreamingManager(dataFrame,filters);
     }
 
 }

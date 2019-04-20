@@ -1,6 +1,6 @@
 package tudo.streamingrec.algorithms.dataFrames;
 
-import tudo.streamingrec.algorithms.dtos.FrameDto;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,25 +8,26 @@ import java.util.List;
 
 public class SingleDataFrame implements IDataFrame {
 
-    private FrameDto testing;
+    private IStreamingExecutor executor;
 
-    public SingleDataFrame() {
-        this.testing = new FrameDto();
-    }
-
-    public List<List<Long>> getTrainingData(Date time)
+    public List<IStreamingExecutor> getTrainingData(Date time)
     {
-        List<List<Long>> list = new ArrayList<>();
-        list.add(testing.collection);
+        List<IStreamingExecutor> list = new ArrayList<>();
+        list.add(executor);
         return list;
     }
 
-    public List<Long> getTestingData()
+    public IStreamingExecutor getTestingData()
     {
-        return new ArrayList<>(testing.collection);
+        return executor;
     }
 
     public boolean update(Date timestamp) {
         return false;
+    }
+
+    @Override
+    public void assignExecutor(IStreamingExecutor executor) {
+        this.executor = executor;
     }
 }

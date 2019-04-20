@@ -1,5 +1,7 @@
 package tudo.streamingrec.algorithms.dataFrames;
 
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,12 +14,12 @@ public class SeparateCountDataFrame extends AbstractTwoCountDataFrame {
         super(timeFrame);
     }
 
-    public List<List<Long>> getTrainingData(Date time)
+    public List<IStreamingExecutor> getTrainingData(Date time)
     {
-        List<List<Long>> list = new ArrayList<>();
+        List<IStreamingExecutor> list = new ArrayList<>();
         if (isFirstRun)
         {
-            list.add(testing.collection);
+            list.add(testing);
         }
         list.add(training);
         return list;
@@ -27,11 +29,10 @@ public class SeparateCountDataFrame extends AbstractTwoCountDataFrame {
 
         if (configuration != null
                 && timestamp != null
-                && testing.count <= testing.collection.size())
+                && testingCount <= testing.getCollection().size())
         {
             isFirstRun = false;
-            testing.assignAndClear(training, configuration.getNext());
-            training = new ArrayList<>();
+            assignAndClear();
             return true;
         }
         return false;

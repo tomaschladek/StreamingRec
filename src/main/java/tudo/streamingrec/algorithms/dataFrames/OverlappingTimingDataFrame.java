@@ -1,6 +1,7 @@
 package tudo.streamingrec.algorithms.dataFrames;
 
 import org.apache.commons.lang3.time.DateUtils;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,13 +15,13 @@ public class OverlappingTimingDataFrame extends AbstractTwoTimingDataFrame {
         this.trainingTime = trainingTime;
     }
 
-    public List<List<Long>> getTrainingData(Date time)
+    public List<IStreamingExecutor> getTrainingData(Date time)
     {
-        List<List<Long>> list = new ArrayList<>();
-        list.add(testing.collection);
-        if (training.timestampThreshold.before(time))
+        List<IStreamingExecutor> list = new ArrayList<>();
+        list.add(testing);
+        if (trainingTimestamp.before(time))
         {
-            list.add(training.collection);
+            list.add(training);
         }
         return list;
     }
@@ -28,13 +29,13 @@ public class OverlappingTimingDataFrame extends AbstractTwoTimingDataFrame {
     public boolean update(Date timestamp) {
         if (configuration != null
                 && timestamp != null
-                && testing.timestampThreshold.before(timestamp))
+                && testingTimestamp.before(timestamp))
         {
-            while(testing.timestampThreshold.before(timestamp)) {
-                testing.timestampThreshold = DateUtils.addMinutes(testing.timestampThreshold, configuration.getNext());
-                training.timestampThreshold = DateUtils.addMinutes(testing.timestampThreshold, -trainingTime);
+            while(testingTimestamp.before(timestamp)) {
+                testingTimestamp = DateUtils.addMinutes(testingTimestamp, configuration.getNext());
+                trainingTimestamp = DateUtils.addMinutes(testingTimestamp, -trainingTime);
             }
-            testing.assignAndClear(training);
+            assignAndClear();
             return true;
         }
         return false;

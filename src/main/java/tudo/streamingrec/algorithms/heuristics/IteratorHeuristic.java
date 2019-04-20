@@ -22,4 +22,9 @@ public class IteratorHeuristic implements IHeuristic {
     public void trainRemove(long userId, long itemId) {
 
     }
+
+    @Override
+    public IHeuristic copy() {
+        return new IteratorHeuristic();
+    }
 }

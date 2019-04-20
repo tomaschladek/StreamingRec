@@ -2,50 +2,52 @@ package testing.streamingrec.algorithms.dataFrames;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import tudo.streamingrec.algorithms.dataFrames.OverlappingTimingDataFrame;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class OverlappingTimingDataFrameTest extends AbstractDataFrameTest {
 
     @BeforeEach
     public void setUp() {
-        super.setUp();
         dataFrame = new OverlappingTimingDataFrame(new int[]{10,20,30},5);
+        super.setUp();
     }
 
     @Test
     void getTrainingData() {
-        List<List<Long>> trainingData = dataFrame.getTrainingData(timestamp);
+        List<IStreamingExecutor> trainingData = dataFrame.getTrainingData(timestamp);
         assertEquals(2, trainingData.size());
         assertNotSame(trainingData.get(0),trainingData.get(1));
     }
 
     @Test
     void getTestingData() {
-        List<Long> testingData = dataFrame.getTestingData();
-        assertEquals(0, testingData.size());
-        for (List<Long> sets : dataFrame.getTrainingData(timestamp))
+        IStreamingExecutor testingData = dataFrame.getTestingData();
+        assertEquals(0, testingData.getCollection().size());
+        for (IStreamingExecutor sets : dataFrame.getTrainingData(timestamp))
         {
-            sets.add(1L);
+            sets.getCollection().add(1L);
         }
-        assertEquals(1, dataFrame.getTestingData().size());
-        assertEquals(1L, dataFrame.getTestingData().get(0));
+        assertEquals(1, dataFrame.getTestingData().getCollection().size());
+        assertEquals(1L, dataFrame.getTestingData().getCollection().get(0));
     }
 
-    /**
-     *
-     *  Frames: 1|10|20
-     *  Training+Testing=> 1+1 => 5+11 => 4+9
-     *  Training didnt start in the end. Training = testing.
-     **/
+
     @Test
     void update() {
         generateTransactions();
-        assertEquals(9, dataFrame.getTestingData().size());
-        assertEquals(9, dataFrame.getTrainingData(timestamp).get(0).size());
+        assertEquals(10, dataFrame.getTestingData().getCollection().size());
+        assertEquals(10, dataFrame.getTrainingData(timestamp).get(0).getCollection().size());
     }
 }

@@ -18,6 +18,11 @@ public class FloatingWindowSampler implements ISampler {
         return removedValue;
     }
 
+    @Override
+    public ISampler copy() {
+        return new FloatingWindowSampler(size);
+    }
+
     protected void shiftCollection(List<Long> collection, Long item) {
         for (int index = collection.size()-2; index >= 0; index--) {
             collection.set(index+1,collection.get(index));

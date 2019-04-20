@@ -86,4 +86,31 @@ class StreamingTest {
         algorithm.setIsTransaction(true);
         algorithm.initialize();
     }
+
+
+    @ParameterizedTest
+    @CsvSource({"1,1000,2",
+            "0,1000,1",
+            "1,1000,0",
+            "1,111,0",
+            "1,111,1",
+            "1,111,2"
+    })
+    public void recommendAfterWindowSwitch(long expectedValue, long userId, int itemId){
+        initialize(1);
+        List<Item> items = new ArrayList<>();
+        items.add(createItem(0,0));
+        items.add(createItem(1,0));
+        items.add(createItem(2,0));
+        List<ClickData> transactions = new ArrayList<>();
+        transactions.add(createClick(111,items.get(0),0));
+        for (int index = 1; index < 101; index++)
+        {
+            int itemIndex = index <60 ? 0 : 1;
+            transactions.add(createClick(1,items.get(itemIndex),0));
+        }
+
+        algorithm.train(items,transactions);
+        Assertions.assertEquals(expectedValue,algorithm.recommend(createClick(userId,items.get(itemId),4)).getLong(0));
+    }
 }

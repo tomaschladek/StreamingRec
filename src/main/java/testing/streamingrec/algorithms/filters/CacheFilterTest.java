@@ -7,6 +7,7 @@ import tudo.streamingrec.algorithms.filters.CacheFilter;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.data.Item;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ class CacheFilterTest extends AbstractFilterTest {
         Set<Long> forbidden = createForbidden();
         List<Long> allowed = createAllowed();
         if (itemId != -1)
-            filter.train(1,itemId);
+            filter.train(1,itemId, new Date(0));
         filter.extendFilter(1,20,forbidden,allowed,items);
 
         assertEquals(forbiddenSize,forbidden.size());

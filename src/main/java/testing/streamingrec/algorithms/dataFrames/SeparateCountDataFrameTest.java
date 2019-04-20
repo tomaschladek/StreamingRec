@@ -2,20 +2,25 @@ package testing.streamingrec.algorithms.dataFrames;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import tudo.streamingrec.algorithms.dataFrames.SeparateCountDataFrame;
-
-import java.util.List;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class SeparateCountDataFrameTest extends AbstractDataFrameTest {
 
     @BeforeEach
     public void setUp() {
-        super.setUp();
         this.dataFrame = new SeparateCountDataFrame(new int[]{10,20,30});
+        super.setUp();
     }
 
     @ParameterizedTest
@@ -23,8 +28,8 @@ class SeparateCountDataFrameTest extends AbstractDataFrameTest {
     void getTrainingData(int max, int expectedValue) {
         assertEquals(2, dataFrame.getTrainingData(timestamp).size());
         for(long index = 0; index < max; index++) {
-            for (List<Long> datasets : dataFrame.getTrainingData(timestamp)) {
-                datasets.add(1L);
+            for (IStreamingExecutor datasets : dataFrame.getTrainingData(timestamp)) {
+                datasets.getCollection().add(1L);
             }
             dataFrame.update(timestamp);
         }
@@ -33,19 +38,19 @@ class SeparateCountDataFrameTest extends AbstractDataFrameTest {
 
     @Test
     void getTestingData() {
-        List<Long> testingData = dataFrame.getTestingData();
-        assertEquals(0, testingData.size());
-        for (List<Long> sets : dataFrame.getTrainingData(timestamp))
+        IStreamingExecutor testingData = dataFrame.getTestingData();
+        assertEquals(0, testingData.getCollection().size());
+        for (IStreamingExecutor executor : dataFrame.getTrainingData(timestamp))
         {
-            sets.add(1L);
+            executor.getCollection().add(1L);
         }
-        assertEquals(1, dataFrame.getTestingData().size());
+        assertEquals(1, dataFrame.getTestingData().getCollection().size());
     }
 
     @Test
     void update() {
         generateTransactions();
-        assertEquals(10, dataFrame.getTestingData().size());
-        assertEquals(5, dataFrame.getTrainingData(timestamp).get(0).size());
+        assertEquals(10, dataFrame.getTestingData().getCollection().size());
+        assertEquals(5, dataFrame.getTrainingData(timestamp).get(0).getCollection().size());
     }
 }

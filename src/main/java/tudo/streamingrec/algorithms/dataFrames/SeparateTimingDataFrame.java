@@ -1,6 +1,7 @@
 package tudo.streamingrec.algorithms.dataFrames;
 
 import org.apache.commons.lang3.time.DateUtils;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,10 +12,10 @@ public class SeparateTimingDataFrame extends AbstractTwoTimingDataFrame {
         super(timeFrame);
     }
 
-    public List<List<Long>> getTrainingData(Date time)
+    public List<IStreamingExecutor> getTrainingData(Date time)
     {
-        List<List<Long>> list = new ArrayList<>();
-        list.add(training.collection);
+        List<IStreamingExecutor> list = new ArrayList<>();
+        list.add(training);
         return list;
     }
 
@@ -22,12 +23,12 @@ public class SeparateTimingDataFrame extends AbstractTwoTimingDataFrame {
 
         if (configuration != null
                 && timestamp != null
-                && testing.timestampThreshold.before(timestamp))
+                && testingTimestamp.before(timestamp))
         {
-            while(testing.timestampThreshold.before(timestamp)) {
-                testing.timestampThreshold = DateUtils.addMinutes(testing.timestampThreshold, configuration.getNext());
+            while(testingTimestamp.before(timestamp)) {
+                testingTimestamp = DateUtils.addMinutes(testingTimestamp, configuration.getNext());
             }
-            testing.assignAndClear(training);
+            assignAndClear();
             return true;
         }
         return false;

@@ -9,11 +9,12 @@ import java.util.List;
 import java.util.Set;
 
 public class PopularHeuristic implements IHeuristic {
-    private Long2IntOpenHashMap clickCounter = new Long2IntOpenHashMap();
+    private Long2IntOpenHashMap clickCounter;
     private ItemCounterDto first;
 
     public PopularHeuristic() {
         first = new ItemCounterDto(0,0);
+        clickCounter = new Long2IntOpenHashMap();
     }
 
     @Override
@@ -60,5 +61,10 @@ public class PopularHeuristic implements IHeuristic {
                 ? 0
                 : clickCounter.get(first.itemId.longValue());
         }
+    }
+
+    @Override
+    public IHeuristic copy() {
+        return new PopularHeuristic();
     }
 }

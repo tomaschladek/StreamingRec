@@ -6,7 +6,15 @@ import java.util.Set;
 
 public class RandomHeuristic implements IHeuristic {
 
-    private Random randomGenerator = new Random();
+    private Random randomGenerator;
+
+    public RandomHeuristic() {
+        this(new Random());
+    }
+
+    public RandomHeuristic(Random randomGenerator) {
+        this.randomGenerator = randomGenerator;
+    }
 
     @Override
     public Long get(List<Long> items, Set<Long> forbidden) {
@@ -32,5 +40,10 @@ public class RandomHeuristic implements IHeuristic {
     @Override
     public void trainRemove(long userId, long itemId) {
 
+    }
+
+    @Override
+    public IHeuristic copy() {
+        return new RandomHeuristic(randomGenerator);
     }
 }

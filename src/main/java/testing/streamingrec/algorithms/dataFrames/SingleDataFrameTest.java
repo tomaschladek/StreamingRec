@@ -2,18 +2,23 @@ package testing.streamingrec.algorithms.dataFrames;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import tudo.streamingrec.algorithms.dataFrames.SingleDataFrame;
-
-import java.util.List;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class SingleDataFrameTest extends AbstractDataFrameTest {
 
     @BeforeEach
     public void setUp() {
-        super.setUp();
         this.dataFrame = new SingleDataFrame();
+        super.setUp();
     }
 
     @Test
@@ -23,21 +28,21 @@ class SingleDataFrameTest extends AbstractDataFrameTest {
 
     @Test
     void getTestingData() {
-        List<Long> testingData = dataFrame.getTestingData();
-        assertEquals(0, testingData.size());
-        for (List<Long> sets : dataFrame.getTrainingData(timestamp))
+        IStreamingExecutor testingData = dataFrame.getTestingData();
+        assertEquals(0, testingData.getCollection().size());
+        for (IStreamingExecutor sets : dataFrame.getTrainingData(timestamp))
         {
-            sets.add(1L);
+            sets.getCollection().add(1L);
         }
-        assertEquals(1, dataFrame.getTestingData().size());
-        assertEquals(1L, dataFrame.getTestingData().get(0));
+        assertEquals(1, dataFrame.getTestingData().getCollection().size());
+        assertEquals(1L, dataFrame.getTestingData().getCollection().get(0));
     }
 
     @Test
     void update() {
         generateTransactions();
-        assertEquals(15, dataFrame.getTestingData().size());
-        assertEquals(15, dataFrame.getTrainingData(timestamp).get(0).size());
+        assertEquals(15, dataFrame.getTestingData().getCollection().size());
+        assertEquals(15, dataFrame.getTrainingData(timestamp).get(0).getCollection().size());
 
     }
 }

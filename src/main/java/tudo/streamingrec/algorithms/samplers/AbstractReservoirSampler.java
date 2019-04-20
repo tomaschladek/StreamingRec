@@ -26,4 +26,5 @@ public abstract class AbstractReservoirSampler implements ISampler {
     }
 
     protected abstract int getReplaceInIndex();
+
 }

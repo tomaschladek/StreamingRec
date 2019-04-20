@@ -1,26 +1,38 @@
 package tudo.streamingrec.algorithms.dataFrames;
 
 import tudo.streamingrec.algorithms.dtos.FrameConfiguration;
-import tudo.streamingrec.algorithms.dtos.FrameTimeDto;
+import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public abstract class AbstractTwoTimingDataFrame implements IDataFrame {
     protected FrameConfiguration configuration;
-    protected FrameTimeDto training;
-    protected FrameTimeDto testing;
+    protected IStreamingExecutor training;
+    protected Date trainingTimestamp = new Date(0);
+    protected IStreamingExecutor testing;
+    protected Date testingTimestamp = new Date(0);
 
     AbstractTwoTimingDataFrame(int[] timeFrame) {
         this.configuration = timeFrame.length > 0
                 ? new FrameConfiguration(timeFrame)
                 : null;
-        this.training = new FrameTimeDto();
-        this.testing = new FrameTimeDto();
     }
 
-    public List<Long> getTestingData()
+    public IStreamingExecutor getTestingData()
     {
-        return new ArrayList<>(testing.collection);
+        return testing;
+    }
+
+
+    public void assignAndClear() {
+        testing = training;
+        training = training.copy();
+    }
+
+
+    @Override
+    public void assignExecutor(IStreamingExecutor executor) {
+        this.training = executor;
+        this.testing = executor.copy();
     }
 }
