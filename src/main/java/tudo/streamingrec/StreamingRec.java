@@ -57,9 +57,9 @@ public class StreamingRec {
 	//are we using the "old" format, i.e., the inefficient format optimized only for plista?
 	@Option(names = {"-f", "--old-format"}, description = "Uses the old click file format")
 	private static boolean OLD_FILE_FORMAT = false;
-	//should we deduplicate the input files?
+	//should we deduplicate the input files? Same item & user withing 1 minute is considered to be duplicate and is not added to the stream
 	@Option(names = {"-d", "--deduplicate"}, description = "Deduplicates the data")
-	private static boolean DEDUPLICATE = false;
+	private static boolean DEDUPLICATE = true;
 	//the path to the metric json config file
 	@Option(names = {"-m", "--metrics-config"}, paramLabel="<FILE>", description = "Path to the metrics json config file")
 	private static String METRICS_FILE_NAME = "C:/Users/tomas.chladek/Documents/Personal/Uni/Master/3rd/DIP/streamingRecMine/config/metrics-config.json";

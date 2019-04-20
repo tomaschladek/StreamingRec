@@ -24,6 +24,8 @@ public class CatalogCoverageMetric extends HypothesisTestableMetric{
         if (userTransactions != null)
             for(Long itemId : userTransactions)
                 itemIds.add(itemId);
+        if (transaction != null)
+            itemIds.add(transaction.item.id);
     }
 
     @Override

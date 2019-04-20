@@ -10,9 +10,12 @@ import tudo.streamingrec.algorithms.dtos.EFraming;
 import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.algorithms.heuristics.IHeuristic;
 import tudo.streamingrec.algorithms.heuristics.IteratorHeuristic;
+import tudo.streamingrec.algorithms.heuristics.RandomHeuristic;
 import tudo.streamingrec.algorithms.samplers.AbstractReservoirSampler;
 import tudo.streamingrec.algorithms.samplers.DynamicReservoirSampler;
+import tudo.streamingrec.algorithms.samplers.FixedReservoirSampler;
 import tudo.streamingrec.algorithms.streaming.IStreamingExecutor;
+import tudo.streamingrec.algorithms.streaming.StreamingExecutor;
 import tudo.streamingrec.data.ClickData;
 import tudo.streamingrec.data.Item;
 
@@ -34,8 +37,8 @@ public abstract class AbstractSampling extends Algorithm {
     private int[] timeFrame = new int[]{};
     private int trainingTime = 30;
 
-    private IDataFrame dataFrameManager = new OverlappingCountDataFrame(timeFrame, trainingTime);
-    private UserCache userCache = new UserCache(userCacheExponent, clearingTime,cacheDepth);
+    private IDataFrame dataFrameManager = new SingleDataFrame();
+    private UserCache userCache = null;//new UserCache(userCacheExponent, clearingTime,cacheDepth);
     private IHeuristic heuristic = new IteratorHeuristic();
 
 
@@ -45,6 +48,12 @@ public abstract class AbstractSampling extends Algorithm {
     private int countCurrent = 0;
     private long index = 0;
     private long count = Long.MIN_VALUE;
+
+    @Override
+    public void initialize() {
+        super.initialize();
+        dataFrameManager.assignExecutor(new StreamingExecutor(new FixedReservoirSampler(20,0),new RandomHeuristic()));
+    }
 
     @Override
     protected void trainInternal(List<Item> items, List<ClickData> clickData) {
@@ -85,7 +94,8 @@ public abstract class AbstractSampling extends Algorithm {
             }
         }
         dataFrameManager.update(timestamp);
-        userCache.update(timestamp);
+        if (userCache != null)
+            userCache.update(timestamp);
         if (countCurrent > countMax)
         {
             clickCounter = new Long2IntOpenHashMap();
@@ -116,7 +126,7 @@ public abstract class AbstractSampling extends Algorithm {
         forbidden.add(itemId);
         Long recommendedValue = heuristic.get(testingData.getCollection(),forbidden);
         if (recommendedValue != null
-                && userCache.tryUpsert(userId,recommendedValue)
+                && (userCache == null || userCache.tryUpsert(userId,recommendedValue))
                 && itemId != recommendedValue)
             return recommendedValue;
 

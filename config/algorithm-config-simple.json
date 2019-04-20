@@ -10,5 +10,15 @@
     "isItem": false,
     "isTransaction": true
 
-  }
+  },
+  {
+    "name": "Popularity 10",
+    "algorithm": ".PopularityBased"
+  },{
+  "name": "Fixed Sampling 0 Clicks 20 Separate",
+  "algorithm": ".FixedReservoirSampling",
+  "reservoirSize": 20,
+  "areClicksUsed": true,
+  "fixedOffset": 0
+}
 ]

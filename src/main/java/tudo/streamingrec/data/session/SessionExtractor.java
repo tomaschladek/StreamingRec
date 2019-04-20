@@ -91,7 +91,7 @@ public class SessionExtractor {
 	 */
 	public Map<Long, List<List<Transaction>>> getSessionMap() {
 		Map<Long, List<List<Transaction>>>  users =new HashMap<>(sessions);
-		users.remove(0l);
+		users.remove(0L);
 		return users;
 	}
 
