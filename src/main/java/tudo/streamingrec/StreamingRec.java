@@ -1,29 +1,22 @@
 package tudo.streamingrec;
 
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.joda.time.Period;
 import org.joda.time.format.ISOPeriodFormat;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import tudo.streamingrec.AlgorithmWrapper.WorkPackage;
-import tudo.streamingrec.AlgorithmWrapper.WorkPackageArticle;
 import tudo.streamingrec.AlgorithmWrapper.WorkPackageClick;
 import tudo.streamingrec.algorithms.Algorithm;
 import tudo.streamingrec.data.*;
-import tudo.streamingrec.data.loading.FilteredDataReader;
 import tudo.streamingrec.data.session.SessionExtractor;
-import tudo.streamingrec.data.splitting.DataSplitter;
 import tudo.streamingrec.evaluation.metrics.HypothesisTestableMetric;
 import tudo.streamingrec.evaluation.metrics.Metric;
-import tudo.streamingrec.util.Util;
+import tudo.streamingrec.util.*;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -89,6 +82,9 @@ public class StreamingRec {
 	@Option(names = {"-h", "--help"}, hidden=true, usageHelp = true)
 	private static boolean helpRequested;
 
+	private static IDataManager dataManager = new DataManager();
+	private static IWorkPackageFactory workPackageFactory = new WorkPackageFactory();
+
 	public static void main(String[] args) throws IOException, ParseException, InterruptedException {
 		if(args.length==0){
 			System.out.println("Help for commandline arguments with -h");
@@ -121,7 +117,8 @@ public class StreamingRec {
 		Map<String, Algorithm> algorithmsWithName = getAlgorithms();
 
 		// read the data
-		SplitData splitData = getSplitData();
+		SplitData splitData = dataManager.getSplitData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
+				DEDUPLICATE, OLD_FILE_FORMAT,SESSION_LENGTH_FILTER,SPLIT_THRESHOLD);
 
 
 		// create list of metrics
@@ -137,13 +134,8 @@ public class StreamingRec {
 				addMetricToMaps(m, algorithmName, m.getName(), metrics, metricsByAlgorithm, metricsByName);
 			}
 		}
-
 		executeAlgorithms(algorithmsWithName, splitData, metrics);
-
-
 		printResult(timeThreshold, metricsByAlgorithm, metricsByName);
-
-
 	}
 
 	private static void executeAlgorithms(Map<String, Algorithm> algorithmsWithName, SplitData splitData, Map<String, List<Metric>> metrics) throws InterruptedException {
@@ -156,12 +148,10 @@ public class StreamingRec {
 
 
 		// create main session extractor and user history helper
-		SessionExtractor sessionExtractor = new SessionExtractor();
-		Map<Long, List<Transaction>> userHistory = new Long2ObjectOpenHashMap<>();
 		List<ClickData> trainingWorkPackages = new ObjectArrayList<>();
 		for (Transaction t : trainingTransactions) {
 			trainingWorkPackages
-					.add(((WorkPackageClick) getWorkPackage(t, sessionExtractor, null, userHistory)).clickData);
+					.add(((WorkPackageClick) workPackageFactory.getWorkPackage(t,null)).clickData);
 		}
 		//save some RAM
 		trainingTransactions = null;
@@ -202,7 +192,7 @@ public class StreamingRec {
 			//create a work package (with click, session, ground truth, etc.)
 			//and add it to the list of test packages
 			testWorkPackages
-					.add(getWorkPackage(currentEvent, sessionExtractor, sessionExtractorforEvaluation, userHistory));
+					.add(workPackageFactory.getWorkPackage(currentEvent, sessionExtractorforEvaluation));
 		}
 
 		// create threaded wrappers
@@ -261,56 +251,6 @@ public class StreamingRec {
 		}
 	}
 
-	private static SplitData getSplitData() throws IOException, ParseException {
-		RawData data = new FilteredDataReader().readFilteredData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
-				DEDUPLICATE, OLD_FILE_FORMAT);
-
-		filterByDate(new Date(116,1,8,0,0,0),data);
-
-		//if a minimum session length is set, filter short sessions
-		if (SESSION_LENGTH_FILTER > 0) {
-			removeShortSessions(data);
-		}
-
-		//in case stats are wanted, print extensive stats
-		if (OUTPUT_STATS) {
-			printStatistics(data);
-		}
-		return getSplitData(data);
-	}
-
-	private static void filterByDate(Date dateTime, RawData data) {
-		Long2ObjectOpenHashMap<Item> filteredItems = new Long2ObjectOpenHashMap<>();
-		for (Long item : data.items.keySet())
-		{
-			if(data.items.get(item).updatedAt.before(dateTime))
-			{
-				filteredItems.put(item,data.items.get(item));
-			}
-		}
-		List<Transaction> filteredTransactions = new ObjectArrayList<>();
-		for (Transaction item : data.transactions)
-		{
-			if(item.timestamp.before(dateTime))
-			{
-				filteredTransactions.add(item);
-			}
-		}
-		data.items =  filteredItems;
-		data.transactions = filteredTransactions;
-	}
-
-	private static SplitData getSplitData(RawData data) {
-		// split the data
-		DataSplitter splitter = new DataSplitter();
-		splitter.setSplitMethodNumberOfEvents(); // split based on the number of
-		// events, not the time
-		splitter.setSplitThreshold(SPLIT_THRESHOLD);
-		// split after N% of the events.
-		// Everything after that goes into the test set
-		return splitter.splitData(data);
-	}
-
 	private static Map<String, Algorithm> getAlgorithms() throws IOException {
 		// load algorithms so that configuration errors appear before input file loading
 		List<Algorithm> tmpAlgorithms = Config.loadAlgorithms(ALGORITHM_FILE_NAME);
@@ -321,87 +261,6 @@ public class StreamingRec {
 			algorithmsWithName.put(alg.getName(), alg);
 		}
 		return algorithmsWithName;
-	}
-
-	private static void printStatistics(RawData data) {
-		// overall stats
-		Long2IntOpenHashMap clicksPerUser = new Long2IntOpenHashMap();
-		Long2IntOpenHashMap clicksPerItem = new Long2IntOpenHashMap();
-		// session stats
-		SessionExtractor sessionExtractorForStats = new SessionExtractor();
-		for (Transaction t : data.transactions) {
-			clicksPerItem.addTo(t.item.id, 1);
-			clicksPerUser.addTo(t.userId, 1);
-			sessionExtractorForStats.addClick(t);
-		}
-
-		//clicks per items and user
-		DescriptiveStatistics clicksPerUserStats = new DescriptiveStatistics();
-		DescriptiveStatistics clicksPerItemStats = new DescriptiveStatistics();
-		for (Integer val : clicksPerUser.values()) {
-			clicksPerUserStats.addValue(val);
-		}
-		System.out.println("Clicks per user: " + clicksPerUserStats);
-		for (Integer val : clicksPerItem.values()) {
-			clicksPerItemStats.addValue(val);
-		}
-		System.out.println("Clicks per item: " + clicksPerItemStats);
-
-		// some statistics about session length
-		DescriptiveStatistics stats = new DescriptiveStatistics();
-		DescriptiveStatistics statsPerUser = new DescriptiveStatistics();
-		DescriptiveStatistics lengthStats = new DescriptiveStatistics();
-		Collection<List<List<Transaction>>> allSessions = sessionExtractorForStats.getSessionMap().values();
-		for (List<List<Transaction>> list : allSessions) {
-			for (List<Transaction> list2 : list) {
-				stats.addValue(list2.size());
-				if (list2.size() > 1) {
-					long duration = list2.get(list2.size() - 1).timestamp.getTime()
-							- list2.get(0).timestamp.getTime();
-					lengthStats.addValue(duration);
-				}
-			}
-			statsPerUser.addValue(list.size());
-
-		}
-		System.out.println("Clicks per session: " + stats);
-		System.out.println("Sessions per user: " + statsPerUser);
-		System.out.println("Length of session in MS: " + lengthStats);
-	}
-
-	private static void removeShortSessions(RawData data) {
-		System.out.println();
-		System.out.println("Filtering sessions shorter than or equal to " + SESSION_LENGTH_FILTER + " ...");
-		// filter data based on too short sessions
-		Set<Transaction> transactionsToRemove = new ObjectOpenHashSet<>();
-		// create a session storage to filter too short sessions
-		SessionExtractor filterExtractor = new SessionExtractor();
-		for (Transaction t : data.transactions) {
-			filterExtractor.addClick(t);
-		}
-		//check the length of sessions and remember the transactions that belong to short sessions
-		for (List<List<Transaction>> list : filterExtractor.getSessionMap().values()) {
-			for (List<Transaction> list2 : list) {
-				if (list2.size() <= SESSION_LENGTH_FILTER) {
-					for (Transaction transaction : list2) {
-						transactionsToRemove.add(transaction);
-					}
-				}
-			}
-		}
-		//keep all transactions except the ones that belong to short sessions in a new transaction list
-		List<Transaction> filteredTransactions = new ObjectArrayList<>();
-		for (Transaction t : data.transactions) {
-			if (!transactionsToRemove.contains(t)) {
-				filteredTransactions.add(t);
-			}
-		}
-		//print some removal stats
-		System.out.println("Removed "
-				+ (((data.transactions.size() - filteredTransactions.size()) * 100) / data.transactions.size())
-				+ "%");
-		data.transactions = filteredTransactions;
-		System.out.println("Number of transactions: " + data.transactions.size());
 	}
 
 	private static void printAlgorithms(List<Algorithm> tmpAlgorithms) {
@@ -430,76 +289,6 @@ public class StreamingRec {
 		System.out.println();
 	}
 
-	/**
-	 * create a {@link WorkPackage} from an event (click or new item)
-	 * @param event -
-	 * @param sessionExtractor -
-	 * @param sessionExtractorforEvaluation -
-	 * @param userHistory -
-	 * @return the work package
-	 */
-	private static WorkPackage getWorkPackage(Event event, SessionExtractor sessionExtractor,
-											  SessionExtractor sessionExtractorforEvaluation, Map<Long, List<Transaction>> userHistory) {
-		if (event instanceof Item) {
-			//in case of an item, just wrap it
-			WorkPackageArticle wpA = new WorkPackageArticle();
-			wpA.articleEvent = (Item) event;
-			return wpA;
-		} else {
-			//in case of a click, wrap the click
-			//+ find the appropriate session, all previous clicks in other sessions of this user, 
-			//and the the ground truth related to this click 
-			WorkPackageClick wpC = new WorkPackageClick();
-			Transaction currentTransaction = (Transaction) event;
-			wpC.clickData = new ClickData();
-			wpC.clickData.click = currentTransaction;
-			// extract the current user session (for removal of
-			// duplicate/unnecessary recommendations later)
-			List<Transaction> currenctUserSession = Collections
-					.unmodifiableList(new ObjectArrayList<>(sessionExtractor.addClick(currentTransaction)));
-			wpC.clickData.session = currenctUserSession;
-			//extract the user history
-			List<Transaction> history = userHistory.get(currentTransaction.userId);
-			if (history == null) {
-				history = new ObjectArrayList<>();
-				userHistory.put(currentTransaction.userId, history);
-			}
-			if (currentTransaction.userId != 0)
-			{
-				history.add(currentTransaction);//add the current click to the user history
-			}
-
-			//make it an unmodifiable list
-			wpC.clickData.wholeUserHistory = Collections.unmodifiableList(new ObjectArrayList<>(history));
-			if (sessionExtractorforEvaluation != null) {
-				if (currentTransaction.userId != 0) {
-					// from the session, extract the list of unique item ids
-					LongOpenHashSet uniqueItemIDSoFar = new LongOpenHashSet();
-					for (Transaction t : currenctUserSession) {
-						uniqueItemIDSoFar.add(t.item.id);
-					}
-					//check with the user history to remove unwanted "reminders"
-					List<Transaction> wholeCurrentUserSession = sessionExtractorforEvaluation
-							.getSession(currentTransaction);
-					//extact the ground truth
-					LongOpenHashSet groundTruth = new LongOpenHashSet();
-					for (Transaction t : wholeCurrentUserSession) {
-						groundTruth.add(t.item.id);
-					}
-					// all transactions from the list that have already happened +
-					// transactions for items that have already been clicked (no
-					// reminders)
-					groundTruth.removeAll(uniqueItemIDSoFar);
-					wpC.groundTruth = groundTruth;
-				}
-				else{
-					wpC.groundTruth = new LongOpenHashSet();
-					wpC.groundTruth.add(currentTransaction.item.id);
-				}
-			}
-			return wpC;
-		}
-	}
 
 	/**
 	 * Add each metrics to some maps so that they can be found later and printed nicely.
