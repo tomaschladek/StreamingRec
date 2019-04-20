@@ -12,8 +12,8 @@ public class FloatingWindowSampler implements ISampler {
 
     @Override
     public Long add(List<Long> collection, Long item) {
-        tryAppend(collection);
         Long removedValue = getRemovedValue(collection);
+        tryAppend(collection);
         shiftCollection(collection, item);
         return removedValue;
     }

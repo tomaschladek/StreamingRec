@@ -27,9 +27,4 @@ public class FlagFilter implements IFilter {
     public void trainFromRecommendation(long userId, long itemFrom, long itemTo) {
 
     }
-
-    @Override
-    public IFilter copy() {
-        return new FlagFilter();
-    }
 }

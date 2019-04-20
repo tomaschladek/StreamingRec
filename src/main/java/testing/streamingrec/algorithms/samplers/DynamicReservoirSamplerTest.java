@@ -7,6 +7,7 @@ import tudo.streamingrec.algorithms.samplers.DynamicReservoirSampler;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -23,7 +24,7 @@ class DynamicReservoirSamplerTest {
 
     @Test
     void testSampling() {
-        sampler.add(collection,1L);
+        assertNull(sampler.add(collection,1L));
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
         for (long index = 2; index < 102; index++)

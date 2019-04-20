@@ -13,10 +13,10 @@ class WindowSamplerTest {
     void add() {
         WindowSampler sampler = new WindowSampler();
         ArrayList<Long> collection = new ArrayList<>();
-        sampler.add(collection,1L);
+        assertNull(sampler.add(collection,1L));
         assertEquals(1,collection.size());
         assertEquals(1,collection.get(0));
-        sampler.add(collection,2L);
+        assertNull(sampler.add(collection,2L));
         assertEquals(2,collection.size());
         assertEquals(1,collection.get(0));
         assertEquals(2,collection.get(1));

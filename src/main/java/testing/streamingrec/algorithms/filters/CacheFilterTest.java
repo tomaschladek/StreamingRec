@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import tudo.streamingrec.algorithms.filters.CacheFilter;
-import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.data.Item;
 
 import java.util.Date;
@@ -17,7 +16,7 @@ class CacheFilterTest extends AbstractFilterTest {
 
     @BeforeEach
     void setUp() {
-        this.filter = new CacheFilter(new UserCache(2,5,1));
+        this.filter = new CacheFilter(2,5,1);
     }
 
     @ParameterizedTest

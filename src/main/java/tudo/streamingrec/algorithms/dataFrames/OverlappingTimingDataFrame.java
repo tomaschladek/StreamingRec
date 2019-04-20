@@ -8,11 +8,11 @@ import java.util.Date;
 import java.util.List;
 
 public class OverlappingTimingDataFrame extends AbstractTwoTimingDataFrame {
-    private int trainingTime;
+    private int trainingTimeInSec;
 
-    public OverlappingTimingDataFrame(int[] timeFrame, int trainingTime) {
+    public OverlappingTimingDataFrame(int[] timeFrame, int trainingTimeInSec) {
         super(timeFrame);
-        this.trainingTime = trainingTime;
+        this.trainingTimeInSec = trainingTimeInSec;
     }
 
     public List<IStreamingExecutor> getTrainingData(Date time)
@@ -33,7 +33,7 @@ public class OverlappingTimingDataFrame extends AbstractTwoTimingDataFrame {
         {
             while(testingTimestamp.before(timestamp)) {
                 testingTimestamp = DateUtils.addMinutes(testingTimestamp, configuration.getNext());
-                trainingTimestamp = DateUtils.addMinutes(testingTimestamp, -trainingTime);
+                trainingTimestamp = DateUtils.addSeconds(testingTimestamp, -trainingTimeInSec);
             }
             assignAndClear();
             return true;

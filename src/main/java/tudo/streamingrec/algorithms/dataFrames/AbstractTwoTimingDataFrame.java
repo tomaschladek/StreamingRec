@@ -25,7 +25,9 @@ public abstract class AbstractTwoTimingDataFrame implements IDataFrame {
 
 
     public void assignAndClear() {
-        testing = training;
+        if(!training.getCollection().isEmpty()) {
+            testing = training;
+        }
         training = training.copy();
     }
 

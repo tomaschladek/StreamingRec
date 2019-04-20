@@ -2,7 +2,7 @@
   {
     "name": "Pioneer",
     "algorithm": ".Streaming",
-    "cache": "userCache|exponent:10;size:1;expirationTime:5",
+    "cache": "userCache|exponent:10;size:1;expirationTime:300",
     "heuristic": "popular|",
     "areAnonymousAllowed": true,
     "dataFrame": "overlap|frames:100;mode:count;size:50",

@@ -10,6 +10,4 @@ public interface IFilter {
     void extendFilter(long userId, long itemFrom, Set<Long> excluded, List<Long> included, List<Item> items);
     void train(long userId, long itemFrom, Date timestamp);
     void trainFromRecommendation(long userId, long itemFrom, long itemTo);
-
-    IFilter copy();
 }

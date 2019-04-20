@@ -5,7 +5,6 @@ import tudo.streamingrec.algorithms.filters.CacheFilter;
 import tudo.streamingrec.algorithms.filters.CoocurentFilter;
 import tudo.streamingrec.algorithms.filters.FlagFilter;
 import tudo.streamingrec.algorithms.filters.IFilter;
-import tudo.streamingrec.algorithms.helper.UserCache;
 import tudo.streamingrec.algorithms.heuristics.*;
 import tudo.streamingrec.algorithms.samplers.*;
 
@@ -176,7 +175,7 @@ public class StreamingBuilder {
                 int exponent = getInt(pairs,FILTER_PAR_EXPONENT);
                 int expirationTime = getInt(pairs,FILTER_PAR_EXPIRATION_TIME);
                 int size = getInt(pairs,FILTER_PAR_SIZE);
-                filters.add(new CacheFilter(new UserCache(exponent,expirationTime,size)));
+                filters.add(new CacheFilter(exponent,expirationTime,size));
                 break;
         }
     }

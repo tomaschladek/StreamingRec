@@ -7,13 +7,13 @@ import java.util.*;
 
 public class CoocurentFilter implements IFilter {
 
-    private final int minutesToExpire;
+    private final int secondsToExpire;
     private Date expirationTime = new Date(0);
     private Map<Long,Set<Long>> coocurence;
 
-    public CoocurentFilter(int minutesToExpire) {
+    public CoocurentFilter(int secondsToExpire) {
         this.coocurence = new HashMap<>();
-        this.minutesToExpire = minutesToExpire;
+        this.secondsToExpire = secondsToExpire;
     }
 
     @Override
@@ -31,10 +31,7 @@ public class CoocurentFilter implements IFilter {
     public void train(long userId, long itemFrom, Date timestamp) {
         if (expirationTime.before(timestamp))
         {
-            while (expirationTime.before(timestamp))
-            {
-                expirationTime = DateUtils.addMinutes(expirationTime,minutesToExpire);
-            }
+            expirationTime = DateUtils.addSeconds(timestamp, secondsToExpire);
             coocurence = new HashMap<>();
         }
     }
@@ -43,11 +40,6 @@ public class CoocurentFilter implements IFilter {
     public void trainFromRecommendation(long userId, long itemFrom, long itemTo) {
         addCoocurence(itemFrom, itemTo);
         addCoocurence(itemTo, itemFrom);
-    }
-
-    @Override
-    public IFilter copy() {
-        return new CoocurentFilter(minutesToExpire);
     }
 
     private void addCoocurence(long itemFrom, long itemTo) {
