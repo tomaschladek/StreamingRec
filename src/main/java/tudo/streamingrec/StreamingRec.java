@@ -71,7 +71,7 @@ public class StreamingRec {
 	private static boolean OUTPUT_STATS = false;
 	//where to split the data into training and test
 	@Option(names = {"-p", "--split-threshold"}, paramLabel="<VALUE>", description = "Split threshold for splitting the dataset into training and test set")
-	private static double SPLIT_THRESHOLD = 0.166;//0.0456;//11;
+	private static double SPLIT_THRESHOLD = 0.0531;//Deduplication week = 0.2005;//NO Deduplicate = 0.166;//Month no deduplication =0.0456;
 	//the number of threads to use
 	@Option(names = {"-n", "--thread-count"}, paramLabel="<VALUE>", description = "Number of threads to use. Less threads result in less CPU usage but also less RAM usage.")
 	private static int THREAD_COUNT = Runtime.getRuntime().availableProcessors()-1;
@@ -84,6 +84,8 @@ public class StreamingRec {
 
 	private static IDataManager dataManager = new DataManager();
 	private static IWorkPackageFactory workPackageFactory = new WorkPackageFactory();
+
+	private static Date FILTER_DATE = null;//new Date(1454886000000L);
 
 	public static void main(String[] args) throws IOException, ParseException, InterruptedException {
 		if(args.length==0){
@@ -118,7 +120,7 @@ public class StreamingRec {
 
 		// read the data
 		SplitData splitData = dataManager.getSplitData(INPUT_FILENAME_ITEMS, INPUT_FILENAME_CLICKS, OUTPUT_STATS,
-				DEDUPLICATE, OLD_FILE_FORMAT,SESSION_LENGTH_FILTER,SPLIT_THRESHOLD);
+				DEDUPLICATE, OLD_FILE_FORMAT,SESSION_LENGTH_FILTER,SPLIT_THRESHOLD,FILTER_DATE);
 
 
 		// create list of metrics

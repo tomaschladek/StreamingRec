@@ -1,0 +1,4 @@
+[
+  {
+    "name": "Streaming iterator anonyms",  "algorithm": ".Streaming",  "heuristic": "iterator|",  "areAnonymousAllowed": false,  "dataFrame": "overlap|mode:count;frames:13;size:6",  "cache": "userCache|exponent:13;expirationTime:900;size:2",  "flag": "flag|",  "sampler": "list|", "isItem": false,  "isTransaction": true
+  }]

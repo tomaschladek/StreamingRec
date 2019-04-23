@@ -42,7 +42,7 @@ public class Streaming extends Algorithm {
 
     @Override
     protected LongArrayList recommendInternal(ClickData clickData) {
-        long recommendedValue = executor.recommend(clickData.click.userId,clickData.click.item.id, clickData.click.timestamp);
+        long recommendedValue = executor.recommend(clickData.click.userId,clickData.click.item.id);
         return LongArrayList.wrap(new long[]{recommendedValue});
     }
 

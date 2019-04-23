@@ -42,7 +42,7 @@ class UserCacheTest {
         assertTrue(cache.tryUpsert(1,1));
         cache.update(timestamp);
         assertTrue(cache.tryUpsert(1,1));
-        timestamp = DateUtils.addMinutes(timestamp,index);
+        timestamp = DateUtils.addSeconds(timestamp,index);
         cache.update(timestamp);
         assertEquals(expectedValue,cache.tryUpsert(1,1));
     }

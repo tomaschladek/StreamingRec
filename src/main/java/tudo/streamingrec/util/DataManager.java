@@ -22,10 +22,11 @@ import java.util.Set;
 
 public class DataManager implements IDataManager{
 
-    public SplitData getSplitData(String items, String clicks, boolean isOutputStats, boolean isDeduplicate, boolean isOldFormat, int sessionLengthThreshold, double splitThreshold) throws IOException, ParseException {
+    public SplitData getSplitData(String items, String clicks, boolean isOutputStats, boolean isDeduplicate, boolean isOldFormat, int sessionLengthThreshold, double splitThreshold, Date filterDate) throws IOException, ParseException {
         RawData data = new FilteredDataReader().readFilteredData(items,clicks,isOutputStats,isDeduplicate,isOldFormat);
 
-        filterByDate(new Date(116,1,8,0,0,0),data);
+        if (filterDate != null)
+            filterByDate(filterDate,data);
 
         //if a minimum session length is set, filter short sessions
         if (sessionLengthThreshold > 0) {
@@ -82,7 +83,7 @@ public class DataManager implements IDataManager{
         {
             if(data.items.get(item).updatedAt.before(dateTime))
             {
-                filteredItems.put(item,data.items.get(item));
+                filteredItems.put(item.longValue(),data.items.get(item));
             }
         }
         List<Transaction> filteredTransactions = new ObjectArrayList<>();

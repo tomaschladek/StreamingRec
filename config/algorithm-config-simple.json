@@ -1,24 +1,33 @@
 [
   {
-    "name": "Pioneer",
-    "algorithm": ".Streaming",
-    "cache": "userCache|exponent:10;size:1;expirationTime:300",
-    "heuristic": "popular|",
-    "areAnonymousAllowed": true,
-    "dataFrame": "overlap|frames:100;mode:count;size:50",
-    "sampler": "fixed|frames:100;mode:count;size:50",
-    "isItem": false,
-    "isTransaction": true
-
+    "name": "Random",
+    "algorithm": ".Random"
   },
+
   {
-    "name": "Popularity 10",
-    "algorithm": ".PopularityBased"
-  },{
-  "name": "Fixed Sampling 0 Clicks 20 Separate",
-  "algorithm": ".FixedReservoirSampling",
-  "reservoirSize": 20,
-  "areClicksUsed": true,
-  "fixedOffset": 0
-}
+    "name": "Recently Published",
+    "algorithm": ".MostRecent"
+  },
+
+  {
+    "name": "Most Popular",
+    "algorithm": ".MostPopular"
+  },
+
+  {
+    "name": "Recently Clicked",
+    "algorithm": ".RecentlyClicked"
+  },
+
+  {
+    "name": "Recently Popular",
+    "algorithm": ".RecentlyPopular",
+    "filterTime": 3600000
+  },
+
+  {
+    "name": "Co-Occurrence",
+    "algorithm": ".FastSessionCoOccurrence",
+    "wholeSession": false
+  }
 ]

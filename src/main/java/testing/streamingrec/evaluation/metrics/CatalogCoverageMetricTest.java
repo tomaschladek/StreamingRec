@@ -29,7 +29,7 @@ class CatalogCoverageMetricTest extends AbstractMetricTest{
     }
 
     @ParameterizedTest
-    @CsvSource({"true,1","false,0"})
+    @CsvSource({"true,1","false,1"})
     void noSession(boolean isRatioOn, double expectedValue)
     {
         metric.setReturnRatio(isRatioOn);

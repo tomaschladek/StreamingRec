@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Streaming iterator",
+    "algorithm": ".Streaming",
+    "heuristic": "iterator|",
+    "areAnonymousAllowed": false,
+    "dataFrame": "overlap|mode:count;frames:13;size:6",
+    "cache": "userCache|exponent:13;expirationTime:900;size:2",
+    "flag": "flag|",
+    "sampler": "list|",
+    "isItem": false,
+    "isTransaction": true
+  },{
+  "name": "Streaming recent",
+  "algorithm": ".Streaming",
+  "heuristic": "recent|",
+  "areAnonymousAllowed": false,
+  "dataFrame": "overlap|mode:count;frames:120;size:60",
+  "sampler": "list|",
+  "cache": "userCache|exponent:13;expirationTime:420;size:6",
+  "isItem": false,
+  "isTransaction": true
+},{
+  "name": "Streaming random",
+  "algorithm": ".Streaming",
+  "heuristic": "random|",
+  "areAnonymousAllowed": false,
+  "dataFrame": "single|",
+  "sampler": "floating|size:5",
+  "isItem": false,
+  "isTransaction": true
+},{
+  "name": "Streaming popular",
+  "algorithm": ".Streaming",
+  "heuristic": "popular|",
+  "areAnonymousAllowed": false,
+  "dataFrame": "overlap|mode:count;frames:120;size:60",
+  "sampler": "list|",
+  "cache": "userCache|exponent:13;expirationTime:780;size:6",
+  "flag": "flag|",
+  "isItem": false,
+  "isTransaction": true
+}
+]

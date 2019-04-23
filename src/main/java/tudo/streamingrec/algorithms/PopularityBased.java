@@ -67,8 +67,8 @@ public class PopularityBased extends Algorithm {
             }
         }
         countCurrent = countMax[countIndex] - trainingSize;
-        windowThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex]);
-        trainThreshold = DateUtils.addMinutes(timestamp,countMax[countIndex] - trainingSize);
+        windowThreshold = DateUtils.addSeconds(timestamp,countMax[countIndex]);
+        trainThreshold = DateUtils.addSeconds(timestamp,countMax[countIndex] - trainingSize);
         countIndex = (countIndex + 1) % countMax.length;
     }
 

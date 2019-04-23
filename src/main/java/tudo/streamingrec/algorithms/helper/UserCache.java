@@ -59,7 +59,7 @@ public class UserCache {
                 && timestamp != null
                 && clearingThreshold.before(timestamp)) {
 
-            clearingThreshold = DateUtils.addMinutes(timestamp, clearingTime);
+            clearingThreshold = DateUtils.addSeconds(timestamp, clearingTime);
             assignCache();
         }
     }

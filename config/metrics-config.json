@@ -9,11 +9,6 @@
 		"returnRatio": true
 	},
 	{
-		"name": "CatalogCoverage#",
-		"metric": ".CatalogCoverageMetric",
-		"returnRatio": false
-	},
-	{
 		"name": "Training Time in Minutes",
 		"metric": ".Runtime",
 		"type": "Training",

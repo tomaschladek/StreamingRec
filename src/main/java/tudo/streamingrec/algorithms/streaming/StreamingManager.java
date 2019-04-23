@@ -13,17 +13,17 @@ public class StreamingManager {
     private List<Item> items;
     public List<IFilter> filters;
 
-    public StreamingManager(IDataFrame dataFrame, List<IFilter> filters) {
+    StreamingManager(IDataFrame dataFrame, List<IFilter> filters) {
         this.dataFrame = dataFrame;
         items = new ArrayList<>();
         this.filters = filters;
     }
 
-    public Date trainArticle(long itemId, Date updatedAt) {
-        return trainTransaction(itemId,0,updatedAt);
+    public void trainArticle(long itemId, Date updatedAt) {
+        trainTransaction(itemId, 0, updatedAt);
     }
 
-    public Date trainTransaction(long itemId, long userId, Date timestamp) {
+    public void trainTransaction(long itemId, long userId, Date timestamp) {
         for (IStreamingExecutor executor : dataFrame.getTrainingData(timestamp)){
             executor.train(itemId,userId);
         }
@@ -34,19 +34,18 @@ public class StreamingManager {
         }
 
         dataFrame.update(timestamp);
-        return timestamp;
     }
 
-    public long recommend(long userId, long itemId, Date timestamp) {
+    public long recommend(long userId, long itemId) {
         IStreamingExecutor executor = dataFrame.getTestingData();
         Long recommendedValue = executor.recommend(userId,itemId,items,filters);
         if (recommendedValue == null) return itemId;
 
-        trainRecommendedValue(userId, itemId, recommendedValue, timestamp);
+        trainRecommendedValue(userId, itemId, recommendedValue);
         return  recommendedValue;
     }
 
-    protected void trainRecommendedValue(long userId, long itemId, Long recommendedValue, Date timestamp) {
+    private void trainRecommendedValue(long userId, long itemId, Long recommendedValue) {
         if (filters != null) {
             for (IFilter filter : filters) {
                 filter.trainFromRecommendation(userId, itemId, recommendedValue);

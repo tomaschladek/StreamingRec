@@ -20,7 +20,7 @@ class OverlappingTimingDataFrameTest extends AbstractDataFrameTest {
 
     @BeforeEach
     public void setUp() {
-        dataFrame = new OverlappingTimingDataFrame(new int[]{10,20,30},5*60);
+        dataFrame = new OverlappingTimingDataFrame(new int[]{10*60,20*60,30*60},5*60);
         super.setUp();
     }
 

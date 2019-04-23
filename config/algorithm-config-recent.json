@@ -1,0 +1,4 @@
+[
+  {
+    "name": "Streaming recent anonyms",  "algorithm": ".Streaming",  "heuristic": "recent|",  "areAnonymousAllowed": false,  "dataFrame": "overlap|mode:count;frames:120;size:60",  "sampler": "list|",  "cache": "userCache|exponent:13;expirationTime:420;size:6",  "isItem": false,  "isTransaction": true
+  }]

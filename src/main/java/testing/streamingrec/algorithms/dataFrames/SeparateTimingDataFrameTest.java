@@ -17,7 +17,7 @@ class SeparateTimingDataFrameTest extends AbstractDataFrameTest {
 
     @BeforeEach
     public void setUp() {
-        this.dataFrame = new SeparateTimingDataFrame(new int[]{10,20,30});
+        this.dataFrame = new SeparateTimingDataFrame(new int[]{10*60,20*60,30*60});
         super.setUp();
     }
 

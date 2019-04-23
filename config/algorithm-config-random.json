@@ -1,0 +1,485 @@
+[
+  {
+    "name": "Streaming initial",
+    "algorithm": ".Streaming",
+    "heuristic": "random|",
+    "areAnonymousAllowed": true,
+    "dataFrame": "single|",
+    "sampler": "reservoir|offset:0;mode:fixed;size:30",
+    "isItem": false,
+    "isTransaction": true
+  },
+    {
+      "name": "Streaming random fixed 10",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:10",      "isItem": false,      "isTransaction": true
+    },{
+    "name": "Streaming random fixed 20",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:20",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 30",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:30",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 40",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:40",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 50",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:50",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 60",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:60",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 70",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:70",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 80",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:80",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 90",      "algorithm": ".Streaming",      "heuristic":"random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:90",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random fixed 100",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:fixed;size:100",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 10",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:10",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 20",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:20",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 30",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:30",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 40",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:40",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 50",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:50",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 60",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:60",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 70",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:70",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 80",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:80",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 90",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler": "reservoir|offset:0;mode:dynamic;size:90",      "isItem": false,      "isTransaction": true
+  },{
+    "name": "Streaming random dynamic 100",      "algorithm": ".Streaming",      "heuristic": "random|",      "areAnonymousAllowed": true,      "dataFrame": "single|",      "sampler":"reservoir|offset:0;mode:dynamic;size:100",      "isItem": false,      "isTransaction": true
+  },
+      {
+      "name": "Streaming random Offset 100",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:0;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+    },{
+    "name": "Streaming random Offset 83",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:1;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 71",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:2;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 62",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:3;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 55",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:4;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 50",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:5;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 33",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:10;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 25",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:15;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 20",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:20;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 15",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:28;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 10",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:45;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 5",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:95;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 3",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:162;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 2",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:245;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },{
+    "name": "Streaming random Offset 1",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "reservoir|offset:495;mode:fixed;size:5",    "isItem": false,    "isTransaction": true
+  },  {
+  "name": "Streaming random single| 5",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random single| 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|","sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random single| 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|","sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random single| 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|","sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random single| 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|","sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random single| 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|","sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:5;mode:count;size:3 5",        "algorithm":".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:5;mode:count;size:3",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:5;mode:count;size:3 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:5;mode:count;size:3",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:5;mode:count;size:3 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:5;mode:count;size:3",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:5;mode:count;size:3 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:5;mode:count;size:3",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:5;mode:count;size:3 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:5;mode:count;size:3",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:5;mode:count;size:3 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:5;mode:count;size:3",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:10;mode:count;size:5 5",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:10;mode:count;size:5",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:10;mode:count;size:5 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:10;mode:count;size:5",        "sampler": "floating|size:10", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:10;mode:count;size:5 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:10;mode:count;size:5",        "sampler": "floating|size:15", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:10;mode:count;size:5 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:10;mode:count;size:5",        "sampler": "floating|size:20", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:10;mode:count;size:5 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:10;mode:count;size:5",        "sampler": "floating|size:25", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:10;mode:count;size:5 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:10;mode:count;size:5",        "sampler": "floating|size:30", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:15;mode:count;size:7 5",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:15;mode:count;size:7",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:15;mode:count;size:7 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:15;mode:count;size:7",        "sampler": "floating|size:10", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:15;mode:count;size:7 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:15;mode:count;size:7",        "sampler": "floating|size:15", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:15;mode:count;size:7 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:15;mode:count;size:7",        "sampler": "floating|size:20", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:15;mode:count;size:7 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:15;mode:count;size:7",        "sampler": "floating|size:25", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:15;mode:count;size:7 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:15;mode:count;size:7",        "sampler": "floating|size:30", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:20;mode:count;size:10 5",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:20;mode:count;size:10",        "sampler": "floating|size:5", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:20;mode:count;size:10 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:20;mode:count;size:10",        "sampler": "floating|size:10",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:20;mode:count;size:10 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:20;mode:count;size:10",        "sampler": "floating|size:15",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:20;mode:count;size:10 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:20;mode:count;size:10",        "sampler": "floating|size:20",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:20;mode:count;size:10 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:20;mode:count;size:10",        "sampler": "floating|size:25",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:20;mode:count;size:10 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:20;mode:count;size:10",        "sampler": "floating|size:30",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:25;mode:count;size:12 5",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:25;mode:count;size:12",        "sampler": "floating|size:5", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:25;mode:count;size:12 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:25;mode:count;size:12",        "sampler": "floating|size:10",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:25;mode:count;size:12 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:25;mode:count;size:12",        "sampler": "floating|size:15",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:25;mode:count;size:12 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:25;mode:count;size:12",        "sampler": "floating|size:20",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:25;mode:count;size:12 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:25;mode:count;size:12",        "sampler": "floating|size:25",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:25;mode:count;size:12 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:25;mode:count;size:12",        "sampler": "floating|size:30",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:30;mode:count;size:15 5",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:30;mode:count;size:15",        "sampler": "floating|size:5", "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:30;mode:count;size:15 10",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:30;mode:count;size:15",        "sampler": "floating|size:10",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:30;mode:count;size:15 15",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:30;mode:count;size:15",        "sampler": "floating|size:15",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:30;mode:count;size:15 20",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:30;mode:count;size:15",        "sampler": "floating|size:20",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:30;mode:count;size:15 25",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:30;mode:count;size:15",        "sampler": "floating|size:25",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random overlap|frames:30;mode:count;size:15 30",        "algorithm": ".Streaming",        "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "overlap|frames:30;mode:count;size:15",        "sampler": "floating|size:30",   "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:5 5",        "algorithm": ".Streaming",    "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:5",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:5 10",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:5",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:5 15",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:5",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:5 20",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:5",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:5 25",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:5",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:5 30",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:5",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:10 5",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:10",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:10 10",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:10",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:10 15",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:10",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:10 20",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:10",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:10 25",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:10",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:10 30",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:10",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:15 5",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:15",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:15 10",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:15",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:15 15",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:15",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:15 20",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:15",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:15 25",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:15",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:15 30",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:15",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:20 5",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:20",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:20 10",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:20",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:20 15",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:20",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:20 20",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:20",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:20 25",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:20",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:20 30",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:20",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:25 5",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:25",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:25 10",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:25",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:25 15",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:25",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:25 20",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:25",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:25 25",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:25",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:25 30",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:25",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:30 5",        "algorithm": ".Streaming",     "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:30",        "sampler": "floating|size:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:30 10",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:30",        "sampler": "floating|size:10",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:30 15",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:30",        "sampler": "floating|size:15",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:30 20",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:30",        "sampler": "floating|size:20",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:30 25",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:30",        "sampler": "floating|size:25",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random separate|frames:30 30",        "algorithm": ".Streaming",      "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "separate|frames:30",        "sampler": "floating|size:30",        "isItem": false,        "isTransaction": true
+},
+  {
+    "name": "Streaming random cache S:1 T:1 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+  },{
+  "name": "Streaming random cache S:1 T:1 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:1 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:1;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:2 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:1;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:3 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:1;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:4 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:1;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:1 T:5 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:1;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:1 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:2;expirationTime:1",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:2 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:2;expirationTime:2",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:3 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:2;expirationTime:3",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:4 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:2;expirationTime:4",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:2",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:2;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:3",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:3;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:4",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:4;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:5",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:5;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:6",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:6;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:7",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:7;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:8",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:8;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:9",        "algorithm": ".Streaming",  "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",       "sampler": "floating|size:5",        "cache": "userCache|exponent:9;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:10",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:10;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:11",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:11;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},{
+  "name": "Streaming random cache S:2 T:5 E:12",        "algorithm": ".Streaming",   "heuristic": "random|",        "areAnonymousAllowed": true,        "dataFrame": "single|",        "sampler": "floating|size:5",        "cache": "userCache|exponent:12;size:2;expirationTime:5",        "isItem": false,        "isTransaction": true
+},
+  {
+    "name": "Streaming random flag",  "algorithm": ".Streaming",  "heuristic": "random|",  "areAnonymousAllowed": true,  "dataFrame": "single|",  "sampler": "floating|size:5",  "flag": "flag|",  "isItem": false,  "isTransaction": true
+  },
+  {
+    "name": "Streaming random coocurence 1",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "floating|size:5",    "coocurence": "coocurence|expirationTime:1",    "isItem": false,    "isTransaction": true
+  },{
+  "name": "Streaming random coocurence 2",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "floating|size:5",    "coocurence": "coocurence|expirationTime:2",    "isItem": false,    "isTransaction": true
+},{
+  "name": "Streaming random coocurence 3",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "floating|size:5",    "coocurence": "coocurence|expirationTime:3",    "isItem": false,    "isTransaction": true
+},{
+  "name": "Streaming random coocurence 4",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "floating|size:5",    "coocurence": "coocurence|expirationTime:4",    "isItem": false,    "isTransaction": true
+},{
+  "name": "Streaming random coocurence 5",    "algorithm": ".Streaming",    "heuristic": "random|",    "areAnonymousAllowed": true,    "dataFrame": "single|",    "sampler": "floating|size:5",    "coocurence": "coocurence|expirationTime:5",    "isItem": false,    "isTransaction": true
+},
+  {
+    "name": "Streaming random without anonyms",
+    "algorithm": ".Streaming",
+    "heuristic": "random|",
+    "areAnonymousAllowed": false,
+    "dataFrame": "single|",
+    "sampler": "floating|size:5",
+    "isItem": false,
+    "isTransaction": true
+  }
+    ]

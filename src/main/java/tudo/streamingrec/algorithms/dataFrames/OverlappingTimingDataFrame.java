@@ -32,7 +32,7 @@ public class OverlappingTimingDataFrame extends AbstractTwoTimingDataFrame {
                 && testingTimestamp.before(timestamp))
         {
             while(testingTimestamp.before(timestamp)) {
-                testingTimestamp = DateUtils.addMinutes(testingTimestamp, configuration.getNext());
+                testingTimestamp = DateUtils.addSeconds(testingTimestamp, configuration.getNext());
                 trainingTimestamp = DateUtils.addSeconds(testingTimestamp, -trainingTimeInSec);
             }
             assignAndClear();

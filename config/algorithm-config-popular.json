@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Streaming popular 90 20 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+  },{
+  "name": "Streaming popular 90 25 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 35 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 40 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 45 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 50 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 55 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 65 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 70 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 75 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 80 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 20 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 25 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 35 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 40 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 45 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 50 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 55 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 65 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 70 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 75 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 95 80 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:95",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 100 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:100",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 105 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:105",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 110 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:110",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 115 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:115",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 120 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:120",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 125 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:125",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 20 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:20;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 25 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:25;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 30 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:30;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 35 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:35;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 40 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:40;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 45 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:45;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 50 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:50;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 55 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:55;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 60 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:60;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 65 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:65;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 70 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:70;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 75 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:75;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 130 80 ",      "algorithm": ".Streaming",      "heuristic":"popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:count;size:80;frames:130",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 30 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:30",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 36 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:36",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 36 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:36",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 36 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:36",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 36 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:36",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 42 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:42",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 48 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:48",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 54 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:54",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 60 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:60;frames:60",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:60;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 66 66 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:66;frames:66",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:60;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 66 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:66;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 72 72 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:72;frames:72",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:60;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 66 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:66;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 78 72 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:72;frames:78",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:60;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 66 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:66;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 84 72 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:72;frames:84",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 7 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:7;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 12 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:12;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 15 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:15;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 18 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:18;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 21 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:21;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 24 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:24;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 27 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:27;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 30 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:30;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 36 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:36;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 42 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:42;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 48 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:48;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 54 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:54;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 60 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:60;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 66 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:66;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular 90 72 ",      "algorithm": ".Streaming",      "heuristic": "popular|",      "areAnonymousAllowed": true,      "dataFrame": "overlap|mode:time;size:72;frames:90",      "sampler": "list|",      "isItem": false,      "isTransaction": true
+},{
+  "name": "Streaming popular overlapList",  "algorithm": ".Streaming",  "heuristic": "popular|",  "areAnonymousAllowed": false,  "dataFrame": "overlap|mode:count;frames:120;size:60",  "sampler": "list|",  "cache": "userCache|exponent:13;expirationTime:780;size:6",  "flag": "flag|",  "isItem": false,  "isTransaction": true
+}]
